@@ -33,6 +33,25 @@ public class monopolyMap {
    	 if(cardValue == 1) {
    		 pickRandomCard2(a);
    	 }
+   	public int propertyCardbuy(Player a) {
+		getProp(a.getLocation()).getUsedness() = true;
+		getProp(a.getLocation()).getWho() = a;
+		a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
+		a.addProperty(getProp(a.getLocation()));
+		
+	}
+	public void propertyCardsell(Property a, Player b) {
+		b.getProperties().remove(a);
+		a.setUsedness(false);
+		a.setWho("Bank");
+		b.setMoney(b.getMoney() + a.getCost());
+	}
+	public void Transfer(Player a, Player c, int k) {
+		a.setMoney(a.getMoney() + k);
+		c.setMoney(c.getMoney() - k);
+	}
+
+	
 
 }
     public int propertyCardbuy(Player a) {
@@ -52,9 +71,5 @@ public class monopolyMap {
    	 c.setMoney(c.getMoney() - k)
     }
 
-    
-    public void Jail (Player a) {
 
 
-}
-}
