@@ -63,7 +63,7 @@ public class monopolyMap {
     public int propertyCardsell(Property a, Player b) {
    	 b.propertylist.delete(a);
    	 a.getUsedness() = false;
-   	 a.getWho() = "Ban";
+   	 a.getWho() = "Bank";
    	 b.setMoney(b.getMoney() + a.getCost());
     }
     public void Transfer(Player a, Player c. int k) {
