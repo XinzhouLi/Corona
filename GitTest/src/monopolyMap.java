@@ -29,13 +29,13 @@ public class monopolymap {
      * @param a Of type Player that holds info on player's card effect.
      */
     public void randomCard(Player a) {
-   	 Random randCardVal = new Random();
-   	 int cardValue = randCardVal.nextInt(2);
-   	 if (cardValue == 0){
-   		 pickRandomCard1(a);
-    }
-   	 if(cardValue == 1) {
-   		 pickRandomCard2(a);
+        Random randCardVal = new Random();
+   	    int cardValue = randCardVal.nextInt(2);
+   	    if (cardValue == 0) {
+            pickRandomCard1(a);
+        }
+   	    if(cardValue == 1) {
+            pickRandomCard2(a);
         }
     
 
@@ -72,9 +72,9 @@ public class monopolymap {
 	}
 
     /**
-     * Method will determine that a player is sitting atop a Jail space and either fine
-     * or bankrupt player. 
-     * @param a
+     * Method will determine that a player is sitting atop a Jail space 
+     * and either fine or bankrupt player. 
+     * @param a Of type Player and holds info 
      */
     public void Jail (Player a) {
         int finePayment = 50;

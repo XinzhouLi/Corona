@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Character{
-	ArrayList<Player> Characters = new ArrayList<Player>();
+	private ArrayList<Player> Characters = new ArrayList<Player>();
 	public Character() {
 		if (getNumberofPlayers() = 1) {
 			Player p0 = new Player(1500, 0, null, 0);
