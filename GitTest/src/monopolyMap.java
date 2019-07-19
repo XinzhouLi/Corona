@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.ArrayList;
 public class monopolymap {
     private int locationValue;
-    privaet int propertyCardValue;
+    private int propertyCardValue;
     private ArrayList<Property> Propertylist = new ArrayList<Property>();
 
     /**
