@@ -1,13 +1,14 @@
 import java.util.Random;
 public class monopolyMap {
-    
+    private int locationValue;
+    private int propertyCardValue;
+
     /**
      * Method will acquire player's location value and decide if they are 
      * standing on a random, jail, start, or normal board space.  
      * @param a Of type Player that holds info on player's current location.
      */
     public int typeOfLocation(Player a) {
-   	 int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
    	 }
@@ -34,6 +35,20 @@ public class monopolyMap {
    		 pickRandomCard2(a);
         }
     
+
+    /**
+     * Method will hold information on the different properties one can purchase and sell. 
+     * @param a Of type Player that holds info on 
+     * @return
+     */
+    public void propertyCardEffects(Player a) {
+        if (propertyCardValue == 0) {
+            
+        }
+
+    }
+
+        
    	public int propertyCardBuy(Player a) {
 		getProp(a.getLocation()).getUsedness() = true;
 		getProp(a.getLocation()).getWho() = a;
