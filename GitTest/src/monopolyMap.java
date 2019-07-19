@@ -2,10 +2,11 @@ import java.util.Random;
 public class monopolyMap {
     
     /**
-     * 
-     * @param a
+     * Method will acquire player's location value and decide if they are 
+     * standing on a random, jail, start, or normal board space.  
+     * @param a Of type Player that holds info on player's current location.
      */
-    public int typeoflocation(Player a) {
+    public int typeOfLocation(Player a) {
    	 int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
@@ -18,6 +19,7 @@ public class monopolyMap {
    	 }
    	 return locationValue;
     }
+    
     public void randomCard(Player a) {
    	 Random l= new Random();
    	 int r=l.nextInt(2);
