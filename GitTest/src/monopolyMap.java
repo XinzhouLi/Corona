@@ -80,7 +80,7 @@ public class monopolyMap {
         } 
 
         if (locationValue == 1) {
-            
+            a.loseMoney(50);
         }
     }
 
