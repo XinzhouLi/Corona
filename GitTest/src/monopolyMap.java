@@ -1,16 +1,14 @@
 package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
-<<<<<<< HEAD
+
 public class monopolymap {
 	 ArrayList<Property> Propertylist = new ArrayList<Property>();
 	
-=======
 public class monopolyMap {
     private int locationValue;
     private int propertyCardValue;
     private ArrayList<Property> Propertylist = new ArrayList<Property>();
->>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 
     /**
      * Method will acquire player's location value and decide if they are 
@@ -86,15 +84,12 @@ public class monopolyMap {
 	}
 
 
-<<<<<<< HEAD
-=======
     /**
      * 
      * @param a
      * @param amountLost
      * @return
      */
->>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
     public int loseMoney(Player a, int amountLost) {
         int playerMoney = a.getMoney();
         playerMoney = playerMoney - amountLost;
