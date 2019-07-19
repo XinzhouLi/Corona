@@ -43,7 +43,11 @@ public class monopolyMap {
      */
     public void propertyCardEffects(Player a) {
         if (propertyCardValue == 0) {
-            
+            a.addProperty()
+        } else if (propertyCardValue == 1) {
+
+        } else {
+
         }
 
     }
