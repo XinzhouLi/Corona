@@ -50,7 +50,7 @@ public class monopolyMap {
 
     
     public void Jail (Player a) {
-   	 
+         
 
 }
 }
