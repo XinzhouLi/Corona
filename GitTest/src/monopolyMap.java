@@ -24,7 +24,7 @@ public class monopolymap {
    	 return locationValue;
     }
     public void pickRandomCard1(Player a) {
-    	System.out.println("you picked random card 1: Schalorship\n you win 50");
+    	System.out.println("you picked random card 1: Schalorship\n you win $50");
     	a.setMoney(a.getMoney() + 50);
     }
     public void pickRandomCard2(Player a) {
