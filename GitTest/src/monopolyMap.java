@@ -1,35 +1,41 @@
 import java.util.Random;
 public class monopolyMap {
-    public int typeoflocation(Player a) {
-   	 int p=0;
+    
+    /**
+     * Method will acquire player's location value and decide if they are 
+     * standing on a random, jail, start, or normal board space.  
+     * @param a Of type Player that holds info on player's current location.
+     */
+    public int typeOfLocation(Player a) {
+   	 int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
-   		 p = 1;
+   		 locationValue = 1;
    	 }
-   	 if(a.getLocation() % 12 == 4 || a.location % 12 == 8) {
-   		 p = 2;
+   	 if(a.getLocation() % 12 == 4 || a.getLocation() % 12 == 8) {
+   		 locationValue = 2;
    	 }
    	 if(a.getLocation()  % 12 == 0) {
-   		 p = 3;
+   		 locationValue = 3;
    	 }
-   	 return p;
+   	 return locationValue;
     }
+
     public void randomCard(Player a) {
-   	 Random l= new Random();
-   	 int r=l.nextInt(2);
-   	 if (r==0){
-   		 pickrandomcard1(a);
+   	 Random randCardVal = new Random();
+   	 int cardValue = randCardVal.nextInt(2);
+   	 if (cardValue == 0){
+   		 pickRandomCard1(a);
     }
-   	 if(r==1) {
-   		 pickrandomcard2(a);
+   	 if(cardValue == 1) {
+   		 pickRandomCard2(a);
    	 }
 
 }
     public int propertyCardbuy(Player a) {
-   	 getProp(a.getLocation()).getUsedness() = true;
-   	 getProp(a.getLocation()).getWho() = a;
-   	 a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
-   	 a.propertylist.add(getProp(a.getLocation()));
-   	 
+        getProp(a.getLocation()).getUsedness() = true;
+   	    getProp(a.getLocation()).getWho() = a;
+   	    a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
+   	    a.propertylist.add(getProp(a.getLocation()));
     }
     public int propertyCardsell(Property a, Player b) {
    	 b.propertylist.delete(a);
@@ -44,10 +50,7 @@ public class monopolyMap {
 
     
     public void Jail (Player a) {
-   	 int locationVal = 4; //
-   	 if () {
-   		 a.loseMoney();
-   	 }
+         
 
 }
 }
