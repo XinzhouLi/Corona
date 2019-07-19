@@ -5,7 +5,6 @@ public class monopolyMap {
     private int locationValue;
     private int propertyCardValue;
     private ArrayList<Property> Propertylist = new ArrayList<Property>();
-	
 
     /**
      * Method will acquire player's location value and decide if they are 
@@ -73,7 +72,9 @@ public class monopolyMap {
 	}
 
     public int loseMoney(Player a, int amountLost) {
-        a.getMoney();
+        int playerMoney = a.getMoney();
+        playerMoney = playerMoney - amountLost;
+        return playerMoney;
     }
 
     /**
