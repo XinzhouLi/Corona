@@ -20,6 +20,10 @@ public class monopolyMap {
    	 return locationValue;
     }
 
+    /**
+     * Methods pick a random card that will bestow a random effect on the player.
+     * @param a Of type Player that holds info on player's card effect.
+     */
     public void randomCard(Player a) {
    	 Random randCardVal = new Random();
    	 int cardValue = randCardVal.nextInt(2);
@@ -50,7 +54,7 @@ public class monopolyMap {
 
     
     public void Jail (Player a) {
-         
+
 
 }
 }
