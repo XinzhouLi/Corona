@@ -2,7 +2,8 @@ package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
 public class monopolymap {
-	 ArrayList<Property> Propertylist = new ArrayList<Property>();
+    private int locationValue;
+    ArrayList<Property> Propertylist = new ArrayList<Property>();
 	
 
     /**
@@ -70,12 +71,12 @@ public class monopolymap {
 		c.setMoney(c.getMoney() - k);
 	}
 
-	
-
-
-    
+    /**
+     * Method will determine that a player is sitting atop a Jail space and either fine
+     * or bankrupt player. 
+     * @param a
+     */
     public void Jail (Player a) {
-        int locationValue = 0;
         int finePayment = 50;
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;
