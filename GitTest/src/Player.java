@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Player{
+<<<<<<< HEAD
 	int Money;
 	int Location;
 	ArrayList<String> Properties = new ArrayList<String>();
@@ -9,6 +10,16 @@ public class Player{
 		setMoney(Money);
 		setLocation(Location);
 		setProperties(Properties);
+=======
+	int money;
+	int location;
+	ArrayList<String> properties = new ArrayList<String>();
+	
+	public Player(int money, int location, ArrayList<String> properties) {
+		setMoney(money);
+		setLocation(location);
+		setProperties(properties);
+>>>>>>> 7d35ffa9718ec9eb6dda470c077394c9d12113b9
 	}
 	
 	public Player (Player player){
