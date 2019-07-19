@@ -1,6 +1,10 @@
 package mapstuffformonopoly;
 import java.util.Random;
+import java.util.ArrayList;
 public class monopolymap {
+	 ArrayList<Property> Propertylist = new ArrayList<Property>();
+	
+	
 	public int typeoflocation(Player a) {
 		int p=0;
 		if(a.getLocation() % 12 == 6) {
@@ -36,7 +40,7 @@ public class monopolymap {
 
 }
 	
-	public int propertyCardbuy(Player a, Property b) {
+	public void propertyCardbuy(Player a, Property b) {
 		b.setUsedness(true);
 		b.setWho(a.PlayerName);
 		a.setMoney(a.getMoney() - b.getCost());
@@ -55,5 +59,4 @@ public class monopolymap {
 	}
 
 	
-
 }
