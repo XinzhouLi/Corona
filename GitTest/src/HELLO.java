@@ -14,6 +14,16 @@ public class monopolymap {
 		}
 		return p;
 	}
+	public void pickrandomcard1(Player a) {
+		System.out.println("you picked random card number 1: Scholarship\n you win $50");
+		a.setMoney(a.getMoney() + 50);
+		
+	}
+	public void pickrandomcard2(Player a) {
+		System.out.println("you picked random card number 2: fees\n you lose $50);");
+		a.setMoney(a.getMoney() + 50);
+		
+	}
 	public void randomCard(Player a) {
 		Random l= new Random();
 		int r=l.nextInt(2);
@@ -26,11 +36,11 @@ public class monopolymap {
 
 }
 	
-	public int propertyCardbuy(Player a) {
-		getProp(a.getLocation()).getUsedness() = true;
-		getProp(a.getLocation()).getWho() = a;
-		a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
-		a.addProperty(getProp(a.getLocation()));
+	public int propertyCardbuy(Player a, Property b) {
+		b.setUsedness(true);
+		b.setWho(a.PlayerName);
+		a.setMoney(a.getMoney() - b.getCost());
+		a.addProperty(b.PropertyName);
 		
 	}
 	public void propertyCardsell(Property a, Player b) {
