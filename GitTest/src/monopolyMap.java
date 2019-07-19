@@ -1,7 +1,7 @@
 package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
-public class monopolymap {
+public class monopolyMap {
     private int locationValue;
     private int propertyCardValue;
     private ArrayList<Property> Propertylist = new ArrayList<Property>();
