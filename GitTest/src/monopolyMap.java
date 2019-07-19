@@ -1,13 +1,14 @@
 import java.util.Random;
 public class monopolyMap {
-    
+    private int locationValue;
+    private int propertyCardValue;
+
     /**
      * Method will acquire player's location value and decide if they are 
      * standing on a random, jail, start, or normal board space.  
      * @param a Of type Player that holds info on player's current location.
      */
     public int typeOfLocation(Player a) {
-   	 int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
    	 }
@@ -32,15 +33,34 @@ public class monopolyMap {
     }
    	 if(cardValue == 1) {
    		 pickRandomCard2(a);
-   	 }
-   	public int propertyCardbuy(Player a) {
+        }
+    
+
+    /**
+     * Method will hold information on the different properties one can purchase and sell. 
+     * @param a Of type Player that holds info on 
+     * @return
+     */
+    public void propertyCardEffects(Player a) {
+        if (propertyCardValue == 0) {
+            a.addProperty()
+        } else if (propertyCardValue == 1) {
+
+        } else {
+
+        }
+
+    }
+
+        
+   	public int propertyCardBuy(Player a) {
 		getProp(a.getLocation()).getUsedness() = true;
 		getProp(a.getLocation()).getWho() = a;
 		a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
 		a.addProperty(getProp(a.getLocation()));
 		
 	}
-	public void propertyCardsell(Property a, Player b) {
+	public void propertyCardSell(Property a, Player b) {
 		b.getProperties().remove(a);
 		a.setUsedness(false);
 		a.setWho("Bank");
@@ -67,9 +87,25 @@ public class monopolyMap {
    	 b.setMoney(b.getMoney() + a.getCost());
     }
     public void Transfer(Player a, Player c. int k) {
-   	 a.setMoney(a.getMoney() + k)
-   	 c.setMoney(c.getMoney() - k)
+   	 a.setMoney(a.getMoney() + k);
+   	 c.setMoney(c.getMoney() - k);
     }
 
+    
+    public void Jail (Player a) {
+        int locationValue = 0;
+        int finePayment = 50;
+        if (a.getLocation() % 12 == 6) {
+            locationValue = 1;
+        } 
+
+        if (locationValue == 1 && a.getMoney() >= finePayment) {
+            a.loseMoney(finePayment);
+        } else {
+            a.winCondition();
+        }
+    }
+
+    
 
 

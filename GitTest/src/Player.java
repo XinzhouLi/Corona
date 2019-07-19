@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player{
-	int Money; //Player's money; will default to 1500 at the start of the game
-	int Location;
-	ArrayList<String> Properties = new ArrayList<String>();
-	int PlayerNumber;
-	String PlayerName;
+	private int Money; //Player's money; will default to 1500 at the start of the game
+	private int Location;
+	private ArrayList<String> Properties = new ArrayList<String>();
+	private int PlayerNumber;
+	private String PlayerName;
 
 	public Player(int Money, int Location, ArrayList<String> Properties, int PlayerNumber) { //Constructor
 		setMoney(Money);
@@ -21,7 +21,7 @@ public class Player{
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
 		 this.PlayerNumber = player.PlayerNumber;
-		 setPlayerName();
+		 this.PlayerName = player.PlayerName;
 	}
 	
 	public void setMoney(int Money) {
