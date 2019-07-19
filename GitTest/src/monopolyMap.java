@@ -32,7 +32,8 @@ public class monopolyMap {
     }
    	 if(cardValue == 1) {
    		 pickRandomCard2(a);
-   	 }
+        }
+    
    	public int propertyCardbuy(Player a) {
 		getProp(a.getLocation()).getUsedness() = true;
 		getProp(a.getLocation()).getWho() = a;
@@ -76,6 +77,10 @@ public class monopolyMap {
         int locationValue = 0;
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;
+        } 
+
+        if (locationValue == 1) {
+            
         }
     }
 
