@@ -105,13 +105,10 @@ public class monopolyMap {
     public void Jail (Player a) {
         int locationValue = 0;
         int finePayment = 50;
+        loseMoney(a, finePayment);
 
-        if (a.getMoney() >= finePayment) {
-            a.loseMoney(finePayment);
-        } else {
-            a.winCondition();
-        }
     }
+}
 
   
     
