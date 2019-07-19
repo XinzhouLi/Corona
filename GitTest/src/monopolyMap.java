@@ -11,7 +11,7 @@ public class monopolyMap {
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
    	 }
-   	 if(a.getLocation() % 12 == 4 || a.location % 12 == 8) {
+   	 if(a.getLocation() % 12 == 4 || a.getLocation() % 12 == 8) {
    		 locationValue = 2;
    	 }
    	 if(a.getLocation()  % 12 == 0) {
@@ -19,24 +19,23 @@ public class monopolyMap {
    	 }
    	 return locationValue;
     }
-    
+
     public void randomCard(Player a) {
-   	 Random l= new Random();
-   	 int r=l.nextInt(2);
-   	 if (r==0){
-   		 pickrandomcard1(a);
+   	 Random randCardVal = new Random();
+   	 int cardValue = randCardVal.nextInt(2);
+   	 if (cardValue == 0){
+   		 pickRandomCard1(a);
     }
-   	 if(r==1) {
-   		 pickrandomcard2(a);
+   	 if(cardValue == 1) {
+   		 pickRandomCard2(a);
    	 }
 
 }
     public int propertyCardbuy(Player a) {
-   	 getProp(a.getLocation()).getUsedness() = true;
-   	 getProp(a.getLocation()).getWho() = a;
-   	 a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
-   	 a.propertylist.add(getProp(a.getLocation()));
-   	 
+        getProp(a.getLocation()).getUsedness() = true;
+   	    getProp(a.getLocation()).getWho() = a;
+   	    a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
+   	    a.propertylist.add(getProp(a.getLocation()));
     }
     public int propertyCardsell(Property a, Player b) {
    	 b.propertylist.delete(a);
