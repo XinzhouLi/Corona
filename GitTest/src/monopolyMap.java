@@ -2,8 +2,9 @@ package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
 public class monopolymap {
-	 ArrayList<Property> Propertylist = new ArrayList<Property>();
-	
+    private int locationValue;
+    privaet int propertyCardValue;
+    private ArrayList<Property> Propertylist = new ArrayList<Property>();
 
     /**
      * Method will acquire player's location value and decide if they are 
@@ -11,7 +12,6 @@ public class monopolymap {
      * @param a Of type Player that holds info on player's current location.
      */
     public int typeOfLocation(Player a) {
-    	int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
    	 }
@@ -62,13 +62,13 @@ public class monopolymap {
 
     }
 
-	public void propertyCardbuy(Player a, Property b) {
+	public void propertyCardBuy(Player a, Property b) {
 		b.setWho(a.PlayerName);
 		a.setMoney(a.getMoney() - b.getCost());
 		a.addProperty(b.PropertyName);
 		
 	}
-	public void propertyCardsell(Property a, Player b) {
+	public void propertyCardSell(Property a, Player b) {
 		b.getProperties().remove(a);
 		a.setWho("");
 		b.setMoney(b.getMoney() + a.getCost());
@@ -80,17 +80,22 @@ public class monopolymap {
 
 
     /**
-     * 
+     * Method will check if player has money to continue playing.
+     * If not, give option to sell. 
+     * If no properties, sell. 
      * @param a
      * @param amountLost
-     * @return
+     * @return playerMoney, which indicates current amount of player money.
      */
     public int loseMoney(Player a, int amountLost) {
         int playerMoney = a.getMoney();
-        playerMoney -= amountLost;
+        if (playerMoney >= 0) {
+            playerMoney -= amountLost;
+        }
         return playerMoney;
     }
-    
+  
+
     /**
      * Method will determine that a player is sitting atop a Jail space 
      * and either fine or bankrupt player. 
