@@ -21,7 +21,7 @@ public class Player{
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
 		 this.PlayerNumber = player.PlayerNumber;
-		 setPlayerName();
+		 this.PlayerName = player.PlayerName;
 	}
 	
 	public void setMoney(int Money) {
