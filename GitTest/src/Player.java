@@ -3,12 +3,12 @@ import java.util.ArrayList;
 public class Player{
 	int money;
 	int location;
-	ArrayList<String> Properties = new ArrayList<String>();
+	ArrayList<String> properties = new ArrayList<String>();
 	
-	public Player(int Money, int Location, ArrayList<String> Properties) {
-		setMoney(Money);
-		setLocation(Location);
-		setProperties(Properties);
+	public Player(int money, int location, ArrayList<String> properties) {
+		setMoney(money);
+		setLocation(location);
+		setProperties(properties);
 	}
 	
 	 public Player (Player player){
