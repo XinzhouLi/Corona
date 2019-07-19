@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Player{
-	int Money;
-	int Location;
+	int money;
+	int location;
 	ArrayList<String> Properties = new ArrayList<String>();
 	
 	public Player(int Money, int Location, ArrayList<String> Properties) {
