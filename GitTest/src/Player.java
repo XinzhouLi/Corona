@@ -11,8 +11,8 @@ public class Player{
 		setLocation(Location);
 		setProperties(Properties);
 =======
-	int money;
-	int location;
+	int Money;
+	int Location;
 	ArrayList<String> properties = new ArrayList<String>();
 	
 	public Player(int money, int location, ArrayList<String> properties) {
