@@ -4,14 +4,14 @@ public class Player{
 	int Money;
 	int Location;
 	ArrayList<String> Properties = new ArrayList<String>();
-	
+
 	public Player(int Money, int Location, ArrayList<String> Properties) {
 		setMoney(Money);
 		setLocation(Location);
 		setProperties(Properties);
 	}
 	
-	 public Player (Player player){
+	public Player (Player player){
 		 this.Money = player.Money;
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
@@ -27,6 +27,10 @@ public class Player{
 	
 	public void setProperties(ArrayList<String> Properties) {
 		this.Properties = Properties;
+	}
+	
+	public void addProperty(String element) {
+		Properties.add(element);
 	}
 	
 	public int getMoney() {
