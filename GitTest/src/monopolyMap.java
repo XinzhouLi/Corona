@@ -2,8 +2,7 @@ package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
 public class monopolymap {
-    private int locationValue;
-    ArrayList<Property> Propertylist = new ArrayList<Property>();
+	 ArrayList<Property> Propertylist = new ArrayList<Property>();
 	
 
     /**
@@ -12,6 +11,7 @@ public class monopolymap {
      * @param a Of type Player that holds info on player's current location.
      */
     public int typeOfLocation(Player a) {
+    	int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
    		 locationValue = 1;
    	 }
@@ -23,7 +23,14 @@ public class monopolymap {
    	 }
    	 return locationValue;
     }
-
+    public void pickRandomCard1(Player a) {
+    	System.out.println("you picked random card 1: Schalorship\n you win $50");
+    	a.setMoney(a.getMoney() + 50);
+    }
+    public void pickRandomCard2(Player a) {
+    	System.out.println("you picked random card 2: Fees\n you lose $50");
+    	loseMoney(a,50);
+    	}
     /**
      * Methods pick a random card that will bestow a random effect on the player.
      * @param a Of type Player that holds info on player's card effect.
@@ -37,7 +44,7 @@ public class monopolymap {
    	 if(cardValue == 1) {
    		 pickRandomCard2(a);
         }
-    
+    }
 
     /**
      * Method will hold information on the different properties one can purchase and sell. 
@@ -71,12 +78,12 @@ public class monopolymap {
 		c.setMoney(c.getMoney() - k);
 	}
 
-    /**
-     * Method will determine that a player is sitting atop a Jail space and either fine
-     * or bankrupt player. 
-     * @param a
-     */
+	
+
+
+    
     public void Jail (Player a) {
+        int locationValue = 0;
         int finePayment = 50;
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;
@@ -89,6 +96,11 @@ public class monopolymap {
         }
     }
 
+  
     
+
+
+
+  
 
 
