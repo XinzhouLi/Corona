@@ -1,7 +1,10 @@
+package mapstuffformonopoly;
 import java.util.Random;
-public class monopolyMap {
+import java.util.ArrayList;
+public class monopolymap {
     private int locationValue;
-    private int propertyCardValue;
+    ArrayList<Property> Propertylist = new ArrayList<Property>();
+	
 
     /**
      * Method will acquire player's location value and decide if they are 
@@ -52,18 +55,15 @@ public class monopolyMap {
 
     }
 
-        
-   	public int propertyCardBuy(Player a) {
-		getProp(a.getLocation()).getUsedness() = true;
-		getProp(a.getLocation()).getWho() = a;
-		a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
-		a.addProperty(getProp(a.getLocation()));
+	public void propertyCardbuy(Player a, Property b) {
+		b.setWho(a.PlayerName);
+		a.setMoney(a.getMoney() - b.getCost());
+		a.addProperty(b.PropertyName);
 		
 	}
-	public void propertyCardSell(Property a, Player b) {
+	public void propertyCardsell(Property a, Player b) {
 		b.getProperties().remove(a);
-		a.setUsedness(false);
-		a.setWho("Bank");
+		a.setWho("");
 		b.setMoney(b.getMoney() + a.getCost());
 	}
 	public void Transfer(Player a, Player c, int k) {
@@ -71,29 +71,12 @@ public class monopolyMap {
 		c.setMoney(c.getMoney() - k);
 	}
 
-	
-
-}
-    public int propertyCardbuy(Player a) {
-        getProp(a.getLocation()).getUsedness() = true;
-   	    getProp(a.getLocation()).getWho() = a;
-   	    a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
-   	    a.propertylist.add(getProp(a.getLocation()));
-    }
-    public int propertyCardsell(Property a, Player b) {
-   	 b.propertylist.delete(a);
-   	 a.getUsedness() = false;
-   	 a.getWho() = "Bank";
-   	 b.setMoney(b.getMoney() + a.getCost());
-    }
-    public void Transfer(Player a, Player c. int k) {
-   	 a.setMoney(a.getMoney() + k);
-   	 c.setMoney(c.getMoney() - k);
-    }
-
-    
+    /**
+     * Method will determine that a player is sitting atop a Jail space and either fine
+     * or bankrupt player. 
+     * @param a
+     */
     public void Jail (Player a) {
-        int locationValue = 0;
         int finePayment = 50;
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;

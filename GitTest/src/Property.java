@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Property {
-    int Cost;
-    boolean Used = false;
-    String Who = "Bank";
-    int rent;
+    private int Cost;
+    private boolean Used = false;
+    private String Who = "Bank";
+    private int rent;
     
 
     public Property(int Cost, boolean Used, String Who, int rent) {
