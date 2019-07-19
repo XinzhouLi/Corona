@@ -67,8 +67,8 @@ public class monopolyMap {
    	 b.setMoney(b.getMoney() + a.getCost());
     }
     public void Transfer(Player a, Player c. int k) {
-   	 a.setMoney(a.getMoney() + k)
-   	 c.setMoney(c.getMoney() - k)
+   	 a.setMoney(a.getMoney() + k);
+   	 c.setMoney(c.getMoney() - k);
     }
 
     
@@ -77,9 +77,8 @@ public class monopolyMap {
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;
         }
+    }
 
-        if (locationValue == 4) {
-            
-        }
+    
 
 
