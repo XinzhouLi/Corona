@@ -54,6 +54,14 @@ public class monopolyMap {
 
     
     public void Jail (Player a) {
+        int locationValue = 0;
+        if (a.getLocation() % 12 == 6) {
+            locationValue = 1;
+        }
+
+        if (locationValue == 4) {
+            
+        }
 
 
 }
