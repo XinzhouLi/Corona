@@ -71,7 +71,6 @@ public class monopolyMap {
    	 c.setMoney(c.getMoney() - k)
     }
 
-<<<<<<< HEAD
     
     public void Jail (Player a) {
         int locationValue = 0;
@@ -82,7 +81,5 @@ public class monopolyMap {
         if (locationValue == 4) {
             
         }
-=======
->>>>>>> 934c0df4d104b923817bf93cb4206b41a3f6e63c
 
 
