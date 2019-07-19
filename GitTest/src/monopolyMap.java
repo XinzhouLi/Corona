@@ -36,28 +36,28 @@ public class monopolymap {
      * @param a Of type Player that holds info on player's card effect.
      */
     public void randomCard(Player a) {
-   	 Random randCardVal = new Random();
-   	 int cardValue = randCardVal.nextInt(2);
-   	 if (cardValue == 0){
-   		 pickRandomCard1(a);
-    }
-   	 if(cardValue == 1) {
-   		 pickRandomCard2(a);
+        Random randCardVal = new Random();
+   	    int cardValue = randCardVal.nextInt(2);
+   	    if (cardValue == 0) {
+            pickRandomCard1(a);
+        }
+   	    if(cardValue == 1) {
+            pickRandomCard2(a);
         }
     }
 
     /**
      * Method will hold information on the different properties one can purchase and sell. 
-     * @param a Of type Player that holds info on 
-     * @return
+     * @param a Of type Player that holds info on properties under their name.  
+     * 
      */
     public void propertyCardEffects(Player a) {
         if (propertyCardValue == 0) {
-            a.addProperty()
+            a.addProperty("House");
         } else if (propertyCardValue == 1) {
-
+            a.addProperty("Hotel");
         } else {
-
+            a.addProperty("Hospital");
         }
 
     }
@@ -78,18 +78,21 @@ public class monopolymap {
 		c.setMoney(c.getMoney() - k);
 	}
 
-	
 
+    public int loseMoney(Player a, int amountLost) {
+        a.getMoney();
+    }
 
-    
+    /**
+     * Method will determine that a player is sitting atop a Jail space 
+     * and either fine or bankrupt player. 
+     * @param a Of type Player and holds info on player's current money.
+     */
     public void Jail (Player a) {
         int locationValue = 0;
         int finePayment = 50;
-        if (a.getLocation() % 12 == 6) {
-            locationValue = 1;
-        } 
 
-        if (locationValue == 1 && a.getMoney() >= finePayment) {
+        if (a.getMoney() >= finePayment) {
             a.loseMoney(finePayment);
         } else {
             a.winCondition();
