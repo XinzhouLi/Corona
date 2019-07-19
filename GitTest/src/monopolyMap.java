@@ -1,10 +1,10 @@
 package mapstuffformonopoly;
 import java.util.Random;
 import java.util.ArrayList;
-public class monopolymap {
+public class monopolyMap {
     private int locationValue;
-    ArrayList<Property> Propertylist = new ArrayList<Property>();
-	
+    private int propertyCardValue;
+    private ArrayList<Property> Propertylist = new ArrayList<Property>();
 
     /**
      * Method will acquire player's location value and decide if they are 
@@ -23,7 +23,14 @@ public class monopolymap {
    	 }
    	 return locationValue;
     }
-
+    public void pickRandomCard1(Player a) {
+    	System.out.println("you picked random card 1: Schalorship\n you win $50");
+    	a.setMoney(a.getMoney() + 50);
+    }
+    public void pickRandomCard2(Player a) {
+    	System.out.println("you picked random card 2: Fees\n you lose $50");
+    	loseMoney(a,50);
+    	}
     /**
      * Methods pick a random card that will bestow a random effect on the player.
      * @param a Of type Player that holds info on player's card effect.
@@ -37,31 +44,31 @@ public class monopolymap {
    	    if(cardValue == 1) {
             pickRandomCard2(a);
         }
-    
+    }
 
     /**
      * Method will hold information on the different properties one can purchase and sell. 
-     * @param a Of type Player that holds info on 
-     * @return
+     * @param a Of type Player that holds info on properties under their name.  
+     * 
      */
     public void propertyCardEffects(Player a) {
         if (propertyCardValue == 0) {
-            a.addProperty()
+            a.addProperty("House");
         } else if (propertyCardValue == 1) {
-
+            a.addProperty("Hotel");
         } else {
-
+            a.addProperty("Hospital");
         }
 
     }
 
-	public void propertyCardbuy(Player a, Property b) {
+	public void propertyCardBuy(Player a, Property b) {
 		b.setWho(a.PlayerName);
 		a.setMoney(a.getMoney() - b.getCost());
 		a.addProperty(b.PropertyName);
 		
 	}
-	public void propertyCardsell(Property a, Player b) {
+	public void propertyCardSell(Property a, Player b) {
 		b.getProperties().remove(a);
 		a.setWho("");
 		b.setMoney(b.getMoney() + a.getCost());
@@ -71,24 +78,43 @@ public class monopolymap {
 		c.setMoney(c.getMoney() - k);
 	}
 
+
+    /**
+     * Method will check if player has money to continue playing.
+     * If not, give option to sell. 
+     * If no properties, sell. 
+     * @param a
+     * @param amountLost
+     * @return playerMoney, which indicates current amount of player money.
+     */
+    public int loseMoney(Player a, int amountLost) {
+        int playerMoney = a.getMoney();
+        if (playerMoney >= amountLost) {
+            playerMoney -= amountLost;
+        } 
+        
+        return playerMoney;
+    }
+  
+
     /**
      * Method will determine that a player is sitting atop a Jail space 
      * and either fine or bankrupt player. 
-     * @param a Of type Player and holds info 
+     * @param a Of type Player and holds info on player's current money.
      */
     public void Jail (Player a) {
+        int locationValue = 0;
         int finePayment = 50;
-        if (a.getLocation() % 12 == 6) {
-            locationValue = 1;
-        } 
+        loseMoney(a, finePayment);
 
-        if (locationValue == 1 && a.getMoney() >= finePayment) {
-            a.loseMoney(finePayment);
-        } else {
-            a.winCondition();
-        }
     }
+}
 
+  
     
+
+
+
+  
 
 

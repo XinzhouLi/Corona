@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Character{
-	private ArrayList<Player> Characters = new ArrayList<Player>();
+	ArrayList<Player> Characters = new ArrayList<Player>();
 	public Character() {
 		getNumberofPlayers();
 		if (getNumberofPlayers() == 1) {

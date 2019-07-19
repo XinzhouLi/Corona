@@ -4,44 +4,65 @@ import java.util.ArrayList;
 public class monopolymap {
 	 ArrayList<Property> Propertylist = new ArrayList<Property>();
 	
-	
-	public int typeoflocation(Player a) {
-		int p=0;
-		if(a.getLocation() % 12 == 6) {
-			p = 1;
-		}
-		if(a.getLocation() % 12 == 4 || a.getLocation() % 12 == 8) {
-			p = 2;
-		}
-		if(a.getLocation()  % 12 == 0) {
-			p = 3;
-		}
-		return p;
-	}
-	public void pickrandomcard1(Player a) {
-		System.out.println("you picked random card number 1: Scholarship\n you win $50");
-		a.setMoney(a.getMoney() + 50);
-		
-	}
-	public void pickrandomcard2(Player a) {
-		System.out.println("you picked random card number 2: fees\n you lose $50);");
-		a.setMoney(a.getMoney() + 50);
-		
-	}
-	public void randomCard(Player a) {
-		Random l= new Random();
-		int r=l.nextInt(2);
-		if (r==0){
-			pickrandomcard1(a);
-	}
-		if(r==1) {
-			pickrandomcard2(a);
-		}
 
-}
-	
+    /**
+     * Method will acquire player's location value and decide if they are 
+     * standing on a random, jail, start, or normal board space.  
+     * @param a Of type Player that holds info on player's current location.
+     */
+    public int typeOfLocation(Player a) {
+    	int locationValue = 0;
+   	 if(a.getLocation() % 12 == 6) {
+   		 locationValue = 1;
+   	 }
+   	 if(a.getLocation() % 12 == 4 || a.getLocation() % 12 == 8) {
+   		 locationValue = 2;
+   	 }
+   	 if(a.getLocation()  % 12 == 0) {
+   		 locationValue = 3;
+   	 }
+   	 return locationValue;
+    }
+    public void pickRandomCard1(Player a) {
+    	System.out.println("you picked random card 1: Schalorship\n you win $50");
+    	a.setMoney(a.getMoney() + 50);
+    }
+    public void pickRandomCard2(Player a) {
+    	System.out.println("you picked random card 2: Fees\n you lose $50");
+    	loseMoney(a,50);
+    	}
+    /**
+     * Methods pick a random card that will bestow a random effect on the player.
+     * @param a Of type Player that holds info on player's card effect.
+     */
+    public void randomCard(Player a) {
+   	 Random randCardVal = new Random();
+   	 int cardValue = randCardVal.nextInt(2);
+   	 if (cardValue == 0){
+   		 pickRandomCard1(a);
+    }
+   	 if(cardValue == 1) {
+   		 pickRandomCard2(a);
+        }
+    }
+
+    /**
+     * Method will hold information on the different properties one can purchase and sell. 
+     * @param a Of type Player that holds info on 
+     * @return
+     */
+    public void propertyCardEffects(Player a) {
+        if (propertyCardValue == 0) {
+            a.addProperty()
+        } else if (propertyCardValue == 1) {
+
+        } else {
+
+        }
+
+    }
+
 	public void propertyCardbuy(Player a, Property b) {
-		b.setUsedness(true);
 		b.setWho(a.PlayerName);
 		a.setMoney(a.getMoney() - b.getCost());
 		a.addProperty(b.PropertyName);
@@ -49,8 +70,7 @@ public class monopolymap {
 	}
 	public void propertyCardsell(Property a, Player b) {
 		b.getProperties().remove(a);
-		a.setUsedness(false);
-		a.setWho("Bak");
+		a.setWho("");
 		b.setMoney(b.getMoney() + a.getCost());
 	}
 	public void Transfer(Player a, Player c, int k) {
@@ -59,4 +79,28 @@ public class monopolymap {
 	}
 
 	
-}
+
+
+    
+    public void Jail (Player a) {
+        int locationValue = 0;
+        int finePayment = 50;
+        if (a.getLocation() % 12 == 6) {
+            locationValue = 1;
+        } 
+
+        if (locationValue == 1 && a.getMoney() >= finePayment) {
+            a.loseMoney(finePayment);
+        } else {
+            a.winCondition();
+        }
+    }
+
+  
+    
+
+
+
+
+
+    
