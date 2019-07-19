@@ -34,14 +34,14 @@ public class monopolyMap {
    		 pickRandomCard2(a);
         }
     
-   	public int propertyCardbuy(Player a) {
+   	public int propertyCardBuy(Player a) {
 		getProp(a.getLocation()).getUsedness() = true;
 		getProp(a.getLocation()).getWho() = a;
 		a.setMoney(a.getMoney() - getProp(a.getLocation()).getCost());
 		a.addProperty(getProp(a.getLocation()));
 		
 	}
-	public void propertyCardsell(Property a, Player b) {
+	public void propertyCardSell(Property a, Player b) {
 		b.getProperties().remove(a);
 		a.setUsedness(false);
 		a.setWho("Bank");
