@@ -89,9 +89,10 @@ public class monopolyMap {
      */
     public int loseMoney(Player a, int amountLost) {
         int playerMoney = a.getMoney();
-        if (playerMoney >= 0 && playerMoney + 1 >= amountLost) {
+        if (playerMoney >= amountLost) {
             playerMoney -= amountLost;
-        } else if (playerMoney )
+        } 
+        
         return playerMoney;
     }
   
