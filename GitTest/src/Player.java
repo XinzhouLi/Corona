@@ -12,27 +12,16 @@ public class Player{
 		setMoney(Money);
 		setLocation(Location);
 		setProperties(Properties);
-<<<<<<< HEAD
 		setPlayerNumber(PlayerNumber);
 		setPlayerName();
-=======
-=======
-	int Money;
-	int Location;
-	ArrayList<String> properties = new ArrayList<String>();
-	
-	public Player(int money, int location, ArrayList<String> properties) {
-		setMoney(money);
-		setLocation(location);
-		setProperties(properties);
->>>>>>> 7d35ffa9718ec9eb6dda470c077394c9d12113b9
->>>>>>> c9ce94cee6119b4028dfb03dc2831b6ba6063004
 	}
 	
 	public Player (Player player){ //Copy Constructor
 		 this.Money = player.Money;
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
+		 this.PlayerNumber = player.PlayerNumber;
+		 setPlayerName();
 	}
 	
 	public void setMoney(int Money) {
