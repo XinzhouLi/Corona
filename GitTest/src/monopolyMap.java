@@ -75,12 +75,15 @@ public class monopolyMap {
     
     public void Jail (Player a) {
         int locationValue = 0;
+        int finePayment = 50;
         if (a.getLocation() % 12 == 6) {
             locationValue = 1;
         } 
 
-        if (locationValue == 1) {
-            a.loseMoney(50);
+        if (locationValue == 1 && a.getMoney() >= finePayment) {
+            a.loseMoney(finePayment);
+        } else {
+            a.winCondition();
         }
     }
 
