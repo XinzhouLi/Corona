@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Player{
 	int Money; //Player's money; will default to 1500 at the start of the game
-	int Location; 
+	int Location;
 	ArrayList<String> Properties = new ArrayList<String>();
 	int PlayerNumber;
 	String PlayerName;
@@ -21,7 +21,7 @@ public class Player{
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
 		 this.PlayerNumber = player.PlayerNumber;
-		 setPlayerName();
+		 this.PlayerName = player.PlayerName;
 	}
 	
 	public void setMoney(int Money) {
