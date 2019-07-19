@@ -71,6 +71,13 @@ public class monopolyMap {
 		c.setMoney(c.getMoney() - k);
 	}
 
+
+    /**
+     * 
+     * @param a
+     * @param amountLost
+     * @return
+     */
     public int loseMoney(Player a, int amountLost) {
         int playerMoney = a.getMoney();
         playerMoney = playerMoney - amountLost;
