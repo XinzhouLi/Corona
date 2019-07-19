@@ -79,9 +79,16 @@ public class monopolymap {
 	}
 
 
+    /**
+     * 
+     * @param a
+     * @param amountLost
+     * @return
+     */
     public int loseMoney(Player a, int amountLost) {
-        a.getMoney();
-    }
+        int playerMoney = a.getMoney();
+        playerMoney = playerMoney - amountLost;
+        return playerMoney;
 
     /**
      * Method will determine that a player is sitting atop a Jail space 
