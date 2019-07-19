@@ -1,28 +1,22 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player{
-<<<<<<< HEAD
-	int Money;
+	int Money; //Player's money; will default to 1500 at the start of the game
 	int Location;
 	ArrayList<String> Properties = new ArrayList<String>();
+	int PlayerNumber;
+	String PlayerName;
 
-	public Player(int Money, int Location, ArrayList<String> Properties) {
+	public Player(int Money, int Location, ArrayList<String> Properties, int PlayerNumber) { //Constructor
 		setMoney(Money);
 		setLocation(Location);
 		setProperties(Properties);
-=======
-	int money;
-	int location;
-	ArrayList<String> properties = new ArrayList<String>();
-	
-	public Player(int money, int location, ArrayList<String> properties) {
-		setMoney(money);
-		setLocation(location);
-		setProperties(properties);
->>>>>>> 7d35ffa9718ec9eb6dda470c077394c9d12113b9
+		setPlayerNumber(PlayerNumber);
+		setPlayerName();
 	}
 	
-	public Player (Player player){
+	public Player (Player player){ //Copy Constructor
 		 this.Money = player.Money;
 		 this.Location = player.Location;
 		 this.Properties = player.Properties;
@@ -40,7 +34,17 @@ public class Player{
 		this.Properties = Properties;
 	}
 	
-	public void addProperty(String element) {
+	public void setPlayerNumber(int PlayerNumber) {
+		this.PlayerNumber = PlayerNumber;
+	}
+	
+	public String setPlayerName() {
+		Scanner input = new Scanner(System.in);
+        String s = input.nextLine();
+        return s;
+	}
+	
+	public void addProperty(String element) { 
 		Properties.add(element);
 	}
 	
@@ -55,4 +59,10 @@ public class Player{
 	public ArrayList<String> getProperties(){
 		return Properties;
 	}
+	
+	public int getPlayerNumber() {
+		return PlayerNumber;
+	}
+	
+	
 }
