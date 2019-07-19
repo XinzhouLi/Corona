@@ -18,9 +18,9 @@ public class ProjectDemo1 {
 		}
 		return diceNumber;
 	}
+	
 	public static int locationUpadate(player) {
 		player.playerLocation+=diceNumber();
 		return player.Location;
 	}
 
-}
