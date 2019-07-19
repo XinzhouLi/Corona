@@ -1,17 +1,22 @@
 import java.util.Random;
 public class monopolyMap {
+    
+    /**
+     * 
+     * @param a
+     */
     public int typeoflocation(Player a) {
-   	 int p=0;
+   	 int locationValue = 0;
    	 if(a.getLocation() % 12 == 6) {
-   		 p = 1;
+   		 locationValue = 1;
    	 }
    	 if(a.getLocation() % 12 == 4 || a.location % 12 == 8) {
-   		 p = 2;
+   		 locationValue = 2;
    	 }
    	 if(a.getLocation()  % 12 == 0) {
-   		 p = 3;
+   		 locationValue = 3;
    	 }
-   	 return p;
+   	 return locationValue;
     }
     public void randomCard(Player a) {
    	 Random l= new Random();
@@ -44,10 +49,7 @@ public class monopolyMap {
 
     
     public void Jail (Player a) {
-   	 int locationVal = 4; //
-   	 if () {
-   		 a.loseMoney();
-   	 }
+   	 
 
 }
 }
