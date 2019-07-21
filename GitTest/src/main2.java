@@ -54,6 +54,7 @@ public class main2 {
 			System.out.println("Buy the land");
 			moneyUpdate+=(int) (landInformation.getCost()*0.75);
 			player.setMoney(moneyUpdate);
+			propertyList.set(location,0);
 		}
 	}
 }
