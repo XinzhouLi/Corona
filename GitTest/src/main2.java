@@ -25,6 +25,7 @@ public class main2 {
 		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
 			System.out.println("player:"+ player.getPlayerName() +"pay"+landInformation.getRent()+"to"+landOwner.getPlayerName());
 			Transfer(player,landOwner,landInformation.getRent());
+			System.out.println("Rent paid!");
 		}
 	}
 	
