@@ -57,6 +57,7 @@ public class Main {
 					Services.locationUpdate(player);
 					if (player.getLocation()==6) {
 						Services.payJail(player, null, null);
+						break;
 					}
 					
 					Services.rent(player, player, Services.searchProperty(player.getLocation(),propertiesList), propertyPosList);
