@@ -64,8 +64,8 @@ public class Player{
 	}
 	
 	/**
-	 * Method will set player name
-	 * @return
+	 * Method will set player name.
+	 * @return a String that stores the user's input.  
 	 */
 	public String setPlayerName() {
 		Scanner input = new Scanner(System.in);
@@ -73,14 +73,27 @@ public class Player{
         return s;
 	}
 	
+	/**
+	 * Method adds property value to a list.
+	 * @param element String value that holds info on the property element 
+	 * being added to list
+	 */
 	public void addProperty(String element) { 
 		Properties.add(element);
 	}
 	
+	/**
+	 * Method acts as getter, which gets a method. 
+	 * @return Money, or amount of money held by player.
+	 */
 	public int getMoney() {
 		return Money;
 	}
 	
+	/**
+	 * 
+	 * @return Location, or the current location held by player.
+	 */
 	public int getLocation() {
 		return Location;
 	}
