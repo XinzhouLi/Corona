@@ -68,7 +68,7 @@ public class Services {
 	public static Player searchPlayer(int position, ArrayList<Property> propertieslist, ArrayList<Player> playerslist) {
 		for (Property i :propertieslist) {
 			for (Player j :playerslist) {
-				if (j.getPlayerNumber() == i.getOwnner()) {
+				if (j.getPlayerNumber() == i.getOwner()) {
 					return j;
 				}
 			}
