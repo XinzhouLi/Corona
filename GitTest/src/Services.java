@@ -61,7 +61,7 @@ public class Services {
 	}
 	
 	/**
-	 * Public, static
+	 * Public, static method that makes player pay jailer. 
 	 * @param player Holds information on player.
 	 * @param landInformation
 	 * @param propertyList
@@ -75,6 +75,12 @@ public class Services {
 		}player.setMoney(moneyRemained);
 	}
 	
+	/**
+	 * Method allows player to buy land using their money. 
+	 * @param player Holds info on player
+	 * @param propertyList Holds all the properties in a list. 
+	 * @param landInformation Holds information on the type of land
+	 */
 	public static void buyLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
 		int location=player.getLocation();
 		if(location!=6&&propertyList.get(location)==0&&location!=0) {
@@ -83,6 +89,12 @@ public class Services {
 		}
 	}
 	
+	/**
+	 * Method allows player to sell land to gain money.  
+	 * @param player Holds info on player
+	 * @param propertyList Holds all the properties in a list. 
+	 * @param landInformation Holds information on the type of land
+	 */
 	public static void sellLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
 		int location=player.getLocation();
 		int moneyUpdate=player.getMoney();
@@ -96,6 +108,7 @@ public class Services {
 		
 	}
 
+	
 	public static Player searchPlayer(int position, ArrayList<Property> propertieslist, ArrayList<Player> playerslist) {
 		for (Property i :propertieslist) {
 			for (Player j :playerslist) {
