@@ -1,13 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class main2 {
-	public static void main(String[] args) {
-		ArrayList<Integer> maplist=new ArrayList();
-		for(int i=0;i<12;i+=1) {
-			maplist.add(0);
-		}
-		
-	}
+
 	public static int diceNumber() {
 		Random rand=new Random();
 		int diceNumber=rand.nextInt(7);
@@ -15,16 +9,51 @@ public class main2 {
 			diceNumber=rand.nextInt(7);
 		}
 		return diceNumber;
-		}
-	public static void locationUpdate(Player p) {
-		p.Location+=diceNumber();
 	}
-	public static void loseMoney(Player player,Property player1) {
-		ArrayList map=monopolyMap.getMap();
-		if(player.Location!=)
-		if(player.Money>=player1.Cost) {
-				player.Money-=player1.getCost();
-				
+	
+	public static void locationUpdate(Player p) {
+		int location=p.getLocation();
+		location+=diceNumber();
+		p.setLocation(location);
+	}
+	
+	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
+		int location=player.getLocation();
+		if(propertyList.get(location)!=player.getPlayerNumber()&&propertyList.get(location)!=6) {
+			System.out.println("player:"+player+"pay"+landInformation.getRent()+"to"+landOwner);
+			Transfer(player,landOwner,landInformation.getRent());
+		}
+	}
+	
+	public static void Transfer(Player a,Player landOwner, int moneyAmount) {
+		a.setMoney(a.getMoney() + moneyAmount);
+		landOwner.setMoney(landOwner.getMoney() - moneyAmount);
+	}
+	
+	public static void payJail(Player player,Property landInformation,ArrayList<Integer> propertyList) {
+		int location=player.getLocation();
+		int moneyRemained=player.getMoney();
+		if(propertyList.get(location)==6) {
+			System.out.println("Get into the jail,pay 50 dollar.");
+			moneyRemained-=50;
+		}player.setMoney(moneyRemained);
+	}
+	
+	public static void buyLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
+		int location=player.getLocation();
+		if(location!=6&&propertyList.get(location)==0&&location!=0) {
+			propertyList.set(location,player.getPlayerNumber());
+			player.setMoney(player.getMoney()-landInformation.getCost());
+		}
+	}
+	
+	public static void sellLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
+		int location=player.getLocation();
+		int moneyUpdate=player.getMoney();
+		if(propertyList.get(location)==player.getPlayerNumber()) {
+			System.out.println("Buy the land");
+			moneyUpdate+=(int) (landInformation.getCost()*0.75);
+			player.setMoney(moneyUpdate);
 		}
 	}
 }
