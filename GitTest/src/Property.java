@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Property {
     private int Cost = Constant.PROPERTY_PRICE;
     private int Building = 0;
-    private int Ownner = 5;
+    private int Owner = 5;
     private int rent = Constant.BUILDING_PRICE;
     private int Position;
 
@@ -50,12 +50,12 @@ public class Property {
 		Building = building;
 	}
 
-	public int getOwnner() {
-		return Ownner;
+	public int getOwner() {
+		return Owner;
 	}
 
-	public void setOwnner(int Ownner) {
-		this.Ownner = Ownner;
+	public void setOwner(int Owner) {
+		this.Owner = Owner;
 	}
 
 
