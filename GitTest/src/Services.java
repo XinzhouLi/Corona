@@ -42,9 +42,10 @@ public class Services {
 	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
 		int location=player.getLocation();
 		System.out.println(location);
-		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
-			System.out.println("player:"+player+"pay"+landInformation.getRent()+"to"+landOwner);
+		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6 && player != landOwner) {
+			System.out.println("player:"+player.getPlayerName()+"pay"+landInformation.getRent()+"to"+landOwner.getPlayerName());
 			Transfer(player,landOwner,landInformation.getRent());
+			System.out.println("Rent paid!");
 		}
 	}
 	
@@ -69,7 +70,7 @@ public class Services {
 		int location=player.getLocation();
 		int moneyRemained=player.getMoney();
 		if(location==6) {
-			System.out.println("Get into the jail,pay 50 dollar.");
+			System.out.println("Go to Jail, pay 50 dollars.");
 			moneyRemained-=50;
 		}player.setMoney(moneyRemained);
 	}
