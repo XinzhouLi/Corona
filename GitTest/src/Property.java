@@ -1,54 +1,63 @@
 import java.util.ArrayList;
 
 public class Property {
-    private int Cost;
-    private boolean Used = false;
-    private String Who = "Bank";
-    private int rent;
-    
+    private int Cost = Constant.PROPERTY_PRICE;
+    private int Building = 0;
+    private int Ownner = 5;
+    private int rent = Constant.BUILDING_PRICE;
+    private int Position;
 
-    public Property(int Cost, boolean Used, String Who, int rent) {
-   	 setCost(Cost);
-   	 setUsed(Used);
-   	 setWho(Who);
-   	 setRent(rent);
+    public Property(int position) {
+		super();
+		Position = position;
+	}
+
+
+	public int getPosition() {
+		return Position;
+	}
+
+
+	public void setPosition(int position) {
+		Position = position;
+	}
+
+
+	public void setCost(int Cost) {
+    	this.Cost = Cost;
     }
 
-     public Property(Property property){
-   	  this.Cost = property.Cost;
-   	  this.Used = property.Used;
-   	  this.Who = property.Who;
-   	  this.rent = property.rent;
-    }
-
-    public void setCost(int Cost) {
-   	 this.Cost = Cost;
-    }
-    public void setUsed(boolean Used) {
-   	 this.Used = Used;
-    }
 
     public void setRent(int rent) {
-   	 this.rent = rent;
+    	this.rent = rent;
     }
 
-    public void setWho(String Who) {
-   	 this.Who = Who;
-    }
 
     public int getCost() {
-   	 return Cost;
-    }
-    public boolean getUsed() {
-   	 return Used;
-    }
-    public String getWho(String Who) {
-   	 return Who;
+    	return Cost;
     }
 
+
     public int getRent() {
-   	 return rent;
+    	return rent;
     }
+
+	public int getBuilding() {
+		return Building;
+	}
+
+	public void setBuilding(int building) {
+		Building = building;
+	}
+
+	public int getOwnner() {
+		return Ownner;
+	}
+
+	public void setOwnner(int Ownner) {
+		this.Ownner = Ownner;
+	}
+
 
     
 }

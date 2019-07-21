@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player{
-	private int Money; //Player's money; will default to 1500 at the start of the game
-	private int Location;
+	private int Money= Constant.INITAIAL_MONEY; //Player's money; will default to 1500 at the start of the game
+	private int Location = 0;
 	private ArrayList<String> Properties = new ArrayList<String>();
 	private int PlayerNumber;
 	private String PlayerName;
