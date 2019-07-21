@@ -77,7 +77,7 @@ public class Property {
 		return Owner;
 	}
     /**
-     * sets owner of a property
+     * sets owner of a property 
      */
 	public void setOwner(int Owner) { 
 		this.Owner = Owner;
