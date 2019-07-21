@@ -36,7 +36,7 @@ public class main2 {
 	public static void payJail(Player player,Property landInformation,ArrayList<Integer> propertyList) {
 		int location=player.getLocation();
 		int moneyRemained=player.getMoney();
-		if(propertyList.get(location)==6) {
+		if(location==6) {
 			System.out.println("Get into the jail,pay 50 dollar.");
 			moneyRemained-=50;
 		}player.setMoney(moneyRemained);
