@@ -91,13 +91,17 @@ public class Player{
 	}
 	
 	/**
-	 * 
+	 * Method will get location of player. 
 	 * @return Location, or the current location held by player.
 	 */
 	public int getLocation() {
 		return Location;
 	}
 	
+	/**
+	 * Method will
+	 * @return Properties, or the array list of proeprty values
+	 */
 	public ArrayList<String> getProperties(){
 		return Properties;
 	}
