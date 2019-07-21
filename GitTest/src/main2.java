@@ -19,7 +19,7 @@ public class main2 {
 	
 	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
 		int location=player.getLocation();
-		if(propertyList.get(location)!=player.getPlayerNumber()&&propertyList.get(location)!=6) {
+		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
 			System.out.println("player:"+player+"pay"+landInformation.getRent()+"to"+landOwner);
 			Transfer(player,landOwner,landInformation.getRent());
 		}
