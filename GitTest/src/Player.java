@@ -93,5 +93,8 @@ public class Player{
 		return PlayerNumber;
 	}
 	
+	public String getPlayerName() {
+		return PlayerName;
+	}
 	
 }
