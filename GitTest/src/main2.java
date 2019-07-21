@@ -20,11 +20,12 @@ public class main2 {
 		p.setLocation(location);
 	}
 	
-	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
+	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) { //If Player lands on a property owned by another Player
 		int location=player.getLocation();
 		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
-			System.out.println("player:"+player+"pay"+landInformation.getRent()+"to"+landOwner);
+			System.out.println("player:"+ player.getPlayerName() +"pay"+landInformation.getRent()+"to"+landOwner.getPlayerName());
 			Transfer(player,landOwner,landInformation.getRent());
+			System.out.println("Rent paid!");
 		}
 	}
 	
