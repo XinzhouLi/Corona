@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
-public class main2 {
+public class Services {
 
 	public static int diceNumber() {
 		Random rand=new Random();
@@ -18,10 +18,12 @@ public class main2 {
 			location-=11;
 		}
 		p.setLocation(location);
+
 	}
 	
 	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
 		int location=player.getLocation();
+		System.out.println(location);
 		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
 			System.out.println("player:"+player+"pay"+landInformation.getRent()+"to"+landOwner);
 			Transfer(player,landOwner,landInformation.getRent());
@@ -57,7 +59,31 @@ public class main2 {
 			System.out.println("Buy the land");
 			moneyUpdate+=(int) (landInformation.getCost()*0.75);
 			player.setMoney(moneyUpdate);
-			propertyList.set(location,0);
 		}
+	}
+	public static void sellLandEnd() {
+		
+	}
+
+	public static Player searchPlayer(int position, ArrayList<Property> propertieslist, ArrayList<Player> playerslist) {
+		for (Property i :propertieslist) {
+			for (Player j :playerslist) {
+				if (j.getPlayerNumber() == i.getOwnner()) {
+					return j;
+				}
+			}
+		
+		}
+		return null;
+	}
+	
+	public static Property searchProperty(int position, ArrayList<Property> propertieslist) { 
+
+			for (Property j :propertieslist) {
+				if (position == j.getPosition()) {
+					return j;
+				}
+			}
+		return null;
 	}
 }
