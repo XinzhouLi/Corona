@@ -16,7 +16,7 @@ public class main2 {
 		}
 		return diceNumber;
 		}
-	public static void locationUpadate(Player p) {
+	public static void locationUpdate(Player p) {
 		p.Location+=diceNumber();
 	}
 	public static void loseMoney(Player player,Property player1) {
@@ -24,6 +24,7 @@ public class main2 {
 		if(player.Location!=)
 		if(player.Money>=player1.Cost) {
 				player.Money-=player1.getCost();
+				
 		}
 	}
 }

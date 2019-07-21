@@ -10,14 +10,20 @@ public class Main {
 			int round = 0;
 			
 			
-//			Starting game
-			while ( p0.getMoney()==0 &&
-						p1.getMoney()==0&&
-						p2.getMoney()==0&&
-						p3.getMoney()==0) {   // start round
+//	Starting game
+			while ( p0.getMoney()<=0 &&
+						p1.getMoney()<=0&&
+						p2.getMoney()<=0&&
+						p3.getMoney()<=0) {  
+// start round
+				locationup
 				
 				
-//				Reset round
+				
+				
+				
+				
+//	Reset round
 				round++;
 				if (round == 4 ) {
 					round = 0;
