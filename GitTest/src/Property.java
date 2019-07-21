@@ -16,7 +16,7 @@ public class Property {
 	}
 
     /**
-     * gives the postion of the property on the map
+     * gives the postion of the property on the map 
      */
 	public int getPosition() { 
 		return Position;
