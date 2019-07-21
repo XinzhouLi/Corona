@@ -99,17 +99,25 @@ public class Player{
 	}
 	
 	/**
-	 * Method will
+	 * Method gets the Array List of properties
 	 * @return Properties, or the array list of proeprty values
 	 */
 	public ArrayList<String> getProperties(){
 		return Properties;
 	}
 	
+	/**
+	 * Method gets player's number.
+	 * @return PlayerNumber, or the integer value held by the Player.
+	 */
 	public int getPlayerNumber() {
 		return PlayerNumber;
 	}
 	
+	/**
+	 * Method gets player's name. 
+	 * @return PlayerName, or the String value of the Player's name.
+	 */
 	public String getPlayerName() {
 		return PlayerName;
 	}
