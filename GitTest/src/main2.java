@@ -14,8 +14,8 @@ public class main2 {
 	public static void locationUpdate(Player p) {
 		int location=p.getLocation();
 		location+=diceNumber();
-		if(location>=12) {
-			location-=12;
+		if(location>=11) {
+			location-=11;
 		}
 		p.setLocation(location);
 	}
