@@ -57,6 +57,7 @@ public class Main {
 					Services.locationUpdate(player);
 					if (player.getLocation()==6) {
 						Services.payJail(player, null, null);
+						System.out.println("go to jail");
 						break;
 					}
 					
