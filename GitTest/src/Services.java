@@ -124,10 +124,10 @@ public class Services {
 	}
 	
 	/**
-	 * 
-	 * @param position
-	 * @param propertieslist
-	 * @return j 
+	 * Method searches if the property the player has landed on is in the property list
+	 * @param position the player's position
+	 * @param propertieslist has all the properties in the list.
+	 * @return j, or if the player's position matched the position of the property. 
 	 */
 	public static Property searchProperty(int position, ArrayList<Property> propertieslist) { 
 
