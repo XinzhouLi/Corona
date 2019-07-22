@@ -54,6 +54,7 @@ public class Services {
 				propertyList.set(location,player.getPlayerNumber());
 				player.setMoney(player.getMoney()-landInformation.getCost());
 				landInformation.setOwner(player.getPlayerNumber());
+				System.out.println("Property bought!");
 			}
 		}
 	}
@@ -92,4 +93,7 @@ public class Services {
 			}
 		return null;
 	}
+
 }
+
+	
