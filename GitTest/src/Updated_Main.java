@@ -84,7 +84,6 @@ public class Updated_Main {
 				}
 				if (the_owner == 5) { //If Owner is Bank
 					Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
-					System.out.println("Property bought!");
 				}
 				System.out.println(player.getPlayerName() + ": End turn");
 				System.out.println("");
