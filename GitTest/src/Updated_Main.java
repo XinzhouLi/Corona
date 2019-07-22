@@ -87,6 +87,13 @@ public class Updated_Main {
 				}
 				System.out.println(player.getPlayerName() + ": End turn");
 				System.out.println("");
+				//Check the ending game condition at every turn
+				if ( p0.getMoney()>=0 &&
+						p1.getMoney()>=0&&
+						p2.getMoney()>=0&&
+						p3.getMoney()>=0) {
+					break;
+				}
 				}
 			}
 
