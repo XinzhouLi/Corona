@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Main {
 
 		public static void main(String[] args) {
-			System.out.println("initialing");
+			System.out.println("Initializing");
 			Player p0 = new Player(1500, 0, null, 0);
 			Player p1 = new Player(1500, 0, null, 1);
 			Player p2 = new Player(1500, 0, null, 2);
@@ -59,14 +59,20 @@ public class Main {
 						Services.payJail(player, null, null);
 					}
 					int the_owner = Services.searchProperty(player.getLocation(),propertiesList).getOwner();
-					
-					Services.rent(player, player, Services.searchProperty(player.getLocation(),propertiesList), propertyPosList);
-					Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
-					System.out.println("end turn");
+					Property players_property = Services.searchProperty(player.getLocation(),propertiesList);
+					if(the_owner != 5) { //If Owner is not Bank
+						if(player.getPlayerNumber() != the_owner) { //If Property is owned by another player, pay Rent
+							Services.rent(player, player, players_property, propertyPosList);
+						}
+					}
+					if (the_owner == 5) { //If Owner is Bank
+						Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
+					}
+					System.out.println("End turn");
 					}
 				}
 
-			System.out.println("end game");
+			System.out.println("End game");
 			ArrayList<Integer> finalScore = new ArrayList<>();
 			finalScore.add(p0.getMoney());
 			finalScore.add(p1.getMoney());
