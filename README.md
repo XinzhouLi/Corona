@@ -3,7 +3,7 @@
 Title:Monopoly(Board game)
 
 1.prerequisites
-	Installation of java,must download the   main.java,service.java,monopolyMap.java,player.java,constant.java,property.java
+	Installation of java,must download the   main.java,service.java,monopolyMap.java,player.java,constant.java,property.java,character.java
 
 2. Intro of the project
 	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the dice number),buy property and sell property.  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
@@ -36,6 +36,8 @@ Title:Monopoly(Board game)
 	      	      allow people to check the state of the property, for example the level of building, the owner of the property.
 
 	constant.java:Contain all the constant number will be used in the project.
+	
+	character.java:Contain the setting of the player(the money amount that player owned at the start of the game.)
 
 3.Run the game
 	Run the java file that called main.java
