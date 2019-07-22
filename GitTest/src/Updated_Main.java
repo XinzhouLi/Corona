@@ -55,6 +55,7 @@ public class Updated_Main {
 //start round
 			for (Player player:playerList) {
 				System.out.println(player.getPlayerName() + "'s turn");
+				System.out.println("Money: " + player.getMoney());
 				System.out.println("Location: " + player.getLocation());
 				Services.locationUpdate(player);
 				System.out.println("Location: " + player.getLocation());
@@ -98,13 +99,13 @@ public class Updated_Main {
 		finalScore.add(p3.getMoney());
 		finalScore.sort(null);
 		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p0.getPlayerNumber());
+			System.out.println("Winner is "+p0.getPlayerName());
 		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p1.getPlayerNumber());
+			System.out.println("Winner is "+p1.getPlayerName());
 		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p2.getPlayerNumber());
+			System.out.println("Winner is "+p2.getPlayerName());
 		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p3.getPlayerNumber());
+			System.out.println("Winner is "+p3.getPlayerName());
 		}
 
 		
