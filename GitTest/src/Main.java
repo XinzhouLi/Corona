@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Main {
 
 		public static void main(String[] args) {
-			System.out.println("Initializing");
+			System.out.println("Initializing...");
 			Player p0 = new Player(1500, 0, null, 0);
 			Player p1 = new Player(1500, 0, null, 1);
 			Player p2 = new Player(1500, 0, null, 2);
@@ -54,6 +54,7 @@ public class Main {
 						p3.getMoney()>=0) {   
 // start round
 				for (Player player:playerList) {
+					System.out.println(player.getPlayerName() + "'s turn");
 					Services.locationUpdate(player);
 					if (player.getLocation()==6) {
 						Services.payJail(player, null, null);
@@ -68,7 +69,7 @@ public class Main {
 					if (the_owner == 5) { //If Owner is Bank
 						Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
 					}
-					System.out.println("End turn");
+					System.out.println(player.getPlayerName() + ": End turn");
 					}
 				}
 
