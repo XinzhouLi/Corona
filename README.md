@@ -1,12 +1,12 @@
 # CoronaProject 
+
 Title:Monopoly(Board game)
 
 1.prerequisites
 	Installation of java,must download the   main.java,service.java,monopolyMap.java,player.java,constant.java,property.java
 
 2. Intro of the project
-	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the
- 	the dice number).  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
+	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the dice number).  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
 	
 	Technology used:   Java.
 
@@ -19,6 +19,7 @@ Title:Monopoly(Board game)
 		(6)At the end of the game,all the property owned by the player in the world will be sold. The richest player is the winner of the game.
 
 3.Information about each java file
+	
 	main.java:where the program start to run.
 
 	service.java:include all the method that used in main method
@@ -39,7 +40,6 @@ Title:Monopoly(Board game)
 3.Run the game
 	Run the java file that called main.java
 4Project states
-	For now,it only allow 4 computer players to play the game, and it is text version game. After the running of the program, it allowed to give the name to the computer
-	player, after the adding of GUI(next week), the player can choose the number of players, and allow the player to play the game.
+	For now,it only allow 4 computer players to play the game, and it is text version game. After the running of the program, it allowed to give the name to the computer player, after the adding of GUI(next week), the player can choose the number of players, and allow the player to play the game.
 
 
