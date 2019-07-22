@@ -1,33 +1,25 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class Services {
-	
 	/**
 	 * Allows player to roll a six-sided die.
 	 * @return diceNumber, or the integer value of the dice roll. 
 	 */
-
-	public static int diceNumber() {
-		Random rand=new Random();
-		int diceNumber=rand.nextInt(7);
-		while(diceNumber==0) {
-			diceNumber=rand.nextInt(7);
-		}
-		return diceNumber;
-	}
 	/**
 	 * Updates location of the player. 
 	 * @param p Holds info on player
 	 */
 	public static void locationUpdate(Player p) {
+		Random rand=new Random();
+		int diceNumber=rand.nextInt(7);
+		//while(diceNumber==0) {
+			//diceNumber=rand.nextInt(7);
+		//}
 		int location=p.getLocation();
-		location+=diceNumber();
-		System.out.println("Rolled a " + diceNumber());
-		if(location>=11) {
-			location-=11;
-		}
+		location+=diceNumber;
+		System.out.println("Rolled a " + diceNumber);
+		location = location % 11;
 		p.setLocation(location);
-
 	}
 	/**
 	 * Method transfers one player's funds to another player's bank in the form of rent.
