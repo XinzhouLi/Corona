@@ -69,8 +69,8 @@ public class Player{
 	 */
 	public String setPlayerName() {
 		Scanner input = new Scanner(System.in);
-        String s = input.nextLine();
-        return s;
+        PlayerName = input.nextLine();
+        return PlayerName;
 	}
 	
 	/**

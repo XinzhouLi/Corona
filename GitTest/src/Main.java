@@ -58,9 +58,9 @@ public class Main {
 					if (player.getLocation()==6) {
 						Services.payJail(player, null, null);
 					}
+					int the_owner = Services.searchProperty(player.getLocation(),propertiesList).getOwner();
 					
 					Services.rent(player, player, Services.searchProperty(player.getLocation(),propertiesList), propertyPosList);
-					System.out.println("finish renting");
 					Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
 					System.out.println("end turn");
 					}
