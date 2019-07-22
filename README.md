@@ -6,7 +6,7 @@ Title:Monopoly(Board game)
 	Installation of java,must download the   main.java,service.java,monopolyMap.java,player.java,constant.java,property.java
 
 2. Intro of the project
-	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the dice number).  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
+	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the dice number),buy property and sell property.  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
 	
 	Technology used:   Java.
 
