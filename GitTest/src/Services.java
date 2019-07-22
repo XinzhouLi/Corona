@@ -9,7 +9,7 @@ public class Services {
 	 * Updates location of the player. 
 	 * @param p Holds info on player
 	 */
-	public static void locationUpdate(Player p) {
+	public static void locationUpdate(Player p) { //Could you update this Javadoc please?
 		Random rand=new Random();
 		int diceNumber=rand.nextInt(7);
 		//while(diceNumber==0) {
@@ -25,7 +25,7 @@ public class Services {
 	 * Method transfers one player's funds to another player's bank in the form of rent.
 	 * @param player Holds info on player. 
 	 * @param landOwner Hold info on who owns the property
-	 * @param landInformation Hold info on what kind of proeprty it is
+	 * @param landInformation Hold info on what kind of property it is
 	 * @param propertyList Hold ArrayList of properties 
 	 */
 	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
