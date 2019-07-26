@@ -3,14 +3,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class UsingRandomCard {
-
+	//player will get into the jail after he get this card
 	public static void jailCard(Player player) {
 		System.out.println("Unlucky,go to the jail");
 		player.setLocation(Constant.JAIL);
 	}
 	
 	
-	
+	//player has a chance to take any property he wants except jail,start position
 	public static int posRobCard() {
 		System.out.println("Which property woud you like to take(from 0 to 19)"
 				+ "excepet jail,start location and random.");
@@ -29,7 +29,7 @@ public class UsingRandomCard {
 		return propertyNumber;
 	}
 	
-	
+	//decide which card will this player get.
 	public static int reciveCard() {
 		int number=new Random().nextInt(7);
 		while (number==0) {
@@ -39,7 +39,7 @@ public class UsingRandomCard {
 	}
 	
 
-	
+	//the player may move to any location he wants
 	public static void moveCard(Player player) {
 		System.out.println("Which location woud you like to go");
 		Scanner number=new Scanner(System.in);
@@ -53,25 +53,25 @@ public class UsingRandomCard {
 		player.setLocation(location);
 	}
 
-	
+	// by the using of rob card, a property of others player becomes the player's property
 	public static void useRobCard(ArrayList<Property> propertyList,Player player,int propertyNumber) {
 		int playerNumber=player.getPlayerNumber();
 		Property property=Services.searchProperty(propertyNumber,propertyList);
 		property.setOwner(playerNumber);
 	}
 	
-	
+	//get money
 	public static void addMoney(Player player) {
 		player.setMoney(player.getMoney()+Constant.RONDOM_CARD_MONEY_AMOUNT);
 	}
 	
-	
+	//lose money
 	public static void lostMoney(Player player) {
 		player.setMoney(player.getMoney()-Constant.RONDOM_CARD_MONEY_AMOUNT);
 	}
 		
 		
-	
+	//automatically choose the card and use the card.
 	public static void randomCard(ArrayList<Property> propertyList,Player player) {
 		int luckNumber=reciveCard();
 		if (luckNumber==1) {
