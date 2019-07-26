@@ -31,9 +31,9 @@ public class UsingRandomCard {
 	
 	
 	public static int reciveCard() {
-		int number=new Random().nextInt(4);
+		int number=new Random().nextInt(7);
 		while (number==0) {
-			number=new Random().nextInt(4);
+			number=1;
 		}
 		return number;
 	}
@@ -60,6 +60,16 @@ public class UsingRandomCard {
 		property.setOwner(playerNumber);
 	}
 	
+	
+	public static void addMoney(Player player) {
+		player.setMoney(player.getMoney()+Constant.RONDOM_CARD_MONEY_AMOUNT);
+	}
+	
+	
+	public static void lostMoney(Player player) {
+		player.setMoney(player.getMoney()-Constant.RONDOM_CARD_MONEY_AMOUNT);
+	}
+		
 		
 	
 	public static void randomCard(ArrayList<Property> propertyList,Player player) {
@@ -71,8 +81,22 @@ public class UsingRandomCard {
 			int propertyNumber=posRobCard();
 			useRobCard(propertyList,player,propertyNumber);
 		}
-		else {
+		else if(luckNumber==3) {
+			System.out.println("do not get any card, but recive the money(200)");
+			addMoney(player);
+		}
+		else if(luckNumber==4) {
+			System.out.println("do not get any card and lose the money(200)");
+			lostMoney(player);
+		}
+		else if(luckNumber==5){
 			moveCard(player);
+		}
+		else {
+			System.out.println("Recive 200 money a rob card");
+			int propertyNumber=posRobCard();
+			useRobCard(propertyList,player,propertyNumber);
+			addMoney(player);
 		}
 	}
 }
