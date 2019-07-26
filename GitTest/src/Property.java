@@ -16,14 +16,14 @@ public class Property {
 	}
 
     /**
-     * gives the postion of the property on the map 
+     * gives the position of the property on the map 
      */
 	public int getPosition() { 
 		return Position;
 	}
 
     /**
-     * gives the postion of the property on the map
+     * gives the position of the property on the map
      */
 	public void setPosition(int position) { 
 		Position = position;
@@ -32,7 +32,7 @@ public class Property {
     /**
      *  sets how much a property costs to buy
      */
-	public
+
 	public void setCost(int Cost) {
     	this.Cost = Cost;
     }
@@ -60,7 +60,7 @@ public class Property {
     /**
      * gets the number of buildings a property has
      */
-    public
+
 	public int getBuilding() { 
 		return Building;
 	}

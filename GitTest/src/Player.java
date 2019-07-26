@@ -7,7 +7,7 @@ public class Player{
 	private ArrayList<String> Properties = new ArrayList<String>();
 	private int PlayerNumber;
 	private String PlayerName;
-
+	private int moneyLost = 50;
 	/**
 	 * Method will set money, location, associated property, player number, and player name.
 	 */
@@ -122,4 +122,7 @@ public class Player{
 		return PlayerName;
 	}
 	
+	public int doJail() {
+		return getMoney() - moneyLost;
+	}
 }
