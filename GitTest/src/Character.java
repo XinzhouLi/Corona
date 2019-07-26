@@ -31,7 +31,7 @@ public class Character{
 	}
 	
 	public int getNumberofPlayers() {
-		System.out.println("How many players would you want?");
+		System.out.println("How many players would yu want?");
 		Scanner input = new Scanner(System.in);
         int s = input.nextInt();
         return s;
