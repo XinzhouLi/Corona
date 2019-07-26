@@ -151,7 +151,7 @@ public class Services {
 			System.out.println("Winner is "+p3.getPlayerName());
 		}
 	}
-	public static void startTurn(Player p0,Player p1,Player p2,Player p3,ArrayList<Player> playerList,ArrayList propertiesList,ArrayList propertyPosList) {
+	public static void startTurn(Player p0,Player p1,Player p2,Player p3, ArrayList<Player> playerList, ArrayList propertiesList, ArrayList propertyPosList) {
 		while ( p0.getMoney()>=0 &&
 				p1.getMoney()>=0&&
 				p2.getMoney()>=0&&
@@ -161,7 +161,12 @@ public class Services {
 			System.out.println(player.getPlayerName() + "'s turn");
 			System.out.println("Money: " + player.getMoney());
 			System.out.println("Location: " + player.getLocation());
-			Services.locationUpdate(player);
+			if (player.getPlayerNumber() != 0) {
+				Services.locationUpdate(player);
+			}
+			else {
+				System.out.println("Roll or Build?");
+			}
 			System.out.println("Location: " + player.getLocation());
 			System.out.println("Properties: " + player.getProperties());
 			if (player.getLocation()==6) {

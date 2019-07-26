@@ -46,8 +46,8 @@ public class Updated_Main {
 		for (int i=0 ; i<11;i++) {
 			propertyPosList.add(0);
 		}
-		Services.startTurn(p0,p1,p2,p3,playerList,propertiesList,propertyPosList);
-		Services.findWinner(p0,p1,p2,p3);
+		Gameplay.startTurn(p0,p1,p2,p3,playerList,propertiesList,propertyPosList);
+		Gameplay.findWinner(p0,p1,p2,p3);
 
 		
 		}
