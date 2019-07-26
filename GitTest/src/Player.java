@@ -122,4 +122,7 @@ public class Player{
 		return PlayerName;
 	}
 	
+	public int doJail() {
+		return getMoney() - moneyLost;
+	}
 }
