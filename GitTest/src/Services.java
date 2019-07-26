@@ -1,15 +1,13 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class Services {
+
 	/**
-	 * Allows player to roll a six-sided die.
-	 * @return diceNumber, or the integer value of the dice roll. 
-	 */
-	/**
-	 * Updates location of the player. 
+	 * Updates location of the player. Allows player to roll
+	 * a six-side die.
 	 * @param p Holds info on player
 	 */
-	public static void locationUpdate(Player p) { //Could you update this Javadoc please?
+	public static void locationUpdate(Player p) { 
 		Random rand=new Random();
 		int diceNumber=rand.nextInt(7);
 		//while(diceNumber==0) {
