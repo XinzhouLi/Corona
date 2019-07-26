@@ -9,7 +9,7 @@ public class Services {
 	 */
 	public static void locationUpdate(Player p) { 
 		Random rand=new Random();
-		int diceNumber=rand.nextInt(7);
+		int diceNumber=rand.nextInt(6) + 1;
 		//while(diceNumber==0) {
 			//diceNumber=rand.nextInt(7);
 		//}
@@ -75,6 +75,7 @@ public class Services {
 				propertyList.set(location,player.getPlayerNumber());
 				player.setMoney(player.getMoney()-landInformation.getCost());
 				landInformation.setOwner(player.getPlayerNumber());
+				player.addProperty(landInformation.getPropertyName());
 				System.out.println("Property bought!");
 			}
 		}
@@ -162,6 +163,7 @@ public class Services {
 			System.out.println("Location: " + player.getLocation());
 			Services.locationUpdate(player);
 			System.out.println("Location: " + player.getLocation());
+			System.out.println("Properties: " + player.getProperties());
 			if (player.getLocation()==6) {
 				Services.payJail(player, null, null);
 			}
