@@ -6,24 +6,28 @@ public class Property {
     private int Owner = 5; // tests the number of the owner of the property, starts at 5 as it is none of the four players 
     private int rent = Constant.BUILDING_PRICE; // rent they have to pay when landing on property
     private int Position; // position of property
+    private String Property_Name;
 
     /**
      * says everything about a property including position
      */
-    public Property(int position) { // says everything about a property including position
+    public Property(int position, int cost, int given_rent, String PropertyName) { // says everything about a property including position
 		super();
-		Position = position;
+		this.Position = position;
+		this.Cost = cost;
+		this.rent = given_rent;
+		this.Property_Name = PropertyName;
 	}
 
     /**
-     * gives the postion of the property on the map 
+     * gives the position of the property on the map 
      */
 	public int getPosition() { 
 		return Position;
 	}
 
     /**
-     * gives the postion of the property on the map
+     * sets the position of the property on the map
      */
 	public void setPosition(int position) { 
 		Position = position;
@@ -32,7 +36,6 @@ public class Property {
     /**
      *  sets how much a property costs to buy
      */
-	public
 	public void setCost(int Cost) {
     	this.Cost = Cost;
     }
@@ -43,7 +46,11 @@ public class Property {
     public void setRent(int rent) { 
     	this.rent = rent;
     }
-
+    
+    public void setPropertyName(String name) {
+    	Property_Name = name;
+    }
+    
     /**
      *  gives the amount a property costs
      */
@@ -60,7 +67,6 @@ public class Property {
     /**
      * gets the number of buildings a property has
      */
-    public
 	public int getBuilding() { 
 		return Building;
 	}
@@ -81,6 +87,10 @@ public class Property {
      */
 	public void setOwner(int Owner) { 
 		this.Owner = Owner;
+	}
+	
+	public String getPropertyName() {
+		return Property_Name;
 	}
 
 
