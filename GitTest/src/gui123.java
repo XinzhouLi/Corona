@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 
 public class gui123{
 	public static void main(String args[]) {
+		
+		//Establishing Monopoly map framework
 		JFrame MonopolyMap = new JFrame("Monopoly Map");
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
@@ -27,7 +29,7 @@ public class gui123{
 		//Go space
 		JPanel go = new JPanel();
 		JButton goButton = new JButton();
-		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
+		goButton.setIcon(Constant.goImage);
 		MonopolyMap.add(goButton);
 
 		JButton b1 = new JButton("property 1");
