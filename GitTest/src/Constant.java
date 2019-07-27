@@ -15,8 +15,7 @@ public class Constant {
 	public static final int MAXIMUM_LOCATION=19;
 	public static final int RONDOM_CARD_MONEY_AMOUNT=200;
 	
-	//images
-	public static final ImageIcon goImage = new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png");
-	public static final ImageIcon jailImage = new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Jail.jpg");
-	public static final ImageIcon chanceImage = new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Chance2.jpeg");
+	//image constants
+	
+	
 }
