@@ -11,7 +11,7 @@ public class UsingRandomCard {
 	
 	
 	//player has a chance to take any property he wants except jail,start position
-	public static int posRobCard() {
+	public static int posStealCard() {
 		System.out.println("Which property woud you like to take(from 0 to 19)"
 				+ "excepet jail,start location and random.");
 		Scanner number=new Scanner(System.in);
@@ -54,9 +54,10 @@ public class UsingRandomCard {
 	}
 
 	// by the using of rob card, a property of others player becomes the player's property
-	public static void useRobCard(ArrayList<Property> propertyList,Player player,int propertyNumber) {
+	public static void useStealCard(ArrayList<Property> propertyList,Player player) {
+		int propertyNumber=posStealCard();
 		int playerNumber=player.getPlayerNumber();
-		Property property=Services.searchProperty(propertyNumber,propertyList);
+		Property property=propertyList.get(propertyNumber);
 		property.setOwner(playerNumber);
 	}
 	
@@ -78,8 +79,8 @@ public class UsingRandomCard {
 			jailCard(player);
 		}
 		else if(luckNumber==2) {
-			int propertyNumber=posRobCard();
-			useRobCard(propertyList,player,propertyNumber);
+			int propertyNumber=posStealCard();
+			useStealCard(propertyList,player);
 		}
 		else if(luckNumber==3) {
 			System.out.println("do not get any card, but recive the money(200)");
@@ -94,8 +95,8 @@ public class UsingRandomCard {
 		}
 		else {
 			System.out.println("Recive 200 money a rob card");
-			int propertyNumber=posRobCard();
-			useRobCard(propertyList,player,propertyNumber);
+			int propertyNumber=posStealCard();
+			useStealCard(propertyList,player);
 			addMoney(player);
 		}
 	}
