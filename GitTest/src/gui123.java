@@ -18,18 +18,23 @@ import javax.swing.JFrame;
 
 public class gui123{
 	public static void main(String args[]) {
+<<<<<<< HEAD
 		JFrame MonopolyMap = new JFrame("Monopoly Mp");
+=======
+		
+		//Establishing Monopoly map framework
+		JFrame MonopolyMap = new JFrame("Monopoly Map");
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
 		
 		//Go space
-//		JPanel go = new JPanel();
-//		JButton goButton = new JButton();
-//		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
-////		MonopolyMap.add(goButton);
-		ArrayList<JButton> buttontoProperty = new ArrayList<JButton>();
-	    JButton b0=new JButton("GO");  
-	    JButton b1=new JButton("property 1");  
+		JPanel go = new JPanel();
+		JButton goButton = new JButton();
+		goButton.setIcon(Constant.goImage);
+		MonopolyMap.add(goButton);
+
+		JButton b1 = new JButton("property 1");
 	    JButton b2=new JButton("property 2");  
 	    JButton b3=new JButton("property 3");  
 	    JButton b4=new JButton("property 4");  
