@@ -11,7 +11,7 @@ public class gui123{
 	MonopolyMap.add(new JButton("Go"));
 	MonopolyMap.add(new JButton("Property 1"));
 	MonopolyMap.add(new JButton("Property 2"));
-	MonopolyMap.add(new JButton("Property "));
+	MonopolyMap.add(new JButton("Property 3"));
 	MonopolyMap.add(new JButton("Property 4"));
 	MonopolyMap.add(new JButton("Random"));
 	MonopolyMap.add(new JButton("Property 19"));
