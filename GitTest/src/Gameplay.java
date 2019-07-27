@@ -143,6 +143,7 @@ public class Gameplay {
 				}
 				System.out.println("");
 
+				
 			}
 		}
 		
