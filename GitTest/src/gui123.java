@@ -88,7 +88,7 @@ public class gui123{
 		
 	@Override
 	public void actionPerformed(ActionEvent a) {
-		square.append("          |\n          |\n          |\n          |\n          |\n______|\n");
+		square.append("          |\n          |\n         |\n          |\n          |\n______|\n");
 		
 	}
 	};
