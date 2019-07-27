@@ -111,6 +111,9 @@ public class gui123{
 		String b = buttontoProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
 		buttontoProperty.get(a.getLocation()).setText(b);
 		}
+	for(Player a : Gameplay.playersList()) {
+		
+	}
 	MonopolyMap.pack();
 	MonopolyMap.setVisible(true);
 
