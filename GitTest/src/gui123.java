@@ -1,8 +1,13 @@
 package mapstuffformonopoly;
 
-import java.awt.GridLayout;
+import java.awt.FlowLayout; //FlowLayout imports layout of windows 
+import java.awt.GridLayout; 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel; //JLabel gives text and outputs on screen
+import java.awt.Font;
+
+public 
 
 public class gui123{
 	public static void main(String args[]) {
