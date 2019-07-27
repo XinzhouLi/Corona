@@ -17,9 +17,13 @@ import javax.swing.JFrame;
 
 public class gui123{
 	public static void main(String args[]) {
+<<<<<<< HEAD
+		JFrame MonopolyMap = new JFrame("Monopoly Mp");
+=======
 		
 		//Establishing Monopoly map framework
 		JFrame MonopolyMap = new JFrame("Monopoly Map");
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
 		
@@ -113,6 +117,9 @@ public class gui123{
 		String b = buttontoProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
 		buttontoProperty.get(a.getLocation()).setText(b);
 		}
+	for(Player a : Gameplay.playersList()) {
+		
+	}
 	MonopolyMap.pack();
 	MonopolyMap.setVisible(true);
 
