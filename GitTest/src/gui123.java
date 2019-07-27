@@ -11,9 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 
 public class gui123{
 	public static void main(String args[]) {
@@ -27,7 +28,10 @@ public class gui123{
 		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
 		MonopolyMap.add(goButton);
 		
-	    JButton b1=new JButton("property 1");  
+		JButton b1 = new JButton("property 1");
+		b1.setToolTip(new Tooltip("Description of property"));
+
+
 	    JButton b2=new JButton("property 2");  
 	    JButton b3=new JButton("property 3");  
 	    JButton b4=new JButton("property 4");  
@@ -47,7 +51,6 @@ public class gui123{
 	    JButton b18=new JButton("property 18");  
 	    JButton b19=new JButton("property 19");  
 	    
-	MonopolyMap.add(goButton);
 	MonopolyMap.add(b1);
 	MonopolyMap.add(b2);
 	MonopolyMap.add(b3);
