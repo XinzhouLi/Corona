@@ -3,10 +3,10 @@ import java.util.Random;
 public class Services {
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing...");
-		Player p0 = new Player(1500, 0, null, 0);
-		Player p1 = new Player(1500, 0, null, 1);
-		Player p2 = new Player(1500, 0, null, 2);
-		Player p3 = new Player(1500, 0, null, 3);
+		Player p0 = new Player(1500, 0, 0);
+		Player p1 = new Player(1500, 0, 1);
+		Player p2 = new Player(1500, 0, 2);
+		Player p3 = new Player(1500, 0, 3);
 		ArrayList<Player> playerList =new ArrayList<Player>();
 		playerList.add(p0);
 		playerList.add(p1);
@@ -16,26 +16,26 @@ public class Services {
 	}
 	
 	public static ArrayList<Property> propertiesList() {
-		Property b0 = new Property(0);
-		Property b1 = new Property(1);
-		Property b2 = new Property(2);
-		Property b3 = new Property(3);
-		Property b4 = new Property(4);
-		Property b5 = new Property(5);
-		Property b6 = new Property(6);
-		Property b7 = new Property(7);
-		Property b8 = new Property(8);
-		Property b9 = new Property(9);
-		Property b10 = new Property(10);
-		Property b11 = new Property(11);
-		Property b12 = new Property(12);
-		Property b13 = new Property(13);
-		Property b14 = new Property(14);
-		Property b15 = new Property(15);
-		Property b16 = new Property(16);
-		Property b17 = new Property(17);
-		Property b18 = new Property(18);
-		Property b19 = new Property(19);
+		Property b0 = new Property(0, 0, 0, "GO");
+		Property b1 = new Property(1, 100, 100, "P1");
+		Property b2 = new Property(2, 100, 100, "P2");
+		Property b3 = new Property(3, 125, 125, "P3");
+		Property b4 = new Property(4, 125, 125, "P4");
+		Property b5 = new Property(5, 150, 150, "P5");
+		Property b6 = new Property(6, 150, 150, "P6");
+		Property b7 = new Property(7, 175, 175, "P7");
+		Property b8 = new Property(8, 175, 175, "P8");
+		Property b9 = new Property(9, 200, 200, "P9"); //Three properties that cost 200
+		Property b10 = new Property(10, 200, 200, "P10");
+		Property b11 = new Property(11, 200, 200, "P11");
+		Property b12 = new Property(12, 225, 225, "P12");
+		Property b13 = new Property(13, 225, 225, "P13");
+		Property b14 = new Property(14, 250, 250, "P14");
+		Property b15 = new Property(15, 250, 250, "P15");
+		Property b16 = new Property(16, 275, 275, "P16");
+		Property b17 = new Property(17, 275, 275, "P17");
+		Property b18 = new Property(18, 300, 300, "P18");
+		Property b19 = new Property(19, 300, 300, "P19");
 		ArrayList<Property> propertiesList = new ArrayList<Property>();
 		propertiesList.add(b0);
 		propertiesList.add(b1);
@@ -62,10 +62,10 @@ public class Services {
 
 	
 	
-	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
-		while(winingCondiction(playersList)) {
+	public static void startGame(ArrayList<Player> playerList, ArrayList<Property> propertiesList) {
+		while(winingCondiction(playerList)) {
 	
-			for (Player currentPlayer:playersList) {
+			for (Player currentPlayer:playerList) {
 				System.out.println(currentPlayer.getPlayerName() + "'s turn");
 				System.out.println("Money: " + currentPlayer.getMoney());
 				System.out.println("Location: " + currentPlayer.getLocation());
@@ -85,15 +85,15 @@ public class Services {
 				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
 					buyLand(currentPlayer, propertiesList);
 				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
-					rent(currentPlayer, propertiesList, playersList);
+					rent(currentPlayer, propertiesList, playerList);
 				}
 				System.out.println("");
-				if (winingCondiction(playersList)) {
+				if (winingCondiction(playerList)) {
 					break;
 				}
 			}
 		}
-		findWinner(playersList, propertiesList);
+		findWinner(playerList, propertiesList);
 		System.out.println("End Game");
 		
 	}
@@ -195,7 +195,7 @@ public class Services {
 	
 	
 	public static void sellLand(Player player,ArrayList<Property> properties,int propertyLocation) {
-		int location=player.getLocation();
+		//int location=player.getLocation();
 		int moneyUpdate=player.getMoney();
 		if(properties.get(propertyLocation).getOwner()==player.getPlayerNumber()&&
 				propertyLocation!=0&&
