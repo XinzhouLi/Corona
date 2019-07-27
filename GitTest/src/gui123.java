@@ -7,12 +7,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel; //JLabel gives text and outputs on screen
 import java.awt.Font;
 
-public 
-
+//https://stackoverflow.com/questions/37542955/how-to-set-a-tooltip-on-a-javafx-button (tooltip button)
 public class gui123{
 	public static void main(String args[]) {
 	JFrame MonopolyMap = new JFrame("Monopoly Map");
 	MonopolyMap.setLayout(new GridLayout(6, 6));
+
+	
 	MonopolyMap.add(new JButton("Go"));
 	MonopolyMap.add(new JButton("Property 1"));
 	MonopolyMap.add(new JButton("Property 2"));
