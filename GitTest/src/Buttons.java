@@ -16,6 +16,6 @@ public class Buttons {
 		return property;
 	}
 	public String getName() {
-		eturn name;
+		return name;
 	}
 }

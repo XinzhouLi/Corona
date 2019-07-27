@@ -17,7 +17,7 @@ public class mainforsettingbuttons {
 		Buttons b12 = Buttons(12,property12,property12);
 		Buttons b13 = Buttons(13,property13,property13);
 		Buttons b14 = Buttons(14,property14,property14);
-		Buttons b16 = Buttons(6,property16,property16);
+		Buttons b16 = Buttons(16,property16,property16);
 		Buttons b17 = Buttons(17,property17,property17);
 		Buttons b18 = Buttons(18,property18,property18);
 		Buttons b19 = Buttons(19,property19,property19);
