@@ -11,7 +11,7 @@ public class Player{
 	/**
 	 * Method will set money, location, associated property, player number, and player name.
 	 */
-	public Player(int Money, int Location, int PlayerNumber) { //Constructor
+	public Player(int PlayerNumber) { //Constructor
 		setMoney(Money);
 		setLocation(Location);
 		setPlayerNumber(PlayerNumber);
