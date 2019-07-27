@@ -1,8 +1,8 @@
-package mapstuffformonopoly;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -11,25 +11,29 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
-import javax.swing.ToolTipManager;
-
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 public class gui123{
 	public static void main(String args[]) {
+<<<<<<< HEAD
+		JFrame MonopolyMap = new JFrame("Monopoly Mp");
+=======
+		
+		//Establishing Monopoly map framework
 		JFrame MonopolyMap = new JFrame("Monopoly Map");
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
 		
 		//Go space
-		JPanel go = new JPanel();
-		JButton goButton = new JButton();
-		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
-		MonopolyMap.add(goButton);
+		// JPanel go = new JPanel();
+		// JButton goButton = new JButton();
+		// goButton.setIcon(Constant.goImage);
+		// MonopolyMap.add(goButton);
 
+		ArrayList<JButton> buttontoProperty = new ArrayList<JButton>;
 		JButton b1 = new JButton("property 1");
 	    JButton b2=new JButton("property 2");  
 	    JButton b3=new JButton("property 3");  
@@ -49,7 +53,29 @@ public class gui123{
 	    JButton b17=new JButton("property 17");  
 	    JButton b18=new JButton("property 18");  
 	    JButton b19=new JButton("property 19");  
+	
+	buttontoProperty.add(b0);
+	buttontoProperty.add(b1);
+	buttontoProperty.add(b2);
+	buttontoProperty.add(b3);
+	buttontoProperty.add(b4);
+	buttontoProperty.add(b5);
+	buttontoProperty.add(b6);
+	buttontoProperty.add(b7);
+	buttontoProperty.add(b8);
+	buttontoProperty.add(b9);
+	buttontoProperty.add(b10);
+	buttontoProperty.add(b11);
+	buttontoProperty.add(b12);
+	buttontoProperty.add(b13);
+	buttontoProperty.add(b14);
+	buttontoProperty.add(b15);
+	buttontoProperty.add(b16);
+	buttontoProperty.add(b17);
+	buttontoProperty.add(b18);
+	buttontoProperty.add(b19);
 	    
+	MonopolyMap.add(b0);
 	MonopolyMap.add(b1);
 	MonopolyMap.add(b2);
 	MonopolyMap.add(b3);
@@ -87,21 +113,15 @@ public class gui123{
 	MonopolyMap.add(b12);
 	MonopolyMap.add(b11);
 	MonopolyMap.add(b10);
-
-
+	for(Player a : Gameplay.playersList()) {
+		String b = buttontoProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
+		buttontoProperty.get(a.getLocation()).setText(b);
+		}
+	for(Player a : Gameplay.playersList()) {
+		
+	}
 	MonopolyMap.pack();
 	MonopolyMap.setVisible(true);
-	b1.setBackground(Color.RED);
-	b1.add(BorderLayout.CENTER, square);
-	ActionListener click = new ActionListener() {
-		
-	@Override
-	public void actionPerformed(ActionEvent a) {
-		square.append("          |\n          |\n         |\n          |\n          |\n______|\n");
-		
-	}
-	};
-	b1.addActionListener(click);
-	}
+
+}		
 }
-		
