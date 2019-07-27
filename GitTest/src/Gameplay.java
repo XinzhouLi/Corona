@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Gameplay {
 
@@ -82,15 +83,19 @@ public class Gameplay {
 	
 	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
 		while(Services.winingCondiction(playersList)) {
-			
+			System.out.println(playersList.toString());
 				//Start round
 			
 			for (Player currentPlayer:playersList) {
+				if (!Services.winingCondiction(playersList)) {
+					break;
+				}
 				System.out.println(currentPlayer.getPlayerName() + "'s turn");
 				System.out.println("Money: " + currentPlayer.getMoney());
 				System.out.println("Location: " + currentPlayer.getLocation());
 				Services.locationUpdate(currentPlayer);
 				System.out.println("Location: " + currentPlayer.getLocation());
+				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
 				
 				//special location checking
 				
@@ -98,22 +103,51 @@ public class Gameplay {
 					Services.payJail(currentPlayer);
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
 					UsingRandomCard.randomCard(propertiesList,currentPlayer);
+					continue;
 				}
 
 				//if it is normal property, buying,renting ,building
-				if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
-					Services.buildHouse(currentPlayer, propertiesList);
-				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
-					Services.buyLand(currentPlayer, propertiesList);
-				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
-					Services.rent(currentPlayer, propertiesList, playersList);
+				if (currentPlayer.getPlayerNumber()==0) {
+					//Human player turn
+		        	if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
+		        		System.out.println("Do you want to bulid house on this property? (Y/N)");
+						Scanner input = new Scanner(System.in);
+				        String choice = input.nextLine();
+				        if (choice.equalsIgnoreCase("Y")) {
+				        	Services.buildHouse(currentPlayer, propertiesList);
+				        }
+					
+					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+						System.out.println("Do you want to buy this property? (Y/N)");
+						Scanner input = new Scanner(System.in);
+				        String choice = input.nextLine();
+				        if (choice.equalsIgnoreCase("Y")) {
+				        	Services.buyLand(currentPlayer, propertiesList);
+				        }
+					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
+						Services.rent(currentPlayer, propertiesList, playersList);
+					}
+				}else {
+					//AI turn
+						if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
+							if (currentPlayer.getMoney()>=400) {
+								Services.buildHouse(currentPlayer, propertiesList);
+							}
+						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+							if (currentPlayer.getMoney()>=300) {
+								Services.buyLand(currentPlayer, propertiesList);
+							}	
+						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
+							Services.rent(currentPlayer, propertiesList, playersList);
+						}
 				}
 				System.out.println("");
-				if (Services.winingCondiction(playersList)) {
-					break;
-				}
+
 			}
 		}
+		
+		//Game ends
+		
 		Services.findWinner(playersList, propertiesList);
 		System.out.println("End Game");
 		
