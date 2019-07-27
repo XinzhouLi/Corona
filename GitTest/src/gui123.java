@@ -1,4 +1,3 @@
-package mapstuffformonopoly;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -25,11 +24,12 @@ public class gui123{
 		JTextArea square = new JTextArea(); 
 		
 		//Go space
-		JPanel go = new JPanel();
-		JButton goButton = new JButton();
-		goButton.setIcon(Constant.goImage);
-		MonopolyMap.add(goButton);
+		// JPanel go = new JPanel();
+		// JButton goButton = new JButton();
+		// goButton.setIcon(Constant.goImage);
+		// MonopolyMap.add(goButton);
 
+		ArrayList<JButton> buttontoProperty = new ArrayList<JButton>;
 		JButton b1 = new JButton("property 1");
 	    JButton b2=new JButton("property 2");  
 	    JButton b3=new JButton("property 3");  
@@ -49,7 +49,8 @@ public class gui123{
 	    JButton b17=new JButton("property 17");  
 	    JButton b18=new JButton("property 18");  
 	    JButton b19=new JButton("property 19");  
-		buttontoProperty.add(b0);
+	
+	buttontoProperty.add(b0);
 	buttontoProperty.add(b1);
 	buttontoProperty.add(b2);
 	buttontoProperty.add(b3);
