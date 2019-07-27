@@ -102,7 +102,11 @@ public class Gameplay {
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
-					UsingRandomCard.randomCard(propertiesList,currentPlayer);
+					if(currentPlayer.getPlayerNumber()==0)
+						UsingRandomCard.humanUseRandomCard(propertiesList,currentPlayer);
+					if(currentPlayer.getPlayerNumber()!=0) {
+						computerUseRandomCard.computerUseRandom(propertiesList, currentPlayer);
+					}
 					continue;
 				}
 
