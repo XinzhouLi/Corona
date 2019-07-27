@@ -18,7 +18,7 @@ import javax.swing.JFrame;
 
 public class gui123{
 	public static void main(String args[]) {
-		JFrame MonopolyMap = new JFrame("Monopoly Map");
+		JFrame MonopolyMap = new JFrame("Monopoly Mp");
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
 		
