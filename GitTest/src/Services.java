@@ -1,7 +1,102 @@
 import java.util.ArrayList;
 import java.util.Random;
 public class Services {
+	public static ArrayList<Player> playersList() {
+		System.out.println("Initializing...");
+		Player p0 = new Player(1500, 0, null, 0);
+		Player p1 = new Player(1500, 0, null, 1);
+		Player p2 = new Player(1500, 0, null, 2);
+		Player p3 = new Player(1500, 0, null, 3);
+		ArrayList<Player> playerList =new ArrayList<Player>();
+		playerList.add(p0);
+		playerList.add(p1);
+		playerList.add(p2);
+		playerList.add(p3);
+		return playerList;	
+	}
+	
+	public static ArrayList<Property> propertiesList() {
+		Property b0 = new Property(0);
+		Property b1 = new Property(1);
+		Property b2 = new Property(2);
+		Property b3 = new Property(3);
+		Property b4 = new Property(4);
+		Property b5 = new Property(5);
+		Property b6 = new Property(6);
+		Property b7 = new Property(7);
+		Property b8 = new Property(8);
+		Property b9 = new Property(9);
+		Property b10 = new Property(10);
+		Property b11 = new Property(11);
+		Property b12 = new Property(12);
+		Property b13 = new Property(13);
+		Property b14 = new Property(14);
+		Property b15 = new Property(15);
+		Property b16 = new Property(16);
+		Property b17 = new Property(17);
+		Property b18 = new Property(18);
+		Property b19 = new Property(19);
+		ArrayList<Property> propertiesList = new ArrayList<Property>();
+		propertiesList.add(b0);
+		propertiesList.add(b1);
+		propertiesList.add(b2);
+		propertiesList.add(b3);
+		propertiesList.add(b4);
+		propertiesList.add(b5);
+		propertiesList.add(b6);
+		propertiesList.add(b7);
+		propertiesList.add(b8);
+		propertiesList.add(b9);
+		propertiesList.add(b10);
+		propertiesList.add(b11);
+		propertiesList.add(b12);
+		propertiesList.add(b13);
+		propertiesList.add(b14);
+		propertiesList.add(b15);
+		propertiesList.add(b16);
+		propertiesList.add(b17);
+		propertiesList.add(b18);
+		propertiesList.add(b19);
+		return propertiesList;
+	}
 
+	
+	
+	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
+		while(winingCondiction(playersList)) {
+	
+			for (Player currentPlayer:playersList) {
+				System.out.println(currentPlayer.getPlayerName() + "'s turn");
+				System.out.println("Money: " + currentPlayer.getMoney());
+				System.out.println("Location: " + currentPlayer.getLocation());
+				locationUpdate(currentPlayer);
+				System.out.println("Location: " + currentPlayer.getLocation());
+				//special location checking
+				if(currentPlayer.getLocation() == 10) {
+					payJail(currentPlayer);
+				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
+					//random
+				}
+				
+				
+				//if it is normal property, buying,renting ,building
+				if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
+					buildHouse(currentPlayer, propertiesList);
+				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+					buyLand(currentPlayer, propertiesList);
+				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
+					rent(currentPlayer, propertiesList, playersList);
+				}
+				System.out.println("");
+				if (winingCondiction(playersList)) {
+					break;
+				}
+			}
+		}
+		findWinner(playersList, propertiesList);
+		System.out.println("End Game");
+		
+	}
 	/**
 	 * Updates location of the player. Allows player to roll
 	 * a six-side die.
@@ -9,10 +104,10 @@ public class Services {
 	 */
 	public static void locationUpdate(Player p) { 
 		Random rand=new Random();
-		int diceNumber=rand.nextInt(6) + 1;
-		//while(diceNumber==0) {
-			//diceNumber=rand.nextInt(7);
-		//}
+		int diceNumber=rand.nextInt(7);
+		while(diceNumber==0) {
+			diceNumber=rand.nextInt(7);
+		}
 		int location=p.getLocation();
 		location+=diceNumber;
 		System.out.println("Rolled a " + diceNumber);
@@ -22,17 +117,16 @@ public class Services {
 	/**
 	 * Method transfers one player's funds to another player's bank in the form of rent.
 	 * @param player Holds info on player. 
-	 * @param landOwner Hold info on who owns the property
-	 * @param landInformation Hold info on what kind of property it is
 	 * @param propertyList Hold ArrayList of properties 
+	 * @param propertyList Hold ArrayList of players 
 	 */
-	public static void rent(Player player,Player landOwner,Property landInformation,ArrayList<Integer> propertyList) {
+	public static void rent(Player player,ArrayList<Property> propertyList,ArrayList<Player> playersList) {
 		int location=player.getLocation();
-		if(propertyList.get(location)!=player.getPlayerNumber()&&location!=6) {
-				System.out.println(player.getPlayerName()+" pays "+landInformation.getRent()+" to "+landOwner.getPlayerName());
-				Transfer(player,landOwner,landInformation.getRent());
-				System.out.println("Rent paid!");
-		}
+		Player landOwner = searchPlayer(location, propertyList, playersList);
+		System.out.println(player.getPlayerName()+" pays "+propertyList.get(location).getRent()+" to "+landOwner.getPlayerName());
+		Transfer(player,landOwner,propertyList.get(location).getRent());
+		System.out.println("Rent paid!");
+		
 	}
 	/**
 	 * Transfers funds from the landOwner to another player. 
@@ -41,11 +135,9 @@ public class Services {
 	 * @param moenyAmount holds info on the amount of money 
 	 */
 	
-	public static void Transfer(Player a,Player landOwner, int moneyAmount) {
-		if(a != landOwner) {
-		a.setMoney(a.getMoney() + moneyAmount);
-		landOwner.setMoney(landOwner.getMoney() - moneyAmount);
-		}
+	public static void Transfer(Player currentPlay,Player landOwner, int moneyAmount) {
+		currentPlay.setMoney(currentPlay.getMoney() - moneyAmount);
+		landOwner.setMoney(landOwner.getMoney() + moneyAmount);
 	}
 	/**
 	 * Public, static method that makes player pay jailer. 
@@ -54,30 +146,28 @@ public class Services {
 	 * @param propertyList
 	 */
 	
-	public static void payJail(Player player,Property landInformation,ArrayList<Integer> propertyList) {
-		int location=player.getLocation();
+	public static void payJail(Player player) {
+		
 		int moneyRemained=player.getMoney();
-		if(location==6) {
-			System.out.println("Go to Jail, pay 50 dollars.");
-			moneyRemained-=50;
-		}player.setMoney(moneyRemained);
+		System.out.println("Go to Jail, pay 50 dollars.");
+		moneyRemained-=50;
+		player.setMoney(moneyRemained);
 	}
 	/**
 	 * Method allows player to buy land using their money. 
 	 * @param player Holds info on player
 	 * @param propertyList Holds all the properties in a list. 
-	 * @param landInformation Holds information on the type of land
 	 */
-	public static void buyLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
+	public static void buyLand(Player player,ArrayList<Property> propertyList) {
 		int location=player.getLocation();
-		if(location !=6 && propertyList.get(location) == 0 && location!= 0) {
-			if (landInformation.getOwner() == 5) {
-				propertyList.set(location,player.getPlayerNumber());
-				player.setMoney(player.getMoney()-landInformation.getCost());
-				landInformation.setOwner(player.getPlayerNumber());
-				player.addProperty(landInformation.getPropertyName());
-				System.out.println("Property bought!");
-			}
+		int money = player.getMoney();
+		if (player.getMoney()>=200) {
+			propertyList.get(location).setOwner(player.getPlayerNumber());
+			money-=200;
+			player.setMoney(money);
+			System.out.println("Property bought!");
+		}else {
+			System.out.println("Not enough Money");
 		}
 	}
 	/**
@@ -87,17 +177,39 @@ public class Services {
 	 * @param landInformation Holds information on the type of land
 	 */
 	
-	public static void sellLand(Player player,ArrayList<Integer> propertyList,Property landInformation) {
-		int location=player.getLocation();
-		int moneyUpdate=player.getMoney();
-		if(propertyList.get(location)==player.getPlayerNumber()) {
-			System.out.println("Buy the land");
-			moneyUpdate+=(int) (landInformation.getCost()*0.75);
-			player.setMoney(moneyUpdate);
+	public static void buildHouse(Player player,ArrayList<Property> properties) {
+		int money = player.getMoney();
+		Property currentProperty = properties.get(player.getLocation());
+		if (player.getMoney()>=150) {
+			properties.get(player.getLocation()).setOwner(player.getPlayerNumber());
+			money-=150;
+			player.setMoney(money);
+			currentProperty.setBuilding(currentProperty.getBuilding() + 1);
+			currentProperty.setRent(currentProperty.getRent() + Constant.INCREASING_RENT);
+			System.out.println("Build a hotel, rent increasing!");
+		}else {
+			System.out.println("Not enough Money");
 		}
 	}
-	public static void sellLandEnd() {
-		
+	
+	
+	
+	public static void sellLand(Player player,ArrayList<Property> properties,int propertyLocation) {
+		int location=player.getLocation();
+		int moneyUpdate=player.getMoney();
+		if(properties.get(propertyLocation).getOwner()==player.getPlayerNumber()&&
+				propertyLocation!=0&&
+				propertyLocation!=5&&
+				propertyLocation!=10&&
+				propertyLocation!=15) 
+		{
+			System.out.println("Sell the land");
+			moneyUpdate+=properties.get(propertyLocation).getRent();
+			player.setMoney(moneyUpdate);
+			properties.get(propertyLocation).setOwner(5);
+		}else {
+//			System.out.println("That property does not belong to you");
+		}
 	}
 	/**
 	 * Checks which player is currently owning the property. 
@@ -118,87 +230,43 @@ public class Services {
 		}
 		return null;
 	}
-	/**
-	 * Method searches if the property the player has landed on is in the property list
-	 * @param position the player's position
-	 * @param propertieslist has all the properties in the list.
-	 * @return j, or if the player's position matched the position of the property. 
-	 */
 	
-	public static Property searchProperty(int position, ArrayList<Property> propertieslist) { 
-
-			for (Property j :propertieslist) {
-				if (position == j.getPosition()) {
-					return j;
-				}
-			}
-		return null;
+	public static boolean winingCondiction(ArrayList<Player> playerList) {
+		boolean temp = playerList.get(0).getMoney()>0 && 
+				playerList.get(1).getMoney()>0 &&
+				playerList.get(2).getMoney()>0&&
+				playerList.get(3).getMoney()>0; 
+		return temp;
+		
 	}
-	public static void findWinner(Player p0,Player p1,Player p2,Player p3) {
+	
+	public static void findWinner( ArrayList<Player> playerslist,ArrayList<Property> propertieslist) {
+		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
+			for(Player iPlayer : playerslist) {
+				sellLand(iPlayer, propertieslist, propertyLocation );
+			}
+		}
+	
 		ArrayList<Integer> finalScore = new ArrayList<>();
-		finalScore.add(p0.getMoney());
-		finalScore.add(p1.getMoney());
-		finalScore.add(p2.getMoney());
-		finalScore.add(p3.getMoney());
+		finalScore.add(playerslist.get(0).getMoney());
+		finalScore.add(playerslist.get(1).getMoney());
+		finalScore.add(playerslist.get(2).getMoney());
+		finalScore.add(playerslist.get(3).getMoney());
 		finalScore.sort(null);
-		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p0.getPlayerName());
-		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p1.getPlayerName());
-		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p2.getPlayerName());
-		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p3.getPlayerName());
-		}
-	}
-	public static void startTurn(Player p0,Player p1,Player p2,Player p3,ArrayList<Player> playerList,ArrayList propertiesList,ArrayList propertyPosList) {
-		while ( p0.getMoney()>=0 &&
-				p1.getMoney()>=0&&
-				p2.getMoney()>=0&&
-				p3.getMoney()>=0) {   
-//start round
-		for (Player player:playerList) {
-			System.out.println(player.getPlayerName() + "'s turn");
-			System.out.println("Money: " + player.getMoney());
-			System.out.println("Location: " + player.getLocation());
-			Services.locationUpdate(player);
-			System.out.println("Location: " + player.getLocation());
-			System.out.println("Properties: " + player.getProperties());
-			if (player.getLocation()==6) {
-				Services.payJail(player, null, null);
-			}
-			int the_owner = Services.searchProperty(player.getLocation(),propertiesList).getOwner();
-			Property players_property = Services.searchProperty(player.getLocation(),propertiesList);
-			if(the_owner != 5) { //If Owner is not Bank
-				if(player.getPlayerNumber() != the_owner) { //If Property is owned by another player, pay Rent
-					if(the_owner == 0) {
-						Services.rent(player, p0, players_property, propertyPosList);
-					}
-					if(the_owner == 1) {
-						Services.rent(player, p1, players_property, propertyPosList);
-					}
-					if(the_owner == 2) {
-						Services.rent(player, p2, players_property, propertyPosList);
-					}
-					if(the_owner == 3) {
-						Services.rent(player, p2, players_property, propertyPosList);
-					}
-				else {
-					;
-				}
-				}
-			}
-			if (the_owner == 5) { //If Owner is Bank
-				Services.buyLand(player, propertyPosList, Services.searchProperty(player.getLocation(),propertiesList));
-			}
-			System.out.println(player.getPlayerName() + ": End turn");
-			System.out.println("");
+		System.out.println(finalScore.toString());
+		for (Player player :playerslist) {
+			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
+				System.out.println("Winner is "+playerslist.get(0).getPlayerName());
+				System.out.println(player.getMoney());
 			}
 		}
-
-	System.out.println("End game");
 	}
-
 }
+	
 
+	
+	
+	
+	
+	
 	

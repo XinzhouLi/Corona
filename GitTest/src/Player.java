@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class Player{
 	private int Money= Constant.INITAIAL_MONEY; //Player's money; will default to 1500 at the start of the game
 	private int Location = 0;
-	private ArrayList<String> Properties = new ArrayList<String>();
+	private ArrayList<String> Property_Names = new ArrayList<String>();
 	private int PlayerNumber;
 	private String PlayerName;
 	private int moneyLost = 50;
@@ -14,9 +14,13 @@ public class Player{
 	public Player(int Money, int Location, int PlayerNumber) { //Constructor
 		setMoney(Money);
 		setLocation(Location);
-		//setProperties(Properties);
 		setPlayerNumber(PlayerNumber);
-		setPlayerName();
+		if (PlayerNumber == 0) {
+			setHumanPlayerName();
+		}
+		else {
+			setPlayerName("AI_" + PlayerNumber);
+		}
 	}
 	
 	/**
@@ -28,7 +32,6 @@ public class Player{
 	public Player (Player player){ //Copy Constructor
 		 this.Money = player.Money;
 		 this.Location = player.Location;
-		 this.Properties = player.Properties;
 		 this.PlayerNumber = player.PlayerNumber;
 		 this.PlayerName = player.PlayerName;
 	}
@@ -52,7 +55,7 @@ public class Player{
 	 * @param Properties An ArrayList that hold values associated to each player.
 	 */
 	public void setProperties(ArrayList<String> Properties) {
-		this.Properties = Properties;
+		this.Property_Names = Properties;
 	}
 	
 	/**
@@ -67,10 +70,8 @@ public class Player{
 	 * Method will set player name.
 	 * @return a String that stores the user's input.  
 	 */
-	public String setPlayerName() {
-		Scanner input = new Scanner(System.in);
-        PlayerName = input.nextLine();
-        return PlayerName;
+	public void setPlayerName(String name) {
+		this.PlayerName = name;
 	}
 	
 	/**
@@ -79,7 +80,7 @@ public class Player{
 	 * being added to list
 	 */
 	public void addProperty(String element) { 
-		Properties.add(element);
+		Property_Names.add(element);
 	}
 	
 	/**
@@ -103,7 +104,7 @@ public class Player{
 	 * @return Properties, or the array list of proeprty values
 	 */
 	public ArrayList<String> getProperties(){
-		return Properties;
+		return Property_Names;
 	}
 	
 	/**
@@ -125,4 +126,11 @@ public class Player{
 	public int doJail() {
 		return getMoney() - moneyLost;
 	}
+	
+	public String setHumanPlayerName() {
+		Scanner input = new Scanner(System.in);
+        PlayerName = input.nextLine();
+        return PlayerName;
+	}
+	
 }
