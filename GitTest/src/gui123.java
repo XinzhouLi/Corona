@@ -8,15 +8,29 @@ import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
-import java.awt.GridLayout;
+import javax.swing.ToolTipManager;
+
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+
 public class gui123{
 	public static void main(String args[]) {
-		JButton b0=new JButton("GO");
-	    JButton b1=new JButton("property 1");  
+		JFrame MonopolyMap = new JFrame("Monopoly Map");
+		MonopolyMap.setLayout(new GridLayout(6, 6));
+		JTextArea square = new JTextArea(); 
+		
+		//Go space
+		JPanel go = new JPanel();
+		JButton goButton = new JButton();
+		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
+		MonopolyMap.add(goButton);
+
+		JButton b1 = new JButton("property 1");
 	    JButton b2=new JButton("property 2");  
 	    JButton b3=new JButton("property 3");  
 	    JButton b4=new JButton("property 4");  
@@ -36,11 +50,6 @@ public class gui123{
 	    JButton b18=new JButton("property 18");  
 	    JButton b19=new JButton("property 19");  
 	    
-
-	JFrame MonopolyMap = new JFrame("Monopoly Map");
-	MonopolyMap.setLayout(new GridLayout(6, 6));
-	JTextArea square = new JTextArea();
-	MonopolyMap.add(b0);
 	MonopolyMap.add(b1);
 	MonopolyMap.add(b2);
 	MonopolyMap.add(b3);

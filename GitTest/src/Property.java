@@ -11,11 +11,9 @@ public class Property {
     /**
      * says everything about a property including position
      */
-    public Property(int position, int cost, int given_rent, String PropertyName) { // says everything about a property including position
+    public Property(int position,String PropertyName) { // says everything about a property including position
 		super();
 		this.Position = position;
-		this.Cost = cost;
-		this.rent = given_rent;
 		this.Property_Name = PropertyName;
 	}
 
