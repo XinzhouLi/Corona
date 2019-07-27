@@ -79,7 +79,7 @@ public class UsingRandomCard {
 			jailCard(player);
 		}
 		else if(luckNumber==2) {
-			int propertyNumber=posStealCard();
+
 			useStealCard(propertyList,player);
 		}
 		else if(luckNumber==3) {
@@ -95,7 +95,6 @@ public class UsingRandomCard {
 		}
 		else {
 			System.out.println("Recive 200 money a rob card");
-			int propertyNumber=posStealCard();
 			useStealCard(propertyList,player);
 			addMoney(player);
 		}
