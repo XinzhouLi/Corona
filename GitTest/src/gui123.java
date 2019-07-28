@@ -175,7 +175,9 @@ public class gui123{
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
-					UsingRandomCard.huamUseRandomCard(propertiesList,currentPlayer);
+					if (currentPlayer.getPlayer) {
+						
+					}
 					continue;
 				}
 
