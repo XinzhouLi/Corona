@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
-public class gui123{
+public class gui123 {
 	//variables 
 	static ArrayList<Property> newAttempt = new ArrayList<Property>();
 	static ArrayList<JButton> buttonToProperty = new ArrayList<JButton>();
@@ -162,8 +162,14 @@ public class gui123{
 		MonopolyMap.add(b10);
 	}
 	public static void main(String[] args) { 
+		ArrayList<Player> playersList = new ArrayList<Player>();
+		ArrayList<Property> propertiesList = new ArrayList<Property>();
 
+		while(Services.winingCondiction(playersList)) {
+			
+		}
 	} 
+ 
 
 	
 		
@@ -180,11 +186,6 @@ public class gui123{
 //		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
 ////		MonopolyMap.add(goButton);
 	    
-	    
-	
-
-	
-
 		
 		//Go space
 //		JPanel go = new JPanel();
@@ -192,9 +193,8 @@ public class gui123{
 //		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
 
 	
-		while(Services.winingCondiction(playersList)) {
+		while (Services.winingCondiction(playersList)) {
 			System.out.println(playersList.toString());
-				//Start round
 			
 			for (Player currentPlayer:playersList) {
 				if (!Services.winingCondiction(playersList)) {
