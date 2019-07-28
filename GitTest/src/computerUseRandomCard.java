@@ -53,7 +53,8 @@ public class computerUseRandomCard {
 				&&i.getPosition()!=Constant.FIRST_RANDOM
 				&&i.getPosition()!=Constant.SECOND_RANDOM
 				&&i.getPosition()!=Constant.START_POSITION) 
-				{
+				{	
+					System.out.println(computerPlayer.getPlayerName()+"move to property"+i.getPosition());
 					computerPlayer.setLocation(i.getPosition());
 					break;
 				}
@@ -82,6 +83,8 @@ public class computerUseRandomCard {
 		
 		else if(luckNumber==2) {
 			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
+			Property chosenProperty=propertyList.get(propertyNumber);
+			System.out.println(""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName());
 			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
 		}
 		
@@ -104,6 +107,8 @@ public class computerUseRandomCard {
 		else {
 			System.out.println(""+computerPlayer.getPlayerName()+"Recive 200 money a rob card");
 			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
+			Property chosenProperty=propertyList.get(propertyNumber);
+			System.out.println(""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName());
 			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
 			UsingRandomCard.addMoney(computerPlayer);
 		}

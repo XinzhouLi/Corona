@@ -72,7 +72,7 @@ public class UsingRandomCard {
 		
 		
 	//automatically choose the card and use the card.
-	public static void huamUseRandomCard(ArrayList<Property> propertyList,Player player) {
+	public static void humanUseRandomCard(ArrayList<Property> propertyList,Player player) {
 		int luckNumber=reciveCard();
 		if (luckNumber==1) {
 			jailCard(player);

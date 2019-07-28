@@ -1,8 +1,8 @@
 
-public class Main {
+public class Updated_Main {
 
 	public static void main(String[] args) {
-		Gameplay.startGame(Gameplay.playersList(), Gameplay.propertiesList());
+		Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList());
 	}
 }
 				
