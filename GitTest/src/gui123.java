@@ -191,7 +191,7 @@ public class gui123{
 				        }
 					
 					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
-						System.out.println("Do you want to by this property? (Y/N)");
+						System.out.println("Do you want to buy this property? (Y/N)");
 						Scanner input = new Scanner(System.in);
 				        String choice = input.nextLine();
 				        if (choice.equalsIgnoreCase("Y")) {
