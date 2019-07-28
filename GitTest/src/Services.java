@@ -17,7 +17,7 @@ public class Services {
 		int location=p.getLocation();
 		location+=diceNumber;
 		System.out.println("Rolled a " + diceNumber);
-		location = location % 11;
+		location = location % 19;
 		p.setLocation(location);
 	}
 	/**
@@ -109,7 +109,7 @@ public class Services {
 				propertyLocation!=10&&
 				propertyLocation!=15) 
 		{
-			System.out.println("Sell the land");
+			System.out.println("Sell the "+properties.get(propertyLocation).getPropertyName()+" Ownner is "+properties.get(propertyLocation).getOwner() +" "+properties.get(propertyLocation).getRent() );
 			moneyUpdate+=properties.get(propertyLocation).getRent();
 			player.setMoney(moneyUpdate);
 			properties.get(propertyLocation).setOwner(5);
@@ -158,11 +158,12 @@ public class Services {
 		finalScore.add(playerslist.get(1).getMoney());
 		finalScore.add(playerslist.get(2).getMoney());
 		finalScore.add(playerslist.get(3).getMoney());
+		System.out.println(finalScore.toString());
 		finalScore.sort(null);
 		System.out.println(finalScore.toString());
 		for (Player player :playerslist) {
 			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
-				System.out.println("Winner is "+playerslist.get(0).getPlayerName());
+				System.out.println("Winner is "+player.getPlayerName());
 				System.out.println(player.getMoney());
 			}
 		}
