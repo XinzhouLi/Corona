@@ -2,22 +2,26 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Gameplay {
-
-	public static void findWinner(Player p0,Player p1,Player p2,Player p3) {
+	
+	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
+		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
+			for(Player iPlayer : playerslist) {
+				Services.sellLand(iPlayer, propertieslist, propertyLocation );
+			}
+		}
+	
 		ArrayList<Integer> finalScore = new ArrayList<>();
-		finalScore.add(p0.getMoney());
-		finalScore.add(p1.getMoney());
-		finalScore.add(p2.getMoney());
-		finalScore.add(p3.getMoney());
+		finalScore.add(playerslist.get(0).getMoney());
+		finalScore.add(playerslist.get(1).getMoney());
+		finalScore.add(playerslist.get(2).getMoney());
+		finalScore.add(playerslist.get(3).getMoney());
 		finalScore.sort(null);
-		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p0.getPlayerName());
-		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p1.getPlayerName());
-		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p2.getPlayerName());
-		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p3.getPlayerName());
+		System.out.println(finalScore.toString());
+		for (Player player :playerslist) {
+			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
+				System.out.println("Winner is "+ player.getPlayerName());
+				System.out.println(player.getMoney());
+			}
 		}
 	}
 	
@@ -44,6 +48,10 @@ public class Gameplay {
 			        if (choice.equalsIgnoreCase("Y")) {
 			        	Services.locationUpdate(currentPlayer);
 						System.out.println("Location: " + currentPlayer.getLocation());
+			        }
+			        while (choice.equalsIgnoreCase("Y") == false){
+			        	input = new Scanner(System.in);
+				        choice = input.nextLine();
 			        }
 				}
 				else {
@@ -72,7 +80,7 @@ public class Gameplay {
 					currentPlayer.setMoney(currentPlayer.getMoney()+300);
 				}
 
-				//if it is normal property, buying,renting ,building
+				//if it is normal property, buying, renting ,building
 				if (currentPlayer.getPlayerNumber()==0) {
 					//Human player turn
 		        	if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
@@ -82,6 +90,10 @@ public class Gameplay {
 				        if (choice.equalsIgnoreCase("Y")) {
 				        	Services.buildHouse(currentPlayer, propertiesList);
 				        }
+				        while (choice.equalsIgnoreCase("Y") == false && choice.equalsIgnoreCase("N") == false) {
+				        	input = new Scanner(System.in);
+					        choice = input.nextLine();
+				        }
 					
 					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
 						System.out.println("Do you want to buy this property? (Y/N)");
@@ -90,6 +102,10 @@ public class Gameplay {
 				        if (choice.equalsIgnoreCase("Y")) {
 				        	Services.buyLand(currentPlayer, propertiesList);
 				        	currentPlayer.addProperty(propertiesList.get(currentPlayer.getLocation()).getPropertyName());
+				        }
+				        while (choice.equalsIgnoreCase("Y") == false && choice.equalsIgnoreCase("N") == false) {
+				        	input = new Scanner(System.in);
+					        choice = input.nextLine();
 				        }
 					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
 						Services.rent(currentPlayer, propertiesList, playersList);
@@ -115,7 +131,7 @@ public class Gameplay {
 		
 		//Game ends
 		
-		Services.findWinner(playersList, propertiesList);
+		findWinner(playersList, propertiesList);
 		System.out.println("End Game");
 		
 	}

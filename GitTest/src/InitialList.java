@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class InitialList {
 	public static ArrayList<Player> playersList() {
-		System.out.println("Initializing...");
+		System.out.println("Initializing...please enter your name.");
 		Player p0 = new Player(0);
 		Player p1 = new Player(1);
 		Player p2 = new Player(2);
