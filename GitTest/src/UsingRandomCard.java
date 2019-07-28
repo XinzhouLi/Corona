@@ -54,8 +54,7 @@ public class UsingRandomCard {
 	}
 
 	// by the using of rob card, a property of others player becomes the player's property
-	public static void useStealCard(ArrayList<Property> propertyList,Player player) {
-		int propertyNumber=posStealCard();
+	public static void useStealCard(ArrayList<Property> propertyList,Player player,int propertyNumber) {
 		int playerNumber=player.getPlayerNumber();
 		Property property=propertyList.get(propertyNumber);
 		property.setOwner(playerNumber);
@@ -73,14 +72,14 @@ public class UsingRandomCard {
 		
 		
 	//automatically choose the card and use the card.
-	public static void randomCard(ArrayList<Property> propertyList,Player player) {
+	public static void humanUseRandomCard(ArrayList<Property> propertyList,Player player) {
 		int luckNumber=reciveCard();
 		if (luckNumber==1) {
 			jailCard(player);
 		}
 		else if(luckNumber==2) {
-
-			useStealCard(propertyList,player);
+			int propertyNumber=posStealCard();
+			useStealCard(propertyList,player,propertyNumber);
 		}
 		else if(luckNumber==3) {
 			System.out.println("do not get any card, but recive the money(200)");
@@ -95,7 +94,8 @@ public class UsingRandomCard {
 		}
 		else {
 			System.out.println("Recive 200 money a rob card");
-			useStealCard(propertyList,player);
+			int propertyNumber=posStealCard();
+			useStealCard(propertyList,player,propertyNumber);
 			addMoney(player);
 		}
 	}
