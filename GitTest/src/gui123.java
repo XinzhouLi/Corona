@@ -1,5 +1,3 @@
-
-
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,55 +11,84 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
-import java.awt.GridLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
 
 public class gui123{
-	static ArrayList<Property> newattempt = new ArrayList<Property>();
-
-	static ArrayList<JButton> buttontoProperty = new ArrayList<JButton>();
-	static ArrayList<String> ognames = new ArrayList<String>();
+	//variables 
+	static ArrayList<Property> newAttempt = new ArrayList<Property>();
+	static ArrayList<JButton> buttonToProperty = new ArrayList<JButton>();
+	static ArrayList<String> names = new ArrayList<String>();
+	
+	/**
+	 * Method sets Location of player and prints out 
+	 * their corresponding numbers on the board space.
+	 */
 	public static void setLocation() {
-		for(Player a : Gameplay.playersList()) {
-			String c = buttontoProperty.get(a.getLocation()).getText();
-			String b = buttontoProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
-			buttontoProperty.get(a.getLocation()).setText(b);
+		for(Player a : InitialList.playersList()) {
+			String c = buttonToProperty.get(a.getLocation()).getText();
+			String b = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
+			buttonToProperty.get(a.getLocation()).setText(b);
 		}
 	}
+
+	/**
+	 * Method finds the corresponding String
+	 * in the array list of names. buttonProperty list will
+	 * check/get the index of the names at Index a and set the
+	 * text to String a. 
+	 */
 	public static void correctLocation() {
-		for(String a : ognames) {
-			buttontoProperty.get(ognames.indexOf(a)).setText(a);
+		for(String a : names) {
+			buttonToProperty.get(names.indexOf(a)).setText(a);
+		}
 	}
-	}
+
+	/**
+	 * Method will iterate through the properties list and see 
+	 * if the property is owned by a player. If property index
+	 * has corresponding number to player, set background to 
+	 * appropriate colour. 
+	 */
 	public static void setColor() {
-	for(Property a : Gameplay.propertiesList()) {
-		if(a.getOwner() == 1) {
-			buttontoProperty.get(a.getPosition()).setBackground(Color.BLUE);
-		}
-		if(a.getOwner() == 2) {
-			buttontoProperty.get(a.getPosition()).setBackground(Color.RED);
-		}
-		if(a.getOwner() == 3) {
-			buttontoProperty.get(a.getPosition()).setBackground(Color.GREEN);
-		}
-		if(a.getOwner() == 0) {
-			buttontoProperty.get(a.getPosition()).setBackground(Color.WHITE);
-		}
+		for(Property a : InitialList.propertiesList()) {
+			if(a.getOwner() == 1) {
+				buttonToProperty.get(a.getPosition()).setBackground(Color.BLUE);
+			}
+			if(a.getOwner() == 2) {
+				buttonToProperty.get(a.getPosition()).setBackground(Color.RED);
+			}
+			if(a.getOwner() == 3) {
+				buttonToProperty.get(a.getPosition()).setBackground(Color.GREEN);
+			}
+			if(a.getOwner() == 0) {
+				buttonToProperty.get(a.getPosition()).setBackground(Color.WHITE);
+			}
 
+		}
 	}
-	}
-
-
-	public static void main(String args[]) {
-		public void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
-
-
-		JFrame MonopolyMap = new JFrame("Monopoly Map");
+	/**
+		 * Class begins the game with the GUI input. 
+		 * @param playersList Holds info on the numbers and names held by the player.
+		 * @param propertiesList Holds info on the properties and what numebr is at which index 
+		 * that corresponds to a player. 
+		 */
+	public void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
+			
+		//setting layout
+		JFrame MonopolyMap = new JFrame ("Monopoly Map");
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
+	}
+	public static void main(String[] args) { }
+		//initialize class startGame
 		
-		//Go space
+		
+
+
+	
+
+	// public static void main(String args[]) {
+		// public void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
+		
 //		JPanel go = new JPanel();
 //		JButton goButton = new JButton();
 //		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
@@ -175,7 +202,7 @@ public class gui123{
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
-					UsingRandomCard.huamUseRandomCard(propertiesList,currentPlayer);
+					UsingRandomCard.humanUseRandomCard(propertiesList,currentPlayer);
 					continue;
 				}
 
