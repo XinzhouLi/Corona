@@ -94,8 +94,7 @@ public class Gameplay {
 			System.out.println("Winner is "+p3.getPlayerName());
 		}
 	}
-<<<<<<< HEAD
-=======
+
 	
 	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
 		while(Services.winingCondiction(playersList)) {
@@ -171,5 +170,4 @@ public class Gameplay {
 		System.out.println("End Game");
 		
 	}
->>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 }
