@@ -105,10 +105,10 @@ public class computerUseRandomCard {
 		}
 		
 		else {
-			System.out.println(""+computerPlayer.getPlayerName()+"Recive 200 money a rob card");
+			System.out.println(""+computerPlayer.getPlayerName()+ "recieves 200 money and robs a card");
 			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
 			Property chosenProperty=propertyList.get(propertyNumber);
-			System.out.println(""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName());
+			System.out.println(""+computerPlayer.getPlayerName()+" get the property "+chosenProperty.getPropertyName());
 			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
 			UsingRandomCard.addMoney(computerPlayer);
 		}
