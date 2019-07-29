@@ -34,8 +34,8 @@ public class Gameplay_GUI {
 //		bucky.setVisible(true); //can see the good stuff
 		
 		while(Services.winingCondiction(playersList)) {
-			GUI_Board.setLocation();
 			for (Player currentPlayer:playersList) {
+				GUI_Board.setLocation(currentPlayer);
 				if (!Services.winingCondiction(playersList)) {
 					break;
 				}
@@ -47,7 +47,8 @@ public class Gameplay_GUI {
 					Scanner input = new Scanner(System.in);
 			        String choice = input.nextLine();
 			        if (choice.equalsIgnoreCase("Y")) {
-			        	GUI_Board.updateLocation(currentPlayer);
+			        	Services.locationUpdate(currentPlayer);
+						GUI_Board.setLocation(currentPlayer);
 						System.out.println("Location: " + currentPlayer.getLocation());
 			        }
 			        while (choice.equalsIgnoreCase("Y") == false){
@@ -56,12 +57,10 @@ public class Gameplay_GUI {
 			        }
 				}
 				else {
-					GUI_Board.updateLocation(currentPlayer);
+					Services.locationUpdate(currentPlayer);
+					GUI_Board.setLocation(currentPlayer);
 					System.out.println("Location: " + currentPlayer.getLocation());
 				}
-				GUI_Board.setLocation();
-				GUI_Board.updateLocation(currentPlayer);
-				GUI_Board.setLocation();
 				System.out.println("Properties: " + currentPlayer.getProperties());
 				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
 				

@@ -49,28 +49,17 @@ public class GUI_Board extends JFrame {
 		 * Method sets Location of player and prints out 
 		 * their corresponding numbers on the board space.
 		 */
-		public static void setLocation() {
-			for(Player a : InitialList.playersList()) {
-				
+		public static void setLocation(Player a) {
+//			for(Player a : InitialList.playersList()) {
 				String b = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
 				buttonToProperty.get(a.getLocation()).setText(b);
-			}
+//			}
+//			if (buttonToProperty.get(a.getLocation()) == 5) {
+//				
+//			}
 		}
 		
-		/**
-		 * Method updates location.
-		 */
-		public static void updateLocation(Player p) {
-			Random rand=new Random();
-			int diceNumber=rand.nextInt(7);
-			while(diceNumber==0) {
-				diceNumber=rand.nextInt(7);
-			}
-			int location=p.getLocation();
-			location+=diceNumber;
-			location = location % 11;
-			p.setLocation(location);
-		}
+	
 			
 			
 //			for (Player a : InitialList.playersList()) {
@@ -225,6 +214,10 @@ public class GUI_Board extends JFrame {
 			
 			MonopolyMap.pack();
 			MonopolyMap.setVisible(true);
+		}
+		
+		public static void main(String[] args) {
+			System.out.println();
 		}
 	}
 	
