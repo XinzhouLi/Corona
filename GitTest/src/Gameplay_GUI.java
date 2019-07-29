@@ -18,7 +18,7 @@ public class Gameplay_GUI {
 		finalScore.add(playerslist.get(3).getMoney());
 		finalScore.sort(null);
 		System.out.println(finalScore.toString());
-		for (Player player :playerslist) {
+		for (Player player : playerslist) {
 			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
 				System.out.println("Winner is "+ player.getPlayerName());
 				System.out.println(player.getMoney());
@@ -34,7 +34,7 @@ public class Gameplay_GUI {
 //		bucky.setVisible(true); //can see the good stuff
 		
 		while(Services.winingCondiction(playersList)) {
-			
+			GUI_Board.setLocation();
 			for (Player currentPlayer:playersList) {
 				if (!Services.winingCondiction(playersList)) {
 					break;
@@ -47,7 +47,7 @@ public class Gameplay_GUI {
 					Scanner input = new Scanner(System.in);
 			        String choice = input.nextLine();
 			        if (choice.equalsIgnoreCase("Y")) {
-			        	Services.locationUpdate(currentPlayer);
+			        	GUI_Board.updateLocation(currentPlayer);
 						System.out.println("Location: " + currentPlayer.getLocation());
 			        }
 			        while (choice.equalsIgnoreCase("Y") == false){
@@ -56,9 +56,12 @@ public class Gameplay_GUI {
 			        }
 				}
 				else {
-					Services.locationUpdate(currentPlayer);
+					GUI_Board.updateLocation(currentPlayer);
 					System.out.println("Location: " + currentPlayer.getLocation());
 				}
+				GUI_Board.setLocation();
+				GUI_Board.updateLocation(currentPlayer);
+				GUI_Board.setLocation();
 				System.out.println("Properties: " + currentPlayer.getProperties());
 				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
 				

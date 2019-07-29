@@ -1,5 +1,6 @@
-import java.awt.GridLayout; 
+import java.awt.GridLayout;  
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.awt.Color;
 
@@ -50,12 +51,40 @@ public class GUI_Board extends JFrame {
 		 */
 		public static void setLocation() {
 			for(Player a : InitialList.playersList()) {
-				String c = buttonToProperty.get(a.getLocation()).getText();
+				
 				String b = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
 				buttonToProperty.get(a.getLocation()).setText(b);
 			}
 		}
-
+		
+		/**
+		 * Method updates location.
+		 */
+		public static void updateLocation(Player p) {
+			Random rand=new Random();
+			int diceNumber=rand.nextInt(7);
+			while(diceNumber==0) {
+				diceNumber=rand.nextInt(7);
+			}
+			int location=p.getLocation();
+			location+=diceNumber;
+			location = location % 11;
+			p.setLocation(location);
+		}
+			
+			
+//			for (Player a : InitialList.playersList()) {
+//				int playerLocale = a.getLocation();
+//				if (playerLocale == buttonToProperty.indexOf()) {
+//					String message = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
+//					buttonToProperty.get(a.getLocation()).setText(message);
+//				} else {
+//					buttonToProperty.get(a.getLocation()).s
+//				}
+				
+			
+		
+		
 		/**
 		 * Method finds the corresponding String
 		 * in the array list of names. buttonProperty list will
@@ -68,12 +97,7 @@ public class GUI_Board extends JFrame {
 			}
 		}
 		
-		/**
-		 * Method updates location.
-		 */
-		public static void updateLocation() {
-			
-		}
+		
 		
 		
 		/**
