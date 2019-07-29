@@ -1,9 +1,8 @@
-import java.util.ArrayList; 
+import java.util.ArrayList;
 import java.util.Scanner;
-import javax.swing.JFrame;
-
 
 public class Gameplay_GUI {
+	
 	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
 		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
 			for(Player iPlayer : playerslist) {
@@ -18,7 +17,7 @@ public class Gameplay_GUI {
 		finalScore.add(playerslist.get(3).getMoney());
 		finalScore.sort(null);
 		System.out.println(finalScore.toString());
-		for (Player player : playerslist) {
+		for (Player player :playerslist) {
 			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
 				System.out.println("Winner is "+ player.getPlayerName());
 				System.out.println(player.getMoney());
@@ -26,20 +25,23 @@ public class Gameplay_GUI {
 		}
 	}
 	
-	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {		
-	    GUI_Board.startGame();
-//	    GUI_EventHandle bucky = new GUI_EventHandle();
-//		bucky.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //closes on exit
-//		bucky.setSize(350, 100); //sets dimensions
-//		bucky.setVisible(true); //can see the good stuff
-		
+	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
+		GUI_Board.startGame();
+		System.out.println("Players");
+		for(Player player: playersList) {
+			System.out.println(player.getPlayerName() + " ");
+		}
+		System.out.println("");
 		while(Services.winingCondiction(playersList)) {
+				//Start round
+			
 			for (Player currentPlayer:playersList) {
+//				GUI_Board.startGame();
 				GUI_Board.setLocation(currentPlayer);
 				if (!Services.winingCondiction(playersList)) {
 					break;
 				}
-				
+				System.out.println(currentPlayer.getPlayerName() + "'s turn");
 				System.out.println("Money: " + currentPlayer.getMoney());
 				System.out.println("Location: " + currentPlayer.getLocation());
 				if(currentPlayer.getPlayerNumber() == 0) {
@@ -48,7 +50,7 @@ public class Gameplay_GUI {
 			        String choice = input.nextLine();
 			        if (choice.equalsIgnoreCase("Y")) {
 			        	Services.locationUpdate(currentPlayer);
-						GUI_Board.setLocation(currentPlayer);
+			        	GUI_Board.setLocation(currentPlayer);
 						System.out.println("Location: " + currentPlayer.getLocation());
 			        }
 			        while (choice.equalsIgnoreCase("Y") == false){

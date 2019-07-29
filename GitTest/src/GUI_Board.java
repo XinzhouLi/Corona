@@ -1,6 +1,5 @@
-import java.awt.GridLayout;  
+import java.awt.GridLayout; 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 import java.awt.Color;
 
@@ -11,6 +10,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener; //waits for user to input something
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI_Board extends JFrame {
 	
@@ -27,7 +28,14 @@ public class GUI_Board extends JFrame {
 			
 //			theHandler handler = new theHandler(); //BUILDS ACTION LISTENER OBJECT
 //			infoButton.addActionListener(handler); //gives functionality, like press Enter, it does something now
+			infoButton.addMouseListener(new MouseAdapter() {
+				public void mouseReleased(MouseEvent e) {
 
+			        if (e.isPopupTrigger() || e.getButton() == MouseEvent.MOUSE_PRESSED) {
+			          JOptionPane.showMessageDialog(null, "Hello!");
+			        }
+			      }
+			    });
 			
 		}
 //		class theHandler implements MouseListener {
@@ -50,30 +58,12 @@ public class GUI_Board extends JFrame {
 		 * their corresponding numbers on the board space.
 		 */
 		public static void setLocation(Player a) {
-//			for(Player a : InitialList.playersList()) {
-				String b = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
+//				String c = buttonToProperty.get(a.getLocation()).getText();
+			    String b = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
 				buttonToProperty.get(a.getLocation()).setText(b);
-//			}
-//			if (buttonToProperty.get(a.getLocation()) == 5) {
-//				
-//			}
-		}
+			}
 		
-	
-			
-			
-//			for (Player a : InitialList.playersList()) {
-//				int playerLocale = a.getLocation();
-//				if (playerLocale == buttonToProperty.indexOf()) {
-//					String message = buttonToProperty.get(a.getLocation()).getText() + " " + a.getPlayerNumber();
-//					buttonToProperty.get(a.getLocation()).setText(message);
-//				} else {
-//					buttonToProperty.get(a.getLocation()).s
-//				}
-				
-			
-		
-		
+
 		/**
 		 * Method finds the corresponding String
 		 * in the array list of names. buttonProperty list will
@@ -86,7 +76,12 @@ public class GUI_Board extends JFrame {
 			}
 		}
 		
-		
+		/**
+		 * Method updates location.
+		 */
+		public static void updateLocation() {
+			
+		}
 		
 		
 		/**
@@ -214,10 +209,6 @@ public class GUI_Board extends JFrame {
 			
 			MonopolyMap.pack();
 			MonopolyMap.setVisible(true);
-		}
-		
-		public static void main(String[] args) {
-			System.out.println();
 		}
 	}
 	
