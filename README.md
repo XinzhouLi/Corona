@@ -5,7 +5,7 @@ Project Title:Monopoly(Board game)
 1.prerequisites
 	(1)for the player who only want to play text version game.
 		If just want to play the text version game, installation of java is enough to play the game
-			DownloadUpdated_Main.java,Services.java,Player.java,Property.java,UseRandomCard.java,computerUseRandomCard.java,Constant.java,Gameplay.java
+		Download Updated_Main.java,Services.java,Player.java,Property.java,UseRandomCard.java,computerUseRandomCard.java,Constant.java,Gameplay.java
 		InitialList.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
@@ -52,11 +52,13 @@ Project Title:Monopoly(Board game)
 		computerUseRandomCard.java: the computer player will choose how to use move card and steal property card more wisely, it increase the level of difficulty.
 	
 		Gameplay.java: Contain most of the logic.for example ask the player to input.
+	
+
+
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
 		
-		GUI_Board.java:Create the visual board, it shows the property and the player's location, and it is make by the collections of button.
-
+		GUI_Board.java:Create the visual board, it shows the property and the player's location, and it is make by the collections of button(JButton).
 
 		mainforsettingbuttons.java: Set the name of the button and also put those property into the arraylist.
 
@@ -66,24 +68,29 @@ Project Title:Monopoly(Board game)
 
 		
 
-3.Run the game
+4.Run the game
 	(1)Run the java file that called Updated_Main.java for the text version game.
+	    make sure that the Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList()); is the only code in the file.
 
 	(2)For the GUI part, go to Updated_Main.java, change Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList());
-	     to Gameplay_GUI.startGame(InitialList.playersList(), InitialList.propertiesList());  .
-4Project states
-	The computer player becomes more wisely than the last version due to they are allowed to use random card, and the GUI version is added,
-	the player can check there money amount in the bank by just click the information button, the adding of random card allow the user make 
-	more choices.
-
-5Expect in future:
-	Adding of JUNIT test,allow the player to choose the difficult of the game(computer player). More information is shown
-	 , make the game looks better and show more information.
+	     to Gameplay_GUI.startGame(InitialList.playersList(), InitialList.propertiesList());  and run the Updated_Main.java
+5.Project states
+	The computer player becomes more wisely than the last version due to they are allowed to use random card.
 	
+	The game can run but there are some error:
+		GUI is added to the game, and the player can play either text version game or GUI version game.
+		The player can check there money amount in the bank by just click the information button, the adding of random card allow the user make 
+		more choices. The GUI allow the player to update their location by adding their player number after the name of the property but there is a 
+		bug that can not delete the name of the player. We will fix it.
+	
+	We do not use javaFX, and we used the JButton which is not allowed, we will transfer to javaFX as soon as possible.
+	
+	There is no test for the program right now, and we will add it
 
+6Expect in future:
+	Adding of JUNIT test, and allow the player to choose the difficulty of the game(computer player). More information is shown and show it more clearly.
+	 make the game looks better, insert the picture that on the internet. If we still have time, we will allow the player to enter how many human player.
 
-
-website:
-https://github.com/joseph5-ship/Corona
+		website:		https://github.com/joseph5-ship/Corona
 
 
