@@ -67,7 +67,11 @@ public class Services {
 	public static void buyLand(Player player,ArrayList<Property> propertyList) {
 		int location=player.getLocation();
 		int money = player.getMoney();
-		if (player.getMoney()>=200) {
+		if (player.getMoney()>=200
+			&&player.getLocation()!=5
+			&&player.getLocation()!=10
+			&&player.getLocation()!=15) 
+		{
 			propertyList.get(location).setOwner(player.getPlayerNumber());
 			money-=200;
 			player.setMoney(money);
