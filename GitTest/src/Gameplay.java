@@ -3,15 +3,10 @@ import java.util.Scanner;
 
 public class Gameplay {
 	
-	/**
-	 * This method identifies the winner.
-	 * @param playerslist the list of players currently playing
-	 * @param propertieslist the list of properties in the game
-	 */
-	public static void findWinner(ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
+	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
 		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
 			for(Player iPlayer : playerslist) {
-				Services.sellLand(iPlayer, propertieslist, propertyLocation);
+				Services.sellLand(iPlayer, propertieslist, propertyLocation );
 			}
 		}
 	
@@ -30,11 +25,6 @@ public class Gameplay {
 		}
 	}
 	
-	/**
-	 * This method will initialize, run, and end the game. 
-	 * @param playersList the list of players currently playing
-	 * @param propertiesList the list of properties in the game
-	 */
 	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
 		System.out.println("Players");
 		for(Player player: playersList) {
@@ -71,19 +61,20 @@ public class Gameplay {
 				System.out.println("Properties: " + currentPlayer.getProperties());
 				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
 				
-				//special location checking	
+				//special location checking
+				
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 					System.out.println("");
 					continue;
-				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
+				}else if ((currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15)&&currentPlayer.getPlayerNumber()==1) {
 					if (currentPlayer.getPlayerNumber() == 0){
 						UsingRandomCard.humanUseRandomCard(propertiesList,currentPlayer);
 						System.out.println("");
 						continue;
 					}
 					else {
-						computerUseRandomCard.computerUseRandom(propertiesList, currentPlayer);
+						
 					}
 				}else if (currentPlayer.getLocation() == 0) {
 					currentPlayer.setMoney(currentPlayer.getMoney()+300);

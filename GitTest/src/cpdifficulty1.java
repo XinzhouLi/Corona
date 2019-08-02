@@ -8,9 +8,10 @@ public class cpdifficulty1 extends computerPlayer{
 		super(player);
 		
 	}
-	public int getDifficulty() {
-		return this.difficulty;
-	}
+	
+//	public int getDifficulty() {
+//		return this.difficulty;
+//	}
 	
 	public static int computerUseStealCard(ArrayList<Property> propertyList,Player computerPlayer) {
 		Random rand = new Random();
