@@ -116,7 +116,10 @@ public class Gameplay {
 							if (currentPlayer.getMoney()>=400) {
 								Services.buildHouse(currentPlayer, propertiesList);
 							}
-						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5
+									&&currentPlayer.getLocation()!=5
+									&&currentPlayer.getLocation()!=10
+									&&currentPlayer.getLocation()!=15) {
 							if (currentPlayer.getMoney()>=300) {
 								Services.buyLand(currentPlayer, propertiesList);
 							}	
