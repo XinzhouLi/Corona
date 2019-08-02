@@ -8,28 +8,29 @@ public class Player{
 	private int PlayerNumber;
 	private String PlayerName;
 	private int moneyLost = 50;
+	
 	/**
-	 * Method will set money, location, associated property, player number, and player name.
+	 * Constructs player's info, such as money, location, and number.
+	 * @param PlayerNumber the player's number within the game
 	 */
-	public Player(int PlayerNumber) { //Constructor
+	public Player(int playerNumber) { 
 		setMoney(Money);
 		setLocation(Location);
-		setPlayerNumber(PlayerNumber);
-		if (PlayerNumber == 0) {
+		setPlayerNumber(playerNumber);
+		if (playerNumber == 0) {
 			setHumanPlayerName();
 		}
 		else {
-			setPlayerName("AI_" + PlayerNumber);
+			setPlayerName("AI_" + playerNumber);
 		}
 	}
 	
 	/**
 	 * Method acts as a copy constructor and sets a new instance of player's money, location, 
 	 * properties, player number, and name.
-	 * @param player Of type player and holds info on player's money, location, 
-	 * properties, player number, and name.
+	 * @param player holds info on player's money, location, properties, player number, and name.
 	 */
-	public Player (Player player){ //Copy Constructor
+	public Player (Player player){ 
 		 this.Money = player.Money;
 		 this.Location = player.Location;
 		 this.PlayerNumber = player.PlayerNumber;
@@ -38,6 +39,7 @@ public class Player{
 
 	/**
 	 * Method sets player's amount of money.
+	 * @param Money the money amount 
 	 */
 	public void setMoney(int Money) {
 		this.Money = Money;
@@ -45,6 +47,7 @@ public class Player{
 	
 	/**
 	 * Method sets player's current location as an integer value. 
+	 * @param Location the location value 
 	 */
 	public void setLocation(int Location) {
 		this.Location = Location;
@@ -52,23 +55,23 @@ public class Player{
 	
 	/**
 	 * Method will set properties belonging to the player. 
-	 * @param Properties An ArrayList that hold values associated to each player.
+	 * @param properties the ArrayList that holds properties
 	 */
-	public void setProperties(ArrayList<String> Properties) {
-		this.Property_Names = Properties;
+	public void setProperties(ArrayList<String> properties) {
+		this.Property_Names = properties;
 	}
 	
 	/**
 	 * Method will set player's name.
-	 * @param PlayerNumber An integer that holds information on player's number.
+	 * @param PlayerNumber the integer that holds information on player's number.
 	 */
-	public void setPlayerNumber(int PlayerNumber) {
-		this.PlayerNumber = PlayerNumber;
+	public void setPlayerNumber(int playerNumber) {
+		this.PlayerNumber = playerNumber;
 	}
 	
 	/**
 	 * Method will set player name.
-	 * @return a String that stores the user's input.  
+	 * @param name the user's name.  
 	 */
 	public void setPlayerName(String name) {
 		this.PlayerName = name;
@@ -76,8 +79,7 @@ public class Player{
 	
 	/**
 	 * Method adds property value to a list.
-	 * @param element String value that holds info on the property element 
-	 * being added to list
+	 * @param element the element in the properties ArrayList 
 	 */
 	public void addProperty(String element) { 
 		Property_Names.add(element);
@@ -123,10 +125,18 @@ public class Player{
 		return PlayerName;
 	}
 	
+	/**
+	 * Method makes player pay money to jail. 
+	 * @return the player's money after paying
+	 */
 	public int doJail() {
 		return getMoney() - moneyLost;
 	}
 	
+	/**
+	 * Method sets human player's name.
+	 * @return the player's name 
+	 */
 	public String setHumanPlayerName() {
 		Scanner input = new Scanner(System.in);
         PlayerName = input.nextLine();

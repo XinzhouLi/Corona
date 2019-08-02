@@ -1,197 +1,131 @@
-package sdf;
-
-import javafx.application.Application;
+import javafx.application.Application;  
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import java.util.ArrayList;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-//https://gamedevelopment.tutsplus.com/tutorials/introduction-to-javafx-for-game-development--cms-23835 accessed July 28, 2019
-public class hello extends Application{
-	ArrayList<Label> labels = new ArrayList<Label>();
-	ArrayList<String> ognames = new ArrayList<String>();
-	public void setLocation() {
-		for(Player a : InitialList.playersList()) {
-			String b = labels.get(a.getLocation()).getText();
-			labels.get(a.getLocation()).setText(b + a.getPlayerNumber());
-		}
-	}
-	public void correctLocation() {
-		for(int a = 0; a< 20; a++) {
-			labels.get(a).setText(ognames.get(a));
-		}
-	}
-	public void setColor() {
-		for(Property a : InitialList.propertiesList()) {
-			if(a.getOwner() == 0) {
-				labels.get(a.getPosition()).setTextFill(Color.RED);
-			}
-			if(a.getOwner() == 1) {
-				labels.get(a.getPosition()).setTextFill(Color.ALICEBLUE);
-			}
-			if(a.getOwner() == 2) {
-				labels.get(a.getPosition()).setTextFill(Color.ANTIQUEWHITE);
-			}
-			if(a.getOwner() == 3) {
-				labels.get(a.getPosition()).setTextFill(Color.BEIGE);
-			}
-			if(a.getOwner() == 0) {
-				labels.get(a.getPosition()).setTextFill(Color.BROWN);
-			}
-		}
-	}
-//	public static void main (String[] args) {
-//		launch(args);
-//	}
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class Grid extends Application {
+	private int btnWidth = 80;
+	private int btnHeight = 80;
+	private int infoWidth = 250;
+	private int infoHeight = 350;
 	
-	//https://www.youtube.com/watch?v=B18NkOdulHM accessed July 28, 2019
-	public void start(Stage theStage) {
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	@Override
+	public void start(Stage primaryStage) {
+		primaryStage.setTitle("Monopoly Board");
 		
-		try {
-			String a = new String("      Go    ");
-			String a1 = new String ("  a1  ");
-			String a2 = new String("  a2  ");
-			String a3 = new String("  a3  ");
-			String a4 = new String("  a4  ");
-			
-			String a5 = new String("Random");
-			String a6 = new String("  a6    ");
-			String a7 = new String("  a7    ");
-			String a8 = new String("  a8    ");
-			String a9 = new String("  a9    ");
-			
-			String a10 = new String("     Jail    ");
-			
-			String a11 = new String("   a11  ");
-			String a12 = new String("   a12  ");
-			String a13 = new String("   a13  ");
-			String a14 = new String("   a14  ");
-			
-			String a15 = new String("Random ");
-
-			String a16 = new String("a16 ");
-			String a17 = new String("a17 ");
-			String a18 = new String("a18 ");
-			String a19 = new String("a19 ");
-			ognames.add(a);
-			ognames.add(a1);
-			ognames.add(a2);
-			ognames.add(a3);
-			ognames.add(a4);
-			ognames.add(a5);
-			ognames.add(a6);
-			ognames.add(a7);
-			ognames.add(a8);
-			ognames.add(a9);
-			ognames.add(a10);
-			ognames.add(a11);
-			ognames.add(a12);
-			ognames.add(a13);
-			ognames.add(a14);
-			ognames.add(a15);
-			ognames.add(a16);
-			ognames.add(a17);
-			ognames.add(a18);
-			ognames.add(a19);
-			
-		//stage > scene > container > node
-		Label go = new Label("      Go    ");
-		Label prop1 = new Label ("  Prop1  ");
-		Label prop2 = new Label("  Prop2  ");
-		Label prop3 = new Label("  prop3  ");
-		Label prop4 = new Label("  Prop4  ");
+		//set up board layout
+		GridPane board = new GridPane();
+		board.setAlignment(Pos.CENTER);
+		board.setHgap(10);
+		board.setVgap(10);
 		
-		Label rand1 = new Label("Random");
-		Label prop6 = new Label("  Prop6    ");
-		Label prop7 = new Label("  Prop7    ");
-		Label prop8 = new Label("  Prop8    ");
-		Label prop9 = new Label("  Prop9    ");
+		//add padding (top, right, bottom, left)
+		board.setPadding(new Insets(25, 25, 25, 25));
 		
-		Label jail = new Label("     Jail    ");
+		//Adding titles and info boxes of board
+		Text boardTitle = new Text("Monopoly");
+		boardTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+//		board.add(boardTitle, 0, 5, 2, 2);
 		
-		Label prop11 = new Label("   Prop11  ");
-		Label prop12 = new Label("   Prop12  ");
-		Label prop13 = new Label("   Prop13  ");
-		Label prop14 = new Label("   Prop14  ");
+		Label info = new Label("Information");
+		board.add(info, 5, 0);
 		
-		Label rand2 = new Label("Random ");
-
-		Label prop16 = new Label("Prop16 ");
-		Label prop17 = new Label("Prop17 ");
-		Label prop18 = new Label("Prop18 ");
-		Label prop19 = new Label("Prop19 ");
-
-
+		TextField infoTextField = new TextField();
+		infoTextField.setPrefSize(infoWidth, infoHeight);
+		board.add(infoTextField, 5, 1);
 		
-		go.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop1.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop2.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop3.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop4.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		rand1.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop6.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop7.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop8.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop9.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		jail.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop11.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop12.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop13.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop14.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		rand2.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop16.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop17.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop18.setStyle("-fx-border-color: black; -fx-font-size: 30");
-		prop19.setStyle("-fx-border-color: black; -fx-font-size: 30");
+		//property buttons and text
+		Button go = new Button("GO");
+		Button prop1 = new Button("Property 1");
+		Button prop2 = new Button("Property 2");
+		Button prop3 = new Button("Property 3");
+		Button prop4 = new Button("Property 4");
+		Button rand1 = new Button("Random");
 		
-		//top row
-		grid.add(go,  0, 0, 1, 1);
-		grid.add(prop1, 1, 0, 1, 1);
-		grid.add(prop2, 2, 0, 1, 1);
-		grid.add(prop3, 3, 0, 1, 1);
-		grid.add(prop4,  4, 0, 1, 1);
-		grid.add(rand1,  5, 0, 1, 1);
-
-		//right column 
-		grid.add(prop6,  5, 1, 1, 1);
-		grid.add(prop7,  5, 2, 1, 1);
-		grid.add(prop8,  5, 3, 1, 1);
-		grid.add(prop9,  5, 4, 1, 1);
-		grid.add(jail,  5, 5, 1, 1);
+		//setting button size
+		go.setPrefSize(btnWidth, btnHeight);
+		prop1.setPrefSize(btnWidth, btnHeight);
+		prop2.setPrefSize(btnWidth, btnHeight);
+		prop3.setPrefSize(btnWidth, btnHeight);
+		prop4.setPrefSize(btnWidth, btnHeight);
+		rand1.setPrefSize(btnWidth, btnHeight);
+		
+		//right column
+//		Button prop6 = new Button("Property 6");
+//		Button prop7 = new Button("Property 7");
+//		Button prop8 = new Button("Property 8");
+//		Button prop9 = new Button("Property 9");
+//		Button jail = new Button("Jail");
+		
+		HBox horizontalButton = new HBox(0);
+		horizontalButton.setAlignment(Pos.CENTER);
+		horizontalButton.getChildren().addAll(go, prop1, prop2, prop3, prop4, rand1);
+		board.add(horizontalButton, 0, 0);
 		
 		//bottom row
-		grid.add(prop11,  4, 5, 1, 1);
-		grid.add(prop12,  3, 5, 1, 1);
-		grid.add(prop13,  2, 5, 1, 1);
-		grid.add(prop14,  1, 5, 1, 1);
+		Button jail = new Button("Jail");
+		Button prop11 = new Button("Property 11");
+		Button prop12 = new Button("Property 12");
+		Button prop13 = new Button("Property 13");
+		Button prop14 = new Button("Property 14");
+		Button rand2 = new Button("Random");
 		
-		//left column
-		grid.add(rand2,  0, 5, 1, 1);
-		grid.add(prop16,  0, 4, 1, 1);
-		grid.add(prop17,  0, 3, 1, 1);
-		grid.add(prop18,  0, 2, 1, 1);
-		grid.add(prop19,  0, 1, 1, 1);
+		jail.setPrefSize(btnWidth, btnHeight);
+		prop11.setPrefSize(btnWidth, btnHeight);
+		prop12.setPrefSize(btnWidth, btnHeight);
+		prop13.setPrefSize(btnWidth, btnHeight);
+		prop14.setPrefSize(btnWidth, btnHeight);
+		rand2.setPrefSize(btnWidth, btnHeight);
+		
+		HBox horiButton2 = new HBox(0);
+		horiButton2.setAlignment(Pos.CENTER);
+		horiButton2.getChildren().addAll(jail, prop11, prop12, prop13, prop14, rand2);
+		board.add(horiButton2, 0, 6);
+		
+//		VBox verticalButton = new VBox(0);
+//		verticalButton.setAlignment(Pos.CENTER);
+//		verticalButton.getChildren().addAll(prop6, prop7, prop8, prop9, jail);
+//		board.add(verticalButton, 0, 0, 18, 18);
 
 		
-//		grid.addRow(0, go, property1);
-//		grid.setHgap(10);
+		//handling events 
+		final Text printMessage = new Text();
+		board.add(printMessage, 1, 6);
+		go.setOnAction(new EventHandler<ActionEvent>() {
+			 
+		    @Override
+		    public void handle(ActionEvent e) {
+//		    	printMessage.setFill(Color.FIREBRICK);
+//		        printMessage.setText("Go button was pressed. Hurray!");
+		        infoTextField.setText("Go button was pressed! Hurray!");
+		        
+		    }
+		});
 		
-		
-		theStage.setScene(scene);
-		theStage.show();
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+		//display board
+		Scene boardScene = new Scene(board, 1000, 1000);
+		primaryStage.setScene(boardScene);
+		primaryStage.show();
 		
 	}
-	
-	GridPane grid = new GridPane();
-	Scene scene = new Scene(grid, 700, 600);
-	
-	
-	
+
 }
