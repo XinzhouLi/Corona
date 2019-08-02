@@ -1,26 +1,54 @@
-package mapstuffformonopoly;
 
-import java.awt.GridLayout;  
+public class change {
+public static int changex(int a) {
+	int b = a + 1;
+	int c = 0;
+	int d = 0;
+	if(b <= 6){
+		c = b;
+		d = 0;
+	}
+	if(b <= 11 && b > 6) {
+		c = 7;
+		d = b - 5;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+	}
+	if(b <= 16 && b > 11) {
+		c = 17 - b;
+		d = 7;
+	}
+	if(b <= 20 && b > 16) {
+		c = 0;
+		d = 22 - b;
+	}
+	c = c;
+	d = d;
+	return c;
 
-public class theexampleIused {
-
-  public static void main(String[] args) {
-    JFrame.setDefaultLookAndFeelDecorated(true);
-    JFrame frame = new JFrame("GridLayout Test");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setLayout(new GridLayout(3, 2));
-    frame.add(new JButton("Button 1"));
-    frame.add(new JButton("Button 2"));
-    frame.add(new JButton("Button 3"));
-    frame.add(new JButton("Button 4"));
-    frame.add(new JButton("Button 5"));
-    frame.add(new JButton("Button 6"));
-    frame.add(new JButton("Button 7"));
-    frame.add(new JButton("Button 8"));
-    frame.pack();
-    frame.setVisible(true);
-  }
+}
+public static int changey(int a) {
+	int b = a + 1;
+	int c = 0;
+	int d = 0;
+	if(b <= 6) {
+		c = b;
+		d = 0;
+	}
+	if(b <= 11 && b > 6) {
+		c = 7;
+		d = b - 5;
+	}
+	if(b <= 16 && b > 11) {
+		c = 17 - b;
+		d = 7;
+	}
+	if(b <= 20 && b >16) {
+		c = 0;
+		d = 22 - b;
+	}
+	
+	c = c;
+	d = d;
+	return d;
+}
 }
