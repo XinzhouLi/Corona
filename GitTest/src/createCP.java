@@ -10,10 +10,10 @@ public class createCP {
 			diffi=new Scanner(System.in).nextInt();
 		}
 		if(diffi==1) {
-			Player computerPlayer=new cpdifficulty1(player);
+			a=new cpdifficulty1(player);
 		}
 		else {
-			Player computerPlayer=new cpdifficulty2(player);
+			a=new cpdifficulty2(player);
 		}
 		
 		return a;
