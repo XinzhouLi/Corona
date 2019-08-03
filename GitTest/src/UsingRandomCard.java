@@ -31,10 +31,7 @@ public class UsingRandomCard {
 	
 	//decide which card will this player get.
 	public static int reciveCard() {
-		int number=new Random().nextInt(7);
-		while (number==0) {
-			number=1;
-		}
+		int number=new Random().nextInt(6) + 1;
 		return number;
 	}
 	
