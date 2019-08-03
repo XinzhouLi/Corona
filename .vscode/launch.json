@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - GUI_MapMain",
+            "request": "launch",
+            "mainClass": "GUI_MapMain",
+            "projectName": "GitTest"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - gui123",
             "request": "launch",
             "mainClass": "gui123",

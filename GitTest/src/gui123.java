@@ -61,7 +61,96 @@ public class gui123{
 		MonopolyMap.setLayout(new GridLayout(6, 6));
 		JTextArea square = new JTextArea(); 
 		
+<<<<<<< HEAD
 		//Go space
+=======
+		//adding the buttons to a list 
+		buttonToProperty.add(b0);
+		buttonToProperty.add(b1);
+		buttonToProperty.add(b2);
+		buttonToProperty.add(b3);
+		buttonToProperty.add(b4);
+		buttonToProperty.add(b5);
+		buttonToProperty.add(b6);
+		buttonToProperty.add(b7);
+		buttonToProperty.add(b8);
+		buttonToProperty.add(b9);
+		buttonToProperty.add(b10);
+		buttonToProperty.add(b11);
+		buttonToProperty.add(b12);
+		buttonToProperty.add(b13);
+		buttonToProperty.add(b14);
+		buttonToProperty.add(b15);
+		buttonToProperty.add(b16);
+		buttonToProperty.add(b17);
+		buttonToProperty.add(b18);
+		buttonToProperty.add(b19);
+
+		//Adding MonopolyMap spaces 
+		MonopolyMap.add(b0);
+		MonopolyMap.add(b1);
+		MonopolyMap.add(b2);
+		MonopolyMap.add(b3);
+		MonopolyMap.add(b4);
+		MonopolyMap.add(b5);
+		MonopolyMap.add(b19);
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(b6);
+		MonopolyMap.add(b18);
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+
+		MonopolyMap.add(b7);
+		MonopolyMap.add(b17);
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+
+		MonopolyMap.add(b8);
+		MonopolyMap.add(b16);
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(new JButton(""));
+		MonopolyMap.add(b9);
+		MonopolyMap.add(b15);
+		MonopolyMap.add(b14);
+		MonopolyMap.add(b13);
+		MonopolyMap.add(b12);
+		MonopolyMap.add(b11);
+		MonopolyMap.add(b10);
+
+		MonopolyMap.pack();
+		MonopolyMap.setVisible(true);
+	}
+}
+	// public static void main(String[] args) { 
+	// 	ArrayList<Player> playersList = new ArrayList<Player>();
+	// 	ArrayList<Property> propertiesList = new ArrayList<Property>();
+
+	// 	while(Services.winingCondiction(playersList)) {
+			
+	// 	}
+	// } 
+ 
+
+	
+		
+		
+
+
+	
+
+	// public static void main(String args[]) {
+		// public void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
+		
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 //		JPanel go = new JPanel();
 //		JButton goButton = new JButton();
 //		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
@@ -155,23 +244,29 @@ public class gui123{
 //		goButton.setIcon(new ImageIcon("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\Go.png"));
 
 	
+<<<<<<< HEAD
 		while(Services.winingCondiction(playersList)) {
 			System.out.println(playersList.toString());
 				//Start round
+=======
+	// 	while (Services.winingCondiction(playersList)) {
+	// 		System.out.println(playersList.toString());
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 			
-			for (Player currentPlayer:playersList) {
-				if (!Services.winingCondiction(playersList)) {
-					break;
-				}
-				System.out.println(currentPlayer.getPlayerName() + "'s turn");
-				System.out.println("Money: " + currentPlayer.getMoney());
-				System.out.println("Location: " + currentPlayer.getLocation());
-				Services.locationUpdate(currentPlayer);
-				System.out.println("Location: " + currentPlayer.getLocation());
-				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
+	// 		for (Player currentPlayer:playersList) {
+	// 			if (!Services.winingCondiction(playersList)) {
+	// 				break;
+	// 			}
+	// 			System.out.println(currentPlayer.getPlayerName() + "'s turn");
+	// 			System.out.println("Money: " + currentPlayer.getMoney());
+	// 			System.out.println("Location: " + currentPlayer.getLocation());
+	// 			Services.locationUpdate(currentPlayer);
+	// 			System.out.println("Location: " + currentPlayer.getLocation());
+	// 			System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
 				
-				//special location checking
+	// 			//special location checking
 				
+<<<<<<< HEAD
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
@@ -180,51 +275,59 @@ public class gui123{
 					}
 					continue;
 				}
+=======
+	// 			if(currentPlayer.getLocation() == 10) {
+	// 				Services.payJail(currentPlayer);
+	// 			}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
+	// 				UsingRandomCard.humanUseRandomCard(propertiesList,currentPlayer);
+	// 				continue;
+	// 			}
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 
-				//if it is normal property, buying,renting ,building
-				if (currentPlayer.getPlayerNumber()==0) {
-					//Human player turn
-		        	if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
-		        		System.out.println("Do you want to bulid house on this property? (Y/N)");
-						Scanner input = new Scanner(System.in);
-				        String choice = input.nextLine();
-				        if (choice.equalsIgnoreCase("Y")) {
-				        	Services.buildHouse(currentPlayer, propertiesList);
-				        }
+	// 			//if it is normal property, buying,renting ,building
+	// 			if (currentPlayer.getPlayerNumber()==0) {
+	// 				//Human player turn
+	// 	        	if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
+	// 	        		System.out.println("Do you want to bulid house on this property? (Y/N)");
+	// 					Scanner input = new Scanner(System.in);
+	// 			        String choice = input.nextLine();
+	// 			        if (choice.equalsIgnoreCase("Y")) {
+	// 			        	Services.buildHouse(currentPlayer, propertiesList);
+	// 			        }
 					
-					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
-						System.out.println("Do you want to buy this property? (Y/N)");
-						Scanner input = new Scanner(System.in);
-				        String choice = input.nextLine();
-				        if (choice.equalsIgnoreCase("Y")) {
-				        	Services.buyLand(currentPlayer, propertiesList);
-				        }
-					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
-						Services.rent(currentPlayer, propertiesList, playersList);
-					}
-				}else {
-					//AI turn
-						if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
-							if (currentPlayer.getMoney()>=400) {
-								Services.buildHouse(currentPlayer, propertiesList);
-							}
-						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
-							if (currentPlayer.getMoney()>=300) {
-								Services.buyLand(currentPlayer, propertiesList);
-							}	
-						}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
-							Services.rent(currentPlayer, propertiesList, playersList);
-						}
-				}
-				System.out.println("");
+	// 				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+	// 					System.out.println("Do you want to buy this property? (Y/N)");
+	// 					Scanner input = new Scanner(System.in);
+	// 			        String choice = input.nextLine();
+	// 			        if (choice.equalsIgnoreCase("Y")) {
+	// 			        	Services.buyLand(currentPlayer, propertiesList);
+	// 			        }
+	// 				}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
+	// 					Services.rent(currentPlayer, propertiesList, playersList);
+	// 				}
+	// 			}else {
+	// 				//AI turn
+	// 					if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
+	// 						if (currentPlayer.getMoney()>=400) {
+	// 							Services.buildHouse(currentPlayer, propertiesList);
+	// 						}
+	// 					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() == 5) {
+	// 						if (currentPlayer.getMoney()>=300) {
+	// 							Services.buyLand(currentPlayer, propertiesList);
+	// 						}	
+	// 					}else if (propertiesList.get(currentPlayer.getLocation()).getOwner() != currentPlayer.getPlayerNumber()) {
+	// 						Services.rent(currentPlayer, propertiesList, playersList);
+	// 					}
+	// 			}
+	// 			System.out.println("");
 
-			}
-		}
+	// 		}
+	// 	}
 		 
-		//Game ends
+	// 	//Game ends
 		
-		Services.findWinner(playersList, propertiesList);
-		System.out.println("End Game");
+	// 	Services.findWinner(playersList, propertiesList);
+	// 	System.out.println("End Game");
 		
-	} 
+	// } 
 	
