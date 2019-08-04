@@ -157,7 +157,7 @@ public class Services {
 	
 //	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
 //		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
-//			for(Player iPlayer : playerslist) {
+//			for(layer iPlayer : playerslist) {
 //				sellLand(iPlayer, propertieslist, propertyLocation );
 //			}
 //		}
