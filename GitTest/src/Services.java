@@ -171,7 +171,7 @@ public class Services {
 //		System.out.println(finalScore.toString());
 //		for (Player player :playerslist) {
 //			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
-//				System.out.println("Winner is "+ player.getPlayerName());
+//				System.out.println("Winer is "+ player.getPlayerName());
 //				System.out.println(player.getMoney());
 //			}
 //		}
