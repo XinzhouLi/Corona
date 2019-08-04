@@ -2,10 +2,13 @@ import java.util.ArrayList;
 
 public class computerUseRandomCard {
 	
-	
 	//this part will allow the computer player choose the other player's property that has the highest rent money 
+	/**
+	 * Method allows computer player to steal another player's property
+	 * @paramy
+	 */
 	public static int computerUseStealCard(ArrayList<Property> propertyList,Player computerPlayer) {
-		int highestRent=0;
+		int highestRent = 0;
 		Property highestRentProperty=null;
 		for(Property i :propertyList) {
 			if (i.getOwner()!=computerPlayer.getPlayerNumber()&&i.getRent()>highestRent) {
