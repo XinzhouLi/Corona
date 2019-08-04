@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Property {
-    private int Cost = Constant.PROPERTY_PRICE; //cost of a property(the amount they have to pay to buy that property)
+    private int Cost = Constant.PROPERTY_PRICE; //cost of a property 
     private int Building = 0; // number of buildings a property has
     private int Owner = 5; // tests the number of the owner of the property, starts at 5 as it is none of the four players 
     private int rent = Constant.BUILDING_PRICE; // rent they have to pay when landing on property
