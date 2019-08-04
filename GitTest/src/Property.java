@@ -9,88 +9,107 @@ public class Property {
     private String Property_Name;
 
     /**
-     * says everything about a property including position
+     * Method construcs a property's location on the board and its
+     * name
+     * @param position the position of the property 
+     * @param propertyName the name of the property
      */
-    public Property(int position,String PropertyName) { // says everything about a property including position
-		super();
+    public Property(int position, String propertyName) { 
 		this.Position = position;
-		this.Property_Name = PropertyName;
+		this.Property_Name = propertyName;
 	}
 
     /**
-     * gives the position of the property on the map 
+     * Gets the position of the property
+     * @return the position 
      */
 	public int getPosition() { 
 		return Position;
 	}
 
     /**
-     * sets the position of the property on the map
+     * Sets the position of the property on the map
+     * @param position the position of the property
      */
 	public void setPosition(int position) { 
 		Position = position;
 	}
 
     /**
-     *  sets how much a property costs to buy
+     * Sets the price of the property 
+     * @param cost the cost amount 
      */
-	public void setCost(int Cost) {
-    	this.Cost = Cost;
+	public void setCost(int cost) {
+    	this.Cost = cost;
     }
 
     /**
-     *  sets rent of a property
+     * Sets the amount of rent for the property
+     * @param rent the cost amount to rent
      */
     public void setRent(int rent) { 
     	this.rent = rent;
     }
     
+    /**
+     * Sets the name of the property
+     * @param name the name of the property
+     */
     public void setPropertyName(String name) {
     	Property_Name = name;
     }
     
     /**
-     *  gives the amount a property costs
+     * Method gets cost.
+     * @return the cost amount
      */
     public int getCost() { 
     	return Cost;
     }
 
     /**
-     * gives the rent of a property
+     * Gets the rent amount of the property
+     * @return the rent amount
      */
     public int getRent() {
     	return rent;
     }
+
     /**
-     * gets the number of buildings a property has
+     * Gets the number of buildings a property has 
+     * @return the number of buildings
      */
 	public int getBuilding() { 
 		return Building;
 	}
     /**
-     * sets the number of building on a property
+     * Sets the number of buildings a property has
+     * @param building the number of buildings
      */
 	public void setBuilding(int building) { 
 		Building = building;
 	}
     /**
-     * gets owner of a property
+     * Gets owner of the property
+     * @return the owner 
      */
 	public int getOwner() { 
 		return Owner;
 	}
     /**
-     * sets owner of a property 
+     * Sets owner of the property
+     * @param Owner the plyer who owns the property
      */
-	public void setOwner(int Owner) { 
-		this.Owner = Owner;
+	public void setOwner(int owner) { 
+		this.Owner = owner;
 	}
-	
+    
+    /**
+     * Gets name of the property
+     * @return the name of the property
+     */
 	public String getPropertyName() {
 		return Property_Name;
 	}
 
-
-    
 }
