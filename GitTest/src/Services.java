@@ -178,12 +178,6 @@ public class Services {
 //	}
 }
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
-	
-	
 	
 	
 	
