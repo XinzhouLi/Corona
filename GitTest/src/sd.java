@@ -471,7 +471,7 @@ ognames.add("Property 6 ");
 ognames.add("Property 7 ");
 ognames.add("Property 8 ");
 ognames.add("Property 9 ");
-ognames.add("Jail       ");
+ognames.add("Jail        ");
 ognames.add("Property 11");
 ognames.add("Property 12");
 ognames.add("Property 13");
