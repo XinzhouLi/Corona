@@ -62,14 +62,19 @@ public class computerPlayer extends Player{
 	}
 	
 	/**
-	 * 
+	 * Sets the name of the computer player
+	 * @param name the name of the player
 	 */
 	public void setPlayerName(String name) {
 		super.setPlayerName(name);
 	}
 	
+	/**
+	 * Gets the name of the computer player 
+	 * @return the name of the computer player
+	 */
 	public String getPlayerName() {
-		String name=super.getPlayerName();
+		String name = super.getPlayerName();
 		return name;
 	}
 
