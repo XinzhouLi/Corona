@@ -43,38 +43,40 @@ public class randomCard {
 	}
 	
 	/**
-	 * Method will 
+	 * Method will disallow players from having a turn
+	 * @return the player's corresponding number in the list
 	 */
 	public int playerStopCard() {
 		System.out.println("Which player will stop at next turn? Enter value between 0 to 4.");
 		Scanner number = new Scanner(System.in);
 		int playerNumber = number.nextInt();
-		while(playerNumber<0||playerNumber>4)
-		{
+		while(playerNumber<0||playerNumber>4) {
 			System.out.println("Which player will stop at next turn? Enter value between 0 to 4.");
-			number=new Scanner(System.in);
-			playerNumber=number.nextInt();
+			number = new Scanner(System.in);
+			playerNumber = number.nextInt();
 		}
-		System.out.println("player"+number+"will stop at next turn");
+		System.out.println("Player "+ number + " will stop at next turn");
 		return playerNumber;
 	}
 	
-	
-	
+	/**
+	 * Method allows player to rob an owned property of another player
+	 * @return the corresponding number of the property in the property list
+	 */
 	public int posRobCard() {
-		System.out.println("Which property woud you like to take(from 0 to 19)"
-				+ "excepet jail,start location and random.");
+		System.out.println("Which property woud you like to take (from 0 to 19)? "
+				+ "excepet Jail, GO, and Random.");
 		Scanner number=new Scanner(System.in);
 		int propertyNumber=number.nextInt();
-		while(propertyNumber<=START_POSITION
-				||propertyNumber==JAIL
-				||propertyNumber==FIRST_RANDOM
-				||propertyNumber==SECOND_RANDOM
-				||propertyNumber>MAXIMUM_LOCATION)
+		while(propertyNumber <= START_POSITION
+				||propertyNumber == JAIL
+				||propertyNumber == FIRST_RANDOM
+				||propertyNumber == SECOND_RANDOM
+				||propertyNumber > MAXIMUM_LOCATION)
 		{
-			System.out.println("Which property woud you like to take");
-			number=new Scanner(System.in);
-			propertyNumber=number.nextInt();
+			System.out.println("Which property woud you like to take? ");
+			number = new Scanner(System.in);
+			propertyNumber = number.nextInt();
 		}
 		return propertyNumber;
 	}
