@@ -41,5 +41,6 @@ public class computerPlayer extends Player{
 		String name=super.getPlayerName();
 		return name;
 	}
+
 }
 
