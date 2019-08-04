@@ -168,7 +168,7 @@ public class Services {
 //		finalScore.add(playerslist.get(2).getMoney());
 //		finalScore.add(playerslist.get(3).getMoney());
 //		finalScore.sort(null);
-//		System.out.println(finalScore.toString());
+//		System.out.println(finalScore.oString());
 //		for (Player player :playerslist) {
 //			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
 //				System.out.println("Winner is "+ player.getPlayerName());
