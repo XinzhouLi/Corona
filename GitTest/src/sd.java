@@ -8,24 +8,22 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon; 
 import javafx.stage.Stage; 
 import javafx.util.Duration; 
-	import javafx.application.Application;
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
-	import javafx.scene.Scene;
-	import javafx.scene.control.*;
-	import javafx.scene.layout.GridPane;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.*;
-	import javafx.stage.*;
-
+import javafx.stage.*;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
 import javafx.application.*;
 import javafx.application.Application;  
 import javafx.event.ActionEvent;
@@ -342,7 +340,7 @@ import javafx.stage.Stage;
 		    	infoTextField.setText(turn + " Congrats, you rolled a " + newroll);
 		    	align.get(turn).setLocation(align.get(turn).getLocation());
 		    	alskf.add(circs.get(turn), change.changex(align.get(turn).getLocation()), change.changey(align.get(turn).getLocation()));
-		    	
+		    	setTurn(turn);
 		    }
 		});
 
@@ -473,7 +471,7 @@ ognames.add("Property 6 ");
 ognames.add("Property 7 ");
 ognames.add("Property 8 ");
 ognames.add("Property 9 ");
-ognames.add("Jail        ");
+ognames.add("Jail       ");
 ognames.add("Property 11");
 ognames.add("Property 12");
 ognames.add("Property 13");
