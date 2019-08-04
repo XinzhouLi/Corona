@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 
 public class InitialList {
+	/**
+	 * Method initializes a list of players competing in the game
+	 * @return the list of players
+	 */
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing... Please enter your name:");
 		Player p0 = new Player(0);
 		Player p1 = new Player(1);
 		Player p2 = new Player(2);
 		Player p3 = new Player(3);
+
 		ArrayList<Player> playerList =new ArrayList<Player>();
+
 		playerList.add(p0);
 		playerList.add(p1);
 		playerList.add(p2);
@@ -15,6 +21,10 @@ public class InitialList {
 		return playerList;	
 	}
 	
+	/**
+	 * Initializes the properties on the board
+	 * @return the list of properties 
+	 */
 	public static ArrayList<Property> propertiesList() {
 		Property b0 = new Property(0,"Start");
 		Property b1 = new Property(1,"Canada");
@@ -36,7 +46,9 @@ public class InitialList {
 		Property b17 = new Property(17,"India");
 		Property b18 = new Property(18,"United States");
 		Property b19 = new Property(19,"Japan");
+
 		ArrayList<Property> propertiesList = new ArrayList<Property>();
+
 		propertiesList.add(b0);
 		propertiesList.add(b1);
 		propertiesList.add(b2);
@@ -57,6 +69,7 @@ public class InitialList {
 		propertiesList.add(b17);
 		propertiesList.add(b18);
 		propertiesList.add(b19);
+
 		return propertiesList;
 	}
 
