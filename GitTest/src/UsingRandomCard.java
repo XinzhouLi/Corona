@@ -2,19 +2,26 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class UsingRandomCard {
-	//player will get into the jail after he get this card
+	
+	/**
+	 * Method puts player in jail.
+	 * @param player the player that the card affects 
+	 */
 	public static void jailCard(Player player) {
-		System.out.println("Unlucky,go to the jail");
+		System.out.println("How unlucky! You must now go to jail!");
 		player.setLocation(Constant.JAIL);
 	}
 	
-	
-	//player has a chance to take any property he wants except jail,start position
+	/**
+	 * Method allows player to steal another player's property. 
+	 * @return the corresponding property number in the property list
+	 */
 	public static int posStealCard() {
-		System.out.println("Which property woud you like to take(from 0 to 19)"
-				+ "excepet jail,start location and random.");
-		Scanner number=new Scanner(System.in);
+		System.out.println("Which property woud you like to take (from 0 to 19)?"
+				+ " Can't take Jail, GO, or Random.");
+		Scanner number = new Scanner(System.in);
 		int propertyNumber=number.nextInt();
 		while(propertyNumber<=Constant.START_POSITION
 				||propertyNumber==Constant.JAIL
@@ -29,14 +36,19 @@ public class UsingRandomCard {
 		return propertyNumber;
 	}
 	
-	//decide which card will this player get.
+	/**
+	 * Method assigns a random Card to a player. 
+	 * @return the numerical value of the card received.
+	 */
 	public static int reciveCard() {
-		int number=new Random().nextInt(6) + 1;
+		int number = new Random().nextInt(6) + 1;
 		return number;
 	}
 	
-
-	//the player may move to any location he wants
+	/**
+	 * Method lets player move to a different locaiton on the board. 
+	 * @param player the player the move card affects
+	 */
 	public static void moveCard(Player player) {
 		System.out.println("Which location woud you like to go");
 		Scanner number=new Scanner(System.in);
@@ -50,49 +62,58 @@ public class UsingRandomCard {
 		player.setLocation(location);
 	}
 
-	// by the using of rob card, a property of others player becomes the player's property
-	public static void useStealCard(ArrayList<Property> propertyList,Player player,int propertyNumber) {
-		int playerNumber=player.getPlayerNumber();
-		Property property=propertyList.get(propertyNumber);
+	/**
+	 * Method allows player to steal another player's property
+	 * @param propertyList the list of properties on the board
+	 * @param player the player the card affects
+	 * @param propertyNumber the property's corresponding number int he property list
+	 */
+	public static void useStealCard(ArrayList<Property> propertyList, Player player, int propertyNumber) {
+		int playerNumber = player.getPlayerNumber();
+		Property property = propertyList.get(propertyNumber);
 		property.setOwner(playerNumber);
 	}
 	
-	//get money
+	/**
+	 * Method allows player to gain money.
+	 * @param player the player that the card affects
+	 */
 	public static void addMoney(Player player) {
 		player.setMoney(player.getMoney()+Constant.RONDOM_CARD_MONEY_AMOUNT);
 	}
 	
-	//lose money
+	/**
+	 * Method makes player lose money
+	 * @param player
+	 */
 	public static void lostMoney(Player player) {
-		player.setMoney(player.getMoney()-Constant.RONDOM_CARD_MONEY_AMOUNT);
+		player.setMoney(player.getMoney() - Constant.RONDOM_CARD_MONEY_AMOUNT);
 	}
 		
-		
-	//automatically choose the card and use the card.
-	public static void humanUseRandomCard(ArrayList<Property> propertyList,Player player) {
-		int luckNumber=reciveCard();
-		if (luckNumber==1) {
+	/**
+	 * Method will plater to use any of the Random Cards they may possess. 
+	 * @param propertyList the list of properties 
+	 * @param player the player the method affects. 
+	 */	
+	public static void humanUseRandomCard(ArrayList<Property> propertyList, Player player) {
+		int luckNumber = reciveCard();
+		if (luckNumber == 1) {
 			jailCard(player);
-		}
-		else if(luckNumber==2) {
+		} else if(luckNumber == 2) {
 			int propertyNumber=posStealCard();
-			useStealCard(propertyList,player,propertyNumber);
-		}
-		else if(luckNumber==3) {
+			useStealCard(propertyList, player, propertyNumber);
+		} else if(luckNumber == 3) {
 			System.out.println("do not get any card, but recive the money(200)");
 			addMoney(player);
-		}
-		else if(luckNumber==4) {
+		} else if(luckNumber == 4) {
 			System.out.println("do not get any card and lose the money(200)");
 			lostMoney(player);
-		}
-		else if(luckNumber==5){
+		} else if(luckNumber == 5){
 			moveCard(player);
-		}
-		else {
+		} else {
 			System.out.println("Recive 200 money a rob card");
 			int propertyNumber=posStealCard();
-			useStealCard(propertyList,player,propertyNumber);
+			useStealCard(propertyList, player, propertyNumber);
 			addMoney(player);
 		}
 	}
