@@ -47,12 +47,11 @@ public class computerUseRandomCard {
 		
 	}
 	
-	//if there is a property that no one owns the computer will move to that property,so that he/she can buy the property
-	// if all the property is owned by players, the computer will move to his/her own property,so that she/he can build his property
 	/**
-	 * 
-	 * @param propertyList
-	 * @param computerPlayer
+	 * Computer moves to an unowned property. If all spaces owned 
+	 * by opposing player, move to own property
+	 * @param propertyList the list of properties
+	 * @param computerPlayer the computer player
 	 */
 	public static void computerUseMoveCard(ArrayList<Property> propertyList,Player computerPlayer) {
 		
@@ -69,8 +68,7 @@ public class computerUseRandomCard {
 					break;
 				}
 			}
-		}
-		else {
+		} else {
 			for(Property i:propertyList) {
 				if(i.getOwner()==computerPlayer.getPlayerNumber()) {
 					computerPlayer.setLocation(i.getPosition());
@@ -83,38 +81,33 @@ public class computerUseRandomCard {
 	}
 	
 	
-	//exactly same as the human random card, but instead the computer player will use move card and steal card automatically.
+	/**
+	 * Computer will use any random card in their possession automatically,
+	 * such as Steal and Move card.
+	 * @param propertyList the list of properties
+	 * @param computerPlayer the computer player
+	 */
 	public static void computerUseRandom(ArrayList<Property> propertyList,Player computerPlayer) {
 		int luckNumber=UsingRandomCard.reciveCard();
 		
 		if (luckNumber==1) {
 			UsingRandomCard.jailCard(computerPlayer);
-		}
-		
-		else if(luckNumber==2) {
+		} else if(luckNumber==2) {
 			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
 			Property chosenProperty=propertyList.get(propertyNumber);
 			System.out.println(""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName());
 			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
-		}
-		
-		else if(luckNumber==3) {
+		} else if(luckNumber==3) {
 			System.out.println("do not get any card, but recive the money(200)");
 			UsingRandomCard.addMoney(computerPlayer);
-		}
-		
-		else if(luckNumber==4) {
+		} else if(luckNumber==4) {
 			System.out.println("do not get any card and lose the money(200)");
 			UsingRandomCard.lostMoney(computerPlayer);
-		}
-		
-		else if(luckNumber==5){
+		} else if(luckNumber==5){
 			System.out.println("Computer player"+computerPlayer.getPlayerNumber()+
 								"Recive a move card");
 			computerUseMoveCard(propertyList,computerPlayer);
-		}
-		
-		else {
+		} else {
 			System.out.println(""+computerPlayer.getPlayerName()+ "recieves 200 money and robs a card");
 			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
 			Property chosenProperty=propertyList.get(propertyNumber);
