@@ -11,7 +11,7 @@ public class Player{
 	
 	/**
 	 * Constructs player's info, such as money, location, and number.
-	 * @param PlayerNumber the player's number within the game
+	 * @param playerNumber the player's number within the game
 	 */
 	public Player(int playerNumber) { 
 		setMoney(Money);
@@ -19,8 +19,7 @@ public class Player{
 		setPlayerNumber(playerNumber);
 		if (playerNumber == 0) {
 			setHumanPlayerName();
-		}
-		else {
+		} else {
 			setPlayerName("AI_" + playerNumber);
 		}
 	}
