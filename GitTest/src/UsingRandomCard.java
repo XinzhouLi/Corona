@@ -2,7 +2,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/** UsingRandomCard class implements the effects of 
+ * the six random cards available in-game, including
+ * the jail, move, steal, gain/lose money, etcetera.
+*/
 public class UsingRandomCard {
 	
 	/**
