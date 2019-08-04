@@ -8,22 +8,24 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon; 
 import javafx.stage.Stage; 
 import javafx.util.Duration; 
-import javafx.application.Application;
+	import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
+	import javafx.scene.Scene;
+	import javafx.scene.control.*;
+	import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.TriangleMesh;
 import javafx.scene.*;
-import javafx.stage.*;
+	import javafx.stage.*;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 import javafx.application.*;
 import javafx.application.Application;  
 import javafx.event.ActionEvent;
@@ -61,7 +63,7 @@ import javafx.stage.Stage;
 		//the buttons used
 			static Button infos = new Button("information");
 			static Button buy = new Button("Buy");
-			static Button sell = new Button("Sell");
+			static Button endturn = new Button("endturn");
 			static Button build = new Button("Build House");
 			static Button random = new Button("Random");
 			static Button roll = new Button("Roll Dice");
@@ -101,7 +103,6 @@ import javafx.stage.Stage;
 	public void start(Stage grid) throws Exception {
 	grid.setTitle("Monopoly Board"); //grid title
 	
-	you = true;
 	//adding circles
 	circs.add(circle);
 	circs.add(circle2);
@@ -161,7 +162,7 @@ import javafx.stage.Stage;
 	t.setPrefSize(btnWidth, btnHeight);
 	infos.setPrefSize(btnWidth, btnHeight);
 	buy.setPrefSize(btnWidth, btnHeight);
-	sell.setPrefSize(btnWidth, btnHeight);
+	endturn.setPrefSize(btnWidth, btnHeight);
 	build.setPrefSize(btnWidth, btnHeight);
 	random.setPrefSize(btnWidth, btnHeight);
 	roll.setPrefSize(btnWidth, btnHeight);
@@ -340,30 +341,71 @@ import javafx.stage.Stage;
 		    	infoTextField.setText(turn + " Congrats, you rolled a " + newroll);
 		    	align.get(turn).setLocation(align.get(turn).getLocation());
 		    	alskf.add(circs.get(turn), change.changex(align.get(turn).getLocation()), change.changey(align.get(turn).getLocation()));
-		    	setTurn(turn);
+		    	
 		    }
 		});
-
-	if(you = false) {
-	alskf.add(circle, 4, 0);
-	alskf.add(circle2, 1, 0);
-	alskf.add(circle3, 2, 0);
-	alskf.add(circle4, 3, 0);
-	}
-	else 
-	{
+		buy.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent e) {
+				int location=align.get(turn).getLocation();
+				int money = align.get(turn).getMoney();
+				if (align.get(turn).getMoney()>=200) {
+					adfs.get(location).setOwner(align.get(turn).getPlayerNumber());
+					money-=200;
+					align.get(turn).setMoney(money);
+			    	infoTextField.setText("Congrats you bought it!");
+				}else {
+			    	infoTextField.setText("Sorry you dont have enought money");
+			    	}
+				setColor();
+		    	
+		    }
+		});
+		endturn.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent e) {
+		    	int a = turn + 1;
+		    	int newturn = a%4;
+		    	turn = newturn;
+		    	infoTextField.setText("you have ended your turn its now player" + turn + "'s turn");
+		    	setColor();
+		    }
+		});
+		infos.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent e) {
+		    	infoTextField.setText("instructions");
+		    }
+		});
+//		random.setOnAction(new EventHandler<ActionEvent>() {
+//		    @Override
+//    	String text = UsingRandomCard.humanUseRandomCard(adfs, align.get(turn));
+//    	infoTextField.setText(text);
+//		    public void handle(ActionEvent e) {
+//
+//		    }
+//		});
+		
+		build.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent e) {
+		    	String text = Services.buildHouse(align.get(turn),adfs);
+		    	infoTextField.setText(text);
+		    }
+		});
+		
 		alskf.add(circle, change.changex(align.get(0).getLocation()), change.changey(align.get(0).getLocation()));
 		alskf.add(circle2, change.changex(align.get(1).getLocation()), change.changey(align.get(1).getLocation()));
 		alskf.add(circle3, change.changex(align.get(2).getLocation()), change.changey(align.get(2).getLocation()));
 		alskf.add(circle4, change.changex(align.get(3).getLocation()), change.changey(align.get(3).getLocation()));
-	}
+
 
 	
 	//setting padding and adding buttons to the coordinates we want
 		alskf.setPadding(new Insets (25, 25, 25, 25));
 		alskf.add(infos, 13, 1);
 		alskf.add(buy, 12, 1);
-		alskf.add(sell, 11, 1);
+		alskf.add(endturn, 11, 1);
 		alskf.add(build, 13, 2);
 		alskf.add(random, 12, 2);
 		alskf.add(roll, 11, 2);
@@ -461,29 +503,10 @@ public static void setColor() {
 		
 
 
-ognames.add("Go          ");
-ognames.add("Property 1 ");
-ognames.add("Property 2 ");
-ognames.add("Property 3 ");
-ognames.add("Property 4 ");
-ognames.add("Random 1   ");
-ognames.add("Property 6 ");
-ognames.add("Property 7 ");
-ognames.add("Property 8 ");
-ognames.add("Property 9 ");
-ognames.add("Jail        ");
-ognames.add("Property 11");
-ognames.add("Property 12");
-ognames.add("Property 13");
-ognames.add("Property 14");
-ognames.add("Random 2    ");
-ognames.add("Property 16");
-ognames.add("Property 17");
-ognames.add("Property 18");
-ognames.add("Property 19");
 
 
 launch(args);
 }
 }
+
 
