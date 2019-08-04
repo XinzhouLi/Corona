@@ -2,40 +2,44 @@ import java.util.ArrayList;
 
 public class computerUseRandomCard {
 	
-	//this part will allow the computer player choose the other player's property that has the highest rent money 
 	/**
 	 * Method allows computer player to steal another player's property
-	 * @paramy
+	 * @param propertyList the list of properties 
+	 * @param computerPlayer the computer player
+	 * @return the position of the property with the highest rent 
 	 */
-	public static int computerUseStealCard(ArrayList<Property> propertyList,Player computerPlayer) {
+	public static int computerUseStealCard(ArrayList<Property> propertyList, Player computerPlayer) {
 		int highestRent = 0;
-		Property highestRentProperty=null;
-		for(Property i :propertyList) {
+		Property highestRentProperty = null;
+		for(Property i : propertyList) {
 			if (i.getOwner()!=computerPlayer.getPlayerNumber()&&i.getRent()>highestRent) {
-				highestRent=i.getRent();
+				highestRent = i.getRent();
 				}
 			}
 		for(Property i:propertyList) {
-			if(i.getRent()==highestRent&&i.getOwner()!=computerPlayer.getPlayerNumber()) {
-				highestRentProperty=i;
+			if(i.getRent() == highestRent && i.getOwner() != computerPlayer.getPlayerNumber()) {
+				highestRentProperty = i;
 			}
 		}
 		return highestRentProperty.getPosition();
 	}
 	
-	
-	
-	//this part of program allow the computer check if there are any property that do not owned by any player
-	public static Boolean haveEmptyProperty(ArrayList<Property> propertyList,Player computerPlayer) {
-		Boolean result=false;
+	/**
+	 * Computer checks if there are any properties now owned by the player
+	 * @param propertyList the list of properties on the board 
+	 * @param computerPlayer the computer player's information
+	 * @return the boolean when property ownership by player is found  
+	 */
+	public static Boolean haveEmptyProperty(ArrayList<Property> propertyList, Player computerPlayer) {
+		Boolean result = false;
 		for(Property i:propertyList) {
-			if(i.getOwner()==5
-			&&i.getPosition()!=Constant.JAIL
-			&&i.getPosition()!=Constant.FIRST_RANDOM
-			&&i.getPosition()!=Constant.SECOND_RANDOM
-			&&i.getPosition()!=Constant.START_POSITION) 
+			if(i.getOwner() == 5
+			&& i.getPosition() != Constant.JAIL
+			&& i.getPosition() != Constant.FIRST_RANDOM
+			&& i.getPosition() != Constant.SECOND_RANDOM
+			&& i.getPosition() != Constant.START_POSITION) 
 			{
-					result=true;
+					result = true;
 					break;
 			}
 		}
@@ -43,10 +47,13 @@ public class computerUseRandomCard {
 		
 	}
 	
-	
-	
 	//if there is a property that no one owns the computer will move to that property,so that he/she can buy the property
 	// if all the property is owned by players, the computer will move to his/her own property,so that she/he can build his property
+	/**
+	 * 
+	 * @param propertyList
+	 * @param computerPlayer
+	 */
 	public static void computerUseMoveCard(ArrayList<Property> propertyList,Player computerPlayer) {
 		
 		if(haveEmptyProperty(propertyList,computerPlayer)) {
