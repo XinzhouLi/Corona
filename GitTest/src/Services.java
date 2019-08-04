@@ -157,7 +157,7 @@ public class Services {
 	
 //	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
 //		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
-//			for(layer iPlayer : playerslist) {
+//			for(Player iPlayer : playerslist) {
 //				sellLand(iPlayer, propertieslist, propertyLocation );
 //			}
 //		}
@@ -171,12 +171,13 @@ public class Services {
 //		System.out.println(finalScore.toString());
 //		for (Player player :playerslist) {
 //			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
-//				System.out.println("Winer is "+ player.getPlayerName());
+//				System.out.println("Winner is "+ player.getPlayerName());
 //				System.out.println(player.getMoney());
 //			}
 //		}
 //	}
 }
+	
 	
 	
 	
