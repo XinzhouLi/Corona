@@ -479,7 +479,7 @@ public static void setColor() {
 }
 	public static void main(String[] args) {
 		
-		//adding the map buttons to the buttons arraylist
+		//adding the map buttons to the buttons arraylis
 		buttons.add(a);
 		buttons.add(b);
 		buttons.add(c);
