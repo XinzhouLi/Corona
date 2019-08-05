@@ -1,15 +1,19 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+/** Contains general functions that can be enacted 
+ * upon the player during the game, such as location, 
+ * rent, buying, selling, etcetera;
+ * facilitates the rules of the game. 
+ */
 public class Services {
-	
 	/**
 	 * Updates location of the player. Allows player to roll
 	 * a six-side die.
 	 * @param p Holds info on player
 	 */
 	public static int locationUpdate(Player p) { 
-		Random rand=new Random();
+		Random rand = new Random();
 		int diceNumber=rand.nextInt(7);
 		while(diceNumber==0) {
 			diceNumber=rand.nextInt(7);

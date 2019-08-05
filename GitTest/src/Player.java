@@ -1,8 +1,12 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Player{
-	private int Money= Constant.INITAIAL_MONEY; //Player's money; will default to 1500 at the start of the game
+/** Represents all information of the player,
+ * including their money, location, properties, 
+ * numbers, name, and ways to manipulate that data. 
+*/
+public class Player {
+	private int Money = Constant.INITAIAL_MONEY; //Player's money; will default to 1500 at the start of the game
 	private int Location = 0;
 	private ArrayList<String> Property_Names = new ArrayList<String>();
 	private int PlayerNumber;
