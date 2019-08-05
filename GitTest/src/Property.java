@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/** Represents all information on the properties
+ * on the board 
+ */
 public class Property {
     private int Cost = Constant.PROPERTY_PRICE; //cost of a property 
     private int Building = 0; // number of buildings a property has
