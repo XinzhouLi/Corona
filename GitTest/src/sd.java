@@ -49,7 +49,7 @@ import javafx.stage.Stage;
 
 
 
-	public class sdf extends Application {
+	public class sd extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
 		static private int infoWidth = 400; //width of info text bo
