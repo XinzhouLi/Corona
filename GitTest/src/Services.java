@@ -1,17 +1,23 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+/** Represents the actions that can be enacted upon a player 
+ * during a game, such as a dice rolling, selling land,
+ * buying land, building houses, etcetera. 
+*/
 public class Services {
 	
 	/**
 	 * Updates location of the player. Allows player to roll
 	 * a six-side die.
 	 * @param p Holds info on player
+	 * @param diceNumber the number that will be rolled by the dice 
+	 * @return the number rolled by dice
 	 */
-	//
 	
 	//Use for Junit Test. due to can not get the random number.Location must between 0 and 19()
-	public static int locationUpdate(Player p,int diceNumber) { 
+	public static int locationUpdate(Player p, int diceNumber) { 
 		int location=p.getLocation();
 		location+=diceNumber;
 		System.out.println("Rolled a " + diceNumber);
@@ -20,14 +26,18 @@ public class Services {
 		return diceNumber;
 	}
 	
+	/** Updates the player's location on the map.
+	 * @param p the player
+	 * @return the number value of dice roll 
+	 */
 	public static int locationUpdate(Player p) { 
-		Random rand=new Random();
-		int diceNumber=rand.nextInt(7);
-		while(diceNumber==0) {
-			diceNumber=rand.nextInt(7);
+		Random rand = new Random();
+		int diceNumber = rand.nextInt(7);
+		while(diceNumber == 0) {
+			diceNumber = rand.nextInt(7);
 		}
-		int location=p.getLocation();
-		location+=diceNumber;
+		int location = p.getLocation();
+		location += diceNumber;
 		System.out.println("Rolled a " + diceNumber);
 		location = location % 20;
 		p.setLocation(location);
@@ -37,26 +47,25 @@ public class Services {
 
 	/**
 	 * Method transfers one player's funds to another player's bank in the form of rent.
-	 * @param player Holds info on player. 
-	 * @param propertyList Hold ArrayList of properties 
-	 * @param propertyList Hold ArrayList of players 
+	 * @param player the player playing the game 
+	 * @param propertyList the list of properties on the board
+	 * @param playersList the list of players in the game 
 	 */
 	
-	public static void rent(Player player,ArrayList<Property> propertyList,ArrayList<Player> playersList) {
+	public static void rent(Player player, ArrayList<Property> propertyList, ArrayList<Player> playersList) {
 		int location=player.getLocation();
 		Player landOwner = searchPlayer(location, propertyList, playersList);
 		System.out.println(player.getPlayerName()+" pays "+propertyList.get(location).getRent()+" to "+landOwner.getPlayerName());
-		Transfer(player,landOwner,propertyList.get(location).getRent());
+		Transfer(player, landOwner, propertyList.get(location).getRent());
 		System.out.println("Rent paid!");
 		
 	}
 	/**
-	 * Transfers funds from the landOwner to another player. 
+	 * Transfers funds from the owner of the land to another player. 
 	 * @param a Holds info on Player 
 	 * @param landOwner Holds info on who owns the land 
-	 * @param moenyAmount holds info on the amount of money 
+	 * @param moneyAmount holds info on the amount of money 
 	 */
-	
 	public static void Transfer(Player currentPlay,Player landOwner, int moneyAmount) {
 		currentPlay.setMoney(currentPlay.getMoney() - moneyAmount);
 		landOwner.setMoney(landOwner.getMoney() + moneyAmount);
@@ -64,8 +73,6 @@ public class Services {
 	/**
 	 * Public, static method that makes player pay jailer. 
 	 * @param player Holds information on player.
-	 * @param landInformation
-	 * @param propertyList
 	 */
 	
 	public static void payJail(Player player) {
