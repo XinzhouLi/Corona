@@ -1,19 +1,27 @@
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-/** Contains general functions that can be enacted 
- * upon the player during the game, such as location, 
- * rent, buying, selling, etcetera;
- * facilitates the rules of the game. 
- */
 public class Services {
+	
 	/**
 	 * Updates location of the player. Allows player to roll
 	 * a six-side die.
 	 * @param p Holds info on player
 	 */
+	//
+	
+	//Use for Junit Test. due to can not get the random number.Location must between 0 and 19()
+	public static int locationUpdate(Player p,int diceNumber) { 
+		int location=p.getLocation();
+		location+=diceNumber;
+		System.out.println("Rolled a " + diceNumber);
+		location = location % 20;
+		p.setLocation(location);
+		return diceNumber;
+	}
+	
 	public static int locationUpdate(Player p) { 
-		Random rand = new Random();
+		Random rand=new Random();
 		int diceNumber=rand.nextInt(7);
 		while(diceNumber==0) {
 			diceNumber=rand.nextInt(7);
@@ -25,12 +33,15 @@ public class Services {
 		p.setLocation(location);
 		return diceNumber;
 	}
+	
+
 	/**
 	 * Method transfers one player's funds to another player's bank in the form of rent.
 	 * @param player Holds info on player. 
 	 * @param propertyList Hold ArrayList of properties 
 	 * @param propertyList Hold ArrayList of players 
 	 */
+	
 	public static void rent(Player player,ArrayList<Property> propertyList,ArrayList<Player> playersList) {
 		int location=player.getLocation();
 		Player landOwner = searchPlayer(location, propertyList, playersList);
@@ -93,7 +104,7 @@ public class Services {
 		Property currentProperty = properties.get(player.getLocation());
 		String text = "";
 		if (player.getMoney()>=150) {
-			properties.get(player.getLocation()).setOwner(player.getPlayerNumber());
+//			properties.get(player.getLocation()).setOwner(player.getPlayerNumber());
 			money-=150;
 			player.setMoney(money);
 			currentProperty.setBuilding(currentProperty.getBuilding() + 1);
@@ -126,7 +137,7 @@ public class Services {
 			properties.get(propertyLocation).setOwner(5);
 		}else {
 			System.out.println("That property does not belong to you");
-			text = "That property does not belond to you";
+			text = "That property does not belong to you";
 		}
 		return text;
 	}
@@ -172,7 +183,7 @@ public class Services {
 //		finalScore.add(playerslist.get(2).getMoney());
 //		finalScore.add(playerslist.get(3).getMoney());
 //		finalScore.sort(null);
-//		System.out.println(finalScore.oString());
+//		System.out.println(finalScore.toString());
 //		for (Player player :playerslist) {
 //			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
 //				System.out.println("Winner is "+ player.getPlayerName());
