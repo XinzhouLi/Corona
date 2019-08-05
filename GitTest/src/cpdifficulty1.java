@@ -67,6 +67,46 @@ public class cpdifficulty1 extends computerPlayer{
 			UsingRandomCard.addMoney(computerPlayer);
 		}
 	}
+	public static void GUIcomputerUseRandom(ArrayList<Property> propertyList,Player computerPlayer,String infotext) {
+		int luckNumber=UsingRandomCard.reciveCard();
+		if (luckNumber==1) {
+			infotext+=computerPlayer.getPlayerName()+"go tot the jail";
+			UsingRandomCard.jailCard(computerPlayer);
+		}
+		
+		else if(luckNumber==2) {
+			infotext+="Get a steal property card";
+			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
+			Property chosenProperty=propertyList.get(propertyNumber);
+			infotext+=""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
+			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
+		}
+		
+		else if(luckNumber==3) {
+			infotext+=computerPlayer.getPlayerName()+"do not get any card, but recive the money(200)";
+			UsingRandomCard.addMoney(computerPlayer);
+		}
+		
+		else if(luckNumber==4) {
+			infotext+=computerPlayer.getPlayerName()+"do not get any card and lose the money(200)";
+			UsingRandomCard.lostMoney(computerPlayer);
+		}
+		
+		else if(luckNumber==5){
+			infotext+=computerPlayer.getPlayerNumber()+
+								"Recive a move card";
+			computerUseMoveCard(propertyList,computerPlayer);
+		}
+		
+		else {
+			infotext+=""+computerPlayer.getPlayerName()+"Recive 200 money a rob card";
+			int propertyNumber=computerUseStealCard(propertyList,computerPlayer);
+			Property chosenProperty=propertyList.get(propertyNumber);
+			infotext+=""+computerPlayer.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
+			UsingRandomCard.useStealCard(propertyList,computerPlayer,propertyNumber);
+			UsingRandomCard.addMoney(computerPlayer);
+		}
+	}
 	
 	
 }
