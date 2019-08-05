@@ -118,7 +118,7 @@ import javafx.stage.Stage;
 	//coloring circles
 	circle.setFill(Color.BLUE);
 	circle2.setFill(Color.RED);
-	circle3.setFill(Color.ORANGE);
+	circle3.setFill(Color.Green);
 	circle4.setFill(Color.GOLD);
 
 	//setting circles radiuses
@@ -510,24 +510,25 @@ public static void correctLocation() {
 	}
 }
 
-// colors the properties based on who owns them
+//colors the properties based on who owns them
 public static void setColor() {
-	for(Property a : propertiesList) {
+	for(Property a : properties) {
 		if(a.getOwner() == 0) {
-			buttons.get(a.getPosition()).setTextFill(Color.RED);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
 		}
 		if(a.getOwner() == 1) {
-			buttons.get(a.getPosition()).setTextFill(Color.ALICEBLUE);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Red");
 		}
 		if(a.getOwner() == 2) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKKHAKI);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Green");
 		}
 		if(a.getOwner() == 3) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKORANGE);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
 		}
 		if(a.getOwner() == 5) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKGREEN);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: White");
 		}
+		
 	}
 }
 	public static void main(String[] args) {
