@@ -13,7 +13,12 @@ import javafx.geometry.Insets;
 import javafx.stage.Stage;
 	import javafx.scene.Scene;
 	import javafx.scene.control.*;
-	import javafx.scene.layout.GridPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,6 +27,7 @@ import javafx.scene.shape.TriangleMesh;
 import javafx.scene.*;
 	import javafx.stage.*;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -52,12 +58,12 @@ import javafx.stage.Stage;
 	public class sd extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
-		static private int infoWidth = 400; //width of info text bo
-		static private int infoHeight = 350; //height of info text box 
-		static ArrayList<Player> align = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
-		static ArrayList<Property> properties = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
+		static private int infoWidth = 500; //width of info text box
+		static private int infoHeight = 200; //height of info text box 
+		static private String infoText = "";
+		static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
+		static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
 		static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
-		static boolean you;
 		static private int turn = 0; // whose turn it is 0 means it is first players turn
 		
 		//the buttons used
@@ -68,30 +74,30 @@ import javafx.stage.Stage;
 			static Button random = new Button("Random");
 			static Button roll = new Button("Roll Dice");
 			static Button a = new Button("Go          ");
-			static Button b = new Button("Property 1 ");
-			static Button c = new Button("Property 2 ");
-			static Button d = new Button("Property 3 ");
-			static Button e = new Button("Property 4 ");
+			static Button b = new Button(propertiesList.get(1).getPropertyName());
+			static Button c = new Button(propertiesList.get(2).getPropertyName());
+			static Button d = new Button(propertiesList.get(3).getPropertyName());
+			static Button e = new Button(propertiesList.get(4).getPropertyName());
 			static Button f = new Button("Random 1   ");
-			static Button g = new Button("Property 6 ");
-			static Button h = new Button("Property 7 ");
-			static Button i = new Button("Property 8 ");
-			static Button j = new Button("Property 9 ");
+			static Button g = new Button(propertiesList.get(6).getPropertyName());
+			static Button h = new Button(propertiesList.get(7).getPropertyName());
+			static Button i = new Button(propertiesList.get(8).getPropertyName());
+			static Button j = new Button(propertiesList.get(9).getPropertyName());
 			static Button k = new Button("Jail        ");
-			static Button l = new Button("Property 11");
-			static Button m = new Button("Property 12");
-			static Button n = new Button("Property 13");
-			static Button o = new Button("Property 14");
+			static Button l = new Button(propertiesList.get(11).getPropertyName());
+			static Button m = new Button(propertiesList.get(12).getPropertyName());
+			static Button n = new Button(propertiesList.get(13).getPropertyName());
+			static Button o = new Button(propertiesList.get(14).getPropertyName());
 			static Button p = new Button("Random 2    ");
-			static Button q = new Button("Property 16");
-			static Button r = new Button("Property 17");
-			static Button s = new Button("Property 18");
-			static Button t = new Button("Property 19");
+			static Button q = new Button(propertiesList.get(16).getPropertyName());
+			static Button r = new Button(propertiesList.get(17).getPropertyName());
+			static Button s = new Button(propertiesList.get(18).getPropertyName());
+			static Button t = new Button(propertiesList.get(19).getPropertyName());
 			static Circle circle = new Circle();
 			static Circle circle2 = new Circle();
 			static Circle circle3 = new Circle();
 			static Circle circle4 = new Circle();
-			
+			public boolean ii = false;
 			//setter for setting whose turn it is
 			public static void setTurn(int a) {
 				if(a >= 0 && a <= 3) {
@@ -122,23 +128,29 @@ import javafx.stage.Stage;
 	circle4.setRadius(5);
 	
 	// the gridpane I used
-	GridPane alskf = new GridPane();
+	BorderPane borderPane = new BorderPane();
+	GridPane gridPane = new GridPane();
+	AnchorPane anchorPane = new AnchorPane();
+	borderPane.setCenter(gridPane);
+	
 	
 	//gonna be in the center
-	alskf.setAlignment(Pos.CENTER);
+	gridPane.setAlignment(Pos.CENTER);
 	
 	//spacing between the objects is 10
-	alskf.setHgap(10);
-	alskf.setVgap(10);
+	gridPane.setHgap(10);
+	gridPane.setVgap(10);
 	
 	//information label and text settings
 	Label info = new Label("Information");
-	alskf.add(info, 10, 8);
-	TextField infoTextField = new TextField();
-	infoTextField.setPrefSize(800, infoHeight);
-	alskf.add(infoTextField, 12, 9);
 	
-	
+	Label infoTextField = new Label();
+	infoTextField.setWrapText(true);
+	infoTextField.setStyle("-fx-background-color: white;");;
+	infoTextField.setPrefSize(infoWidth, infoHeight);
+	borderPane.setBottom(infoTextField);
+	borderPane.setAlignment(infoTextField, Pos.CENTER);
+
 	//setting the buttons to the width and height we want
 	a.setPrefSize(btnWidth, btnHeight);
 	b.setPrefSize(btnWidth, btnHeight);
@@ -173,8 +185,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-//		    	printMessage.setFill(Color.FIREBRICK);
-//		        printMessage.setText("Go button was pressed. Hurray!");
+
 		        infoTextField.setText("Go square: The Go square cannot be bought or sold, every time you pass this square you get $200!");
 		        
 		    }
@@ -334,117 +345,177 @@ import javafx.stage.Stage;
 		});
 		
 		// moves a players circle relative to the map depending on whose turn it is
+		
+
 		roll.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	int newroll = Services.locationUpdate(align.get(turn));
-		    	infoTextField.setText(turn + " Congrats, you rolled a " + newroll);
-		    	align.get(turn).setLocation(align.get(turn).getLocation());
-		    	alskf.add(circs.get(turn), change.changex(align.get(turn).getLocation()), change.changey(align.get(turn).getLocation()));
+		    	roll.setDisable(true);
+		    	int presentLocation = playersList.get(turn).getLocation();
+		    	int newroll = Services.locationUpdate(playersList.get(turn));
+		    	String newtext1 = Services.checkGo(presentLocation, playersList.get(turn));
+		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
+		    	infoTextField.setText(infoText);
+		    	playersList.get(turn).setLocation(playersList.get(turn).getLocation());
 		    	
+		    	//bigproblem
+		    	if (playersList.get(turn).getLocation() == 10) {
+					Services.payJail(playersList.get(turn));
+					infoText=turn + "You are in jail, lose 50 dollar.\n";
+					infoTextField.setText(infoText);
+				}else if (propertiesList.get(playersList.get(turn).getLocation()).getOwner() != playersList.get(turn).getPlayerNumber() && propertiesList.get(playersList.get(turn).getLocation()).getOwner() != 5) {
+					Services.rent(playersList.get(turn), propertiesList, playersList);
+					infoText = infoText +playersList.get(turn).getPlayerName()+" pays "+propertiesList.get(playersList.get(turn).getLocation()).getRent()+" to "+Services.searchPlayer(playersList.get(turn).getLocation(), propertiesList, playersList).getPlayerName()+"\n";
+					infoTextField.setText(infoText);
+				}
+		    	gridPane.getChildren().remove(circs.get(turn));
+		    	gridPane.add(circs.get(turn), change.changex(playersList.get(turn).getLocation()), change.changey(playersList.get(turn).getLocation()));
+
 		    }
 		});
 		buy.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-				int location=align.get(turn).getLocation();
-				int money = align.get(turn).getMoney();
-				if (align.get(turn).getMoney()>=200) {
-					properties.get(location).setOwner(align.get(turn).getPlayerNumber());
-					money-=200;
-					align.get(turn).setMoney(money);
-			    	infoTextField.setText("Congrats you bought it!");
-				}else {
-			    	infoTextField.setText("Sorry you dont have enought money");
-			    	}
-				setColor();
-		    	
+		    	buy.setDisable(true);
+		    	build.setDisable(true);
+		    	if (propertiesList.get(playersList.get(turn).getLocation()).getOwner() == 5&&
+		    		!(playersList.get(turn).getLocation()==5)&&
+		    		!(playersList.get(turn).getLocation()==15)&&
+		    		!(playersList.get(turn).getLocation()==0)&&
+		    		!(playersList.get(turn).getLocation()==10)){
+		    			infoText = infoText + "You have bought "+propertiesList.get(playersList.get(turn).getLocation()).getPropertyName()+".\n";
+		    			infoTextField.setText(infoText);
+			        	Services.buyLand(playersList.get(turn), propertiesList);
+			        	setColor();
+		    	}else {
+		    		infoText = infoText + "You can not buy this property..\n";
+					infoTextField.setText(infoText);
+				}
 		    }
 		});
 		endturn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
+		    	roll.setDisable(false);
+		    	buy.setDisable(false);
+		    	build.setDisable(false);
+		    	random.setDisable(false);
+		    	infoText="";
 		    	int a = turn + 1;
 		    	int newturn = a%4;
 		    	turn = newturn;
-		    	infoTextField.setText("you have ended your turn its now player" + turn + "'s turn");
+		    	infoText = infoText + "you have ended your turn its now player" + turn + "'s turn\n";
+		    	infoTextField.setText(infoText);
 		    	setColor();
+		    	if (Services.winingCondiction(playersList)) {
+					//jump to next scene and end game
+				}
 		    }
 		});
 		infos.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	infoTextField.setText("Player name: " + align.get(turn).getPlayerName());
-		    	infoTextField.setText("Player number: " + align.get(turn).getPlayerNumber());
-		    	infoTextField.setText("Player location: " + align.get(turn).getLocation());
-		    	infoTextField.setText("Player money: " + align.get(turn).getMoney());
-		    	infoTextField.setText("Player properties: " + align.get(turn).getProperties());
-		    	
+		    	infoTextField.setText("Please, pressing roll first!!!");
 		    }
 		});
 
+		random.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				if (playersList.get(turn).getLocation()==15||
+					playersList.get(turn).getLocation()==5) {
+					//use random card
+				}else {
+					random.setDisable(true);
+					infoText = infoText + "You do not have chance to use random card.\n";
+					infoTextField.setText(infoText);
+					
+				}
+	    }
+	});
 		
 		build.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	String text = Services.buildHouse(align.get(turn),properties);
-		    	infoTextField.setText(text);
+		    	
+		    	build.setDisable(true);
+				if (propertiesList.get(playersList.get(turn).getLocation()).getOwner() == playersList.get(turn).getPlayerNumber()) {
+
+			        	Services.buildHouse(playersList.get(turn), propertiesList);
+			        	buy.setDisable(true);
+				}else {
+					infoText = infoText + "This property does not belong to you.\n";
+					infoTextField.setText(infoText);
+				}
 		    }
 		});
 		
-		alskf.add(circle, change.changex(align.get(0).getLocation()), change.changey(align.get(0).getLocation()));
-		alskf.add(circle2, change.changex(align.get(1).getLocation()), change.changey(align.get(1).getLocation()));
-		alskf.add(circle3, change.changex(align.get(2).getLocation()), change.changey(align.get(2).getLocation()));
-		alskf.add(circle4, change.changex(align.get(3).getLocation()), change.changey(align.get(3).getLocation()));
+		gridPane.add(circle, change.changex(playersList.get(0).getLocation()), change.changey(playersList.get(0).getLocation()));
+		gridPane.add(circle2, change.changex(playersList.get(1).getLocation()), change.changey(playersList.get(1).getLocation()));
+		gridPane.add(circle3, change.changex(playersList.get(2).getLocation()), change.changey(playersList.get(2).getLocation()));
+		gridPane.add(circle4, change.changex(playersList.get(3).getLocation()), change.changey(playersList.get(3).getLocation()));
 		
-
 	
 	//setting padding and adding buttons to the coordinates we want
-		alskf.setPadding(new Insets (25, 25, 25, 25));
-		alskf.add(infos, 13, 1);
-		alskf.add(buy, 12, 1);
-		alskf.add(endturn, 11, 1);
-		alskf.add(build, 13, 2);
-		alskf.add(roll, 11, 2);
-		alskf.add(a, 1, 1,1,1);
-		alskf.add(b, 2, 1,1,1);
-		alskf.add(c, 3, 1,1,1);
-		alskf.add(d, 4, 1,1,1);
-		alskf.add(e, 5, 1,1,1);
-		alskf.add(f, 6, 1,1,1);
-		alskf.add(g, 6, 2,1,1);
-		alskf.add(h, 6, 3,1,1);
-		alskf.add(i, 6, 4,1,1);
-		alskf.add(j, 6, 5,1,1);
-		alskf.add(k, 6, 6,1,1);
-		alskf.add(l, 5, 6,1,1);
-		alskf.add(m, 4, 6,1,1);
-		alskf.add(n, 3, 6,1,1);
-		alskf.add(o, 2, 6,1,1);
-		alskf.add(p, 1, 6,1,1);
-		alskf.add(q, 1, 5,1,1);
-		alskf.add(r, 1, 4,1,1);
-		alskf.add(s, 1, 3,1,1);
-		alskf.add(t, 1, 2,1,1);
+		gridPane.setPadding(new Insets (25, 25, 25, 25));
+		gridPane.add(infos, 12, 3);
+		gridPane.add(buy, 12, 1);
+		gridPane.add(endturn, 11, 1);
+		gridPane.add(build, 11, 3);
+		gridPane.add(random, 12, 2);
+		gridPane.add(roll, 11, 2);
+		gridPane.add(a, 1, 1,1,1);
+		gridPane.add(b, 2, 1,1,1);
+		gridPane.add(c, 3, 1,1,1);
+		gridPane.add(d, 4, 1,1,1);
+		gridPane.add(e, 5, 1,1,1);
+		gridPane.add(f, 6, 1,1,1);
+		gridPane.add(g, 6, 2,1,1);
+		gridPane.add(h, 6, 3,1,1);
+		gridPane.add(i, 6, 4,1,1);
+		gridPane.add(j, 6, 5,1,1);
+		gridPane.add(k, 6, 6,1,1);
+		gridPane.add(l, 5, 6,1,1);
+		gridPane.add(m, 4, 6,1,1);
+		gridPane.add(n, 3, 6,1,1);
+		gridPane.add(o, 2, 6,1,1);
+		gridPane.add(p, 1, 6,1,1);
+		gridPane.add(q, 1, 5,1,1);
+		gridPane.add(r, 1, 4,1,1);
+		gridPane.add(s, 1, 3,1,1);
+		gridPane.add(t, 1, 2,1,1);
 
 		
-		Scene a1 = new Scene(alskf,150,150);
-
+		Scene a1 = new Scene(borderPane,150,150);
+		grid.setHeight(1000);
+		grid.setWidth(1200);
 		grid.setScene(a1);
 		grid.setTitle("okay");
-
 		grid.show();
+
 
 	}
 
 
 static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
+static ArrayList<String> ognames = new ArrayList<String>();
 
 
+public static void setLocation() {
+	for(Player a : playersList) {
+		String b = buttons.get(a.getLocation()).getText();
+		buttons.get(a.getLocation()).setText(b + " " + a.getPlayerNumber());
+	}
+}
+public static void correctLocation() {
+	for(int a = 0; a< 19; a++) {
+		buttons.get(a).setText(ognames.get(a));
+	}
+}
 
-// colors the properties based on who owns them
+//colors the properties based on who owns them
 public static void setColor() {
-	for(Property a : properties) {
+	for(Property a : propertiesList) {
 		if(a.getOwner() == 0) {
 			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
 		}
@@ -487,7 +558,7 @@ public static void setColor() {
 		buttons.add(s);
 		buttons.add(t);
 		
+
 launch(args);
 }
 }
-
