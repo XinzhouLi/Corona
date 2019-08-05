@@ -23,16 +23,20 @@ public class Gameplay {
 				
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
+					System.out.println("");
 					continue;
 				}else if (currentPlayer.getLocation() == 5||currentPlayer.getLocation() == 15) {
 					if (currentPlayer.getPlayerNumber()==0) {
 						UsingRandomCard.humanUseRandomCard(propertiesList, currentPlayer);
+						System.out.println("");
 					}else {
 						computerUseRandomCard.computerUseRandom(propertiesList, currentPlayer);
+						System.out.println("");
 					}
 					continue;
 				}else if (currentPlayer.getLocation() == 0) {
 					currentPlayer.setMoney(currentPlayer.getMoney()+200);
+					System.out.println("");
 					continue;
 				}
 

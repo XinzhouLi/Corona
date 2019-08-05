@@ -143,7 +143,7 @@ public class Services {
 			player.setMoney(moneyUpdate);
 			properties.get(propertyLocation).setOwner(5);
 		}else {
-			System.out.println("That property does not belong to you");
+//			System.out.println("That property does not belong to you");
 			text = "That property does not belong to you";
 		}
 		return text;
