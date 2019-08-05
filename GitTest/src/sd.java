@@ -52,10 +52,10 @@ import javafx.stage.Stage;
 	public class sdf extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
-		static private int infoWidth = 400; //width of info text box
+		static private int infoWidth = 400; //width of info text bo
 		static private int infoHeight = 350; //height of info text box 
 		static ArrayList<Player> align = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
-		static ArrayList<Property> adfs = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
+		static ArrayList<Property> properties = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
 		static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
 		static boolean you;
 		static private int turn = 0; // whose turn it is 0 means it is first players turn
@@ -112,7 +112,7 @@ import javafx.stage.Stage;
 	//coloring circles
 	circle.setFill(Color.BLUE);
 	circle2.setFill(Color.RED);
-	circle3.setFill(Color.ORANGE);
+	circle3.setFill(Color.GREEN);
 	circle4.setFill(Color.GOLD);
 
 	//setting circles radiuses
@@ -350,7 +350,7 @@ import javafx.stage.Stage;
 				int location=align.get(turn).getLocation();
 				int money = align.get(turn).getMoney();
 				if (align.get(turn).getMoney()>=200) {
-					adfs.get(location).setOwner(align.get(turn).getPlayerNumber());
+					properties.get(location).setOwner(align.get(turn).getPlayerNumber());
 					money-=200;
 					align.get(turn).setMoney(money);
 			    	infoTextField.setText("Congrats you bought it!");
@@ -374,22 +374,20 @@ import javafx.stage.Stage;
 		infos.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	infoTextField.setText("instructions");
+		    	infoTextField.setText("Player name: " + align.get(turn).getPlayerName());
+		    	infoTextField.setText("Player number: " + align.get(turn).getPlayerNumber());
+		    	infoTextField.setText("Player location: " + align.get(turn).getLocation());
+		    	infoTextField.setText("Player money: " + align.get(turn).getMoney());
+		    	infoTextField.setText("Player properties: " + align.get(turn).getProperties());
+		    	
 		    }
 		});
-//		random.setOnAction(new EventHandler<ActionEvent>() {
-//		    @Override
-//    	String text = UsingRandomCard.humanUseRandomCard(adfs, align.get(turn));
-//    	infoTextField.setText(text);
-//		    public void handle(ActionEvent e) {
-//
-//		    }
-//		});
+
 		
 		build.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	String text = Services.buildHouse(align.get(turn),adfs);
+		    	String text = Services.buildHouse(align.get(turn),properties);
 		    	infoTextField.setText(text);
 		    }
 		});
@@ -398,7 +396,7 @@ import javafx.stage.Stage;
 		alskf.add(circle2, change.changex(align.get(1).getLocation()), change.changey(align.get(1).getLocation()));
 		alskf.add(circle3, change.changex(align.get(2).getLocation()), change.changey(align.get(2).getLocation()));
 		alskf.add(circle4, change.changex(align.get(3).getLocation()), change.changey(align.get(3).getLocation()));
-
+		
 
 	
 	//setting padding and adding buttons to the coordinates we want
@@ -407,7 +405,6 @@ import javafx.stage.Stage;
 		alskf.add(buy, 12, 1);
 		alskf.add(endturn, 11, 1);
 		alskf.add(build, 13, 2);
-		alskf.add(random, 12, 2);
 		alskf.add(roll, 11, 2);
 		alskf.add(a, 1, 1,1,1);
 		alskf.add(b, 2, 1,1,1);
@@ -435,51 +432,40 @@ import javafx.stage.Stage;
 
 		grid.setScene(a1);
 		grid.setTitle("okay");
-		grid.show();
 
+		grid.show();
 
 	}
 
 
 static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
-static ArrayList<String> ognames = new ArrayList<String>();
 
 
-public static void setLocation() {
-	for(Player a : align) {
-		String b = buttons.get(a.getLocation()).getText();
-		buttons.get(a.getLocation()).setText(b + " " + a.getPlayerNumber());
-	}
-}
-public static void correctLocation() {
-	for(int a = 0; a< 19; a++) {
-		buttons.get(a).setText(ognames.get(a));
-	}
-}
 
 // colors the properties based on who owns them
 public static void setColor() {
-	for(Property a : adfs) {
+	for(Property a : properties) {
 		if(a.getOwner() == 0) {
-			buttons.get(a.getPosition()).setTextFill(Color.RED);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
 		}
 		if(a.getOwner() == 1) {
-			buttons.get(a.getPosition()).setTextFill(Color.ALICEBLUE);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Red");
 		}
 		if(a.getOwner() == 2) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKKHAKI);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Green");
 		}
 		if(a.getOwner() == 3) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKORANGE);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
 		}
 		if(a.getOwner() == 5) {
-			buttons.get(a.getPosition()).setTextFill(Color.DARKGREEN);
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: White");
 		}
+		
 	}
 }
 	public static void main(String[] args) {
 		
-		//adding the map buttons to the buttons arraylis
+		//adding the map buttons to the buttons arraylist
 		buttons.add(a);
 		buttons.add(b);
 		buttons.add(c);
@@ -501,12 +487,7 @@ public static void setColor() {
 		buttons.add(s);
 		buttons.add(t);
 		
-
-
-
-
 launch(args);
 }
 }
-
 
