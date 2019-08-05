@@ -4,15 +4,18 @@ public class InitialList {
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing...please enter your name.");
 		Player p0 = new Player(0);
-		Player p1 = new Player(1);
-		Player c2 = new Player(2);
-		Player c3 = new Player(3);
+	    Player c1 = new Player(1);
+	    Player p1=createCP.createComputerPlayer(c1,2);
+	    Player c2 = new Player(2);
+	    Player p2=createCP.createComputerPlayer(c2,1);
+	    Player c3 = new Player(3);
+	    Player p3=createCP.createComputerPlayer(c3,2);
 
-		ArrayList<Player> playerList =new ArrayList<Player>();
-		playerList.add(p0);
-		playerList.add(p1);
-		playerList.add(c2);
-		playerList.add(c3);
+	    ArrayList<Player> playerList =new ArrayList<Player>();
+	    playerList.add(p0);
+	    playerList.add(p1);
+	    playerList.add(p2);
+	    playerList.add(p3);
 		return playerList;	
 	}
 	
