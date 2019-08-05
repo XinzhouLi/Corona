@@ -169,7 +169,15 @@ public class Services {
 		return temp;
 		
 	}
-	
+	public static String checkGo(int location, Player player) {
+		String text = "";
+		if(location > player.getLocation()) {
+			int money = player.getMoney();
+			player.setMoney(money + 200);
+			text = "You passed go! you get $200";
+		}
+		return text;
+	}
 //	public static void findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
 //		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
 //			for(Player iPlayer : playerslist) {
@@ -184,7 +192,7 @@ public class Services {
 //		finalScore.add(playerslist.get(3).getMoney());
 //		finalScore.sort(null);
 //		System.out.println(finalScore.toString());
-//		for (Player player :playerslist) {
+//		for (Player player :playerslist) 
 //			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
 //				System.out.println("Winner is "+ player.getPlayerName());
 //				System.out.println(player.getMoney());
@@ -192,6 +200,10 @@ public class Services {
 //		}
 //	}
 }
+	
+
+	
+	
 	
 	
 	
