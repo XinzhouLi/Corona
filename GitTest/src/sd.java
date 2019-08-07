@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 
 
 
-	public class sdf extends Application {
+	public class sd extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
 		static private int infoWidth = 500; //width of info text box
