@@ -1,22 +1,21 @@
 # CoronaProject 
-
 Project Title:Monopoly(Board game)
 
 1.prerequisites
 	(1)for the player who only want to play text version game.
 		If just want to play the text version game, installation of java is enough to play the game
 		Download Updated_Main.java,Services.java,Player.java,Property.java,UseRandomCard.java,computerUseRandomCard.java,Constant.java,Gameplay.java
-		InitialList.java.
+		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
-		Also download GUI_Board.java,mainforsettingbuttons.java,gui123.java,Gameplay_GUI.java.
+		Also download GUI_Board.java,mainforsettingbuttons.java,gui123.java,Gameplay_GUI.java ,sd.java
 		
 	
 2. Intro of the project
 	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the
  	the dice number)buy property and sell property.  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
 	
-	Technology used:   Java and javaFX()
+	Technology used:   Java and javaFX
 
 	Rule of the game:
 		(1)if the player stand on other people's property, the player will pay the money to the owner of the property.
@@ -53,43 +52,48 @@ Project Title:Monopoly(Board game)
 	
 		Gameplay.java: Contain most of the logic.for example ask the player to input.
 	
+		ComputerPlayer.java:extends Player.java,contain the information of computer player.
 
+		cpdifficulty1.java: set the level of difficulty of the computer player to 1.
+
+		cpdifficulty2.java: set the difficulty of the computer palyer to 2.
+
+		createCP.java:where we create the computer player.
 
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
 		
-		GUI_Board.java:Create the visual board, it shows the property and the player's location, and it is make by the collections of button(JButton).
+		GUI_Board.java:Contain Event Handler which use the number to represents the button was clicked and change the constant value.
 
-		mainforsettingbuttons.java: Set the name of the button and also put those property into the arraylist.
 
-		gui123.java:Contain all the changes for the world, if a player buy the property the colour of the property will changed
-
-		Gameplay_GUI.java:same as the Gameplay.java, the main logic is same as Gameplay.java, connect the logic code to the GUI
-
+		Buttons.java: contain all the buttons and event handler.
 		
+		sd.java:where the board is created, all the button are set.
 
 4.Run the game
 	(1)Run the java file that called Updated_Main.java for the text version game.
 	    make sure that the Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList()); is the only code in the file.
 
-	(2)For the GUI part, go to Updated_Main.java, change Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList());
-	     to Gameplay_GUI.startGame(InitialList.playersList(), InitialList.propertiesList());  and run the Updated_Main.java
+	(2)For the GUI part, go to sd.java  (download all the java file needed for text version game) run the file.
+
+
 5.Project states
-	The computer player becomes more wisely than the last version due to they are allowed to use random card.
+	Changes of Computer Player:
+		The computer player becomes more wisely than the first version due to they are allowed to use random card. Different difficulty level of computer players.
 	
-	The game can run but there are some error:
+	GUI part:
 		GUI is added to the game, and the player can play either text version game or GUI version game.
 		The player can check there money amount in the bank by just click the information button, the adding of random card allow the user make 
-		more choices. The GUI allow the player to update their location by adding their player number after the name of the property but there is a 
-		bug that can not delete the name of the player. We will fix it.
+		more choices, If player get steal property card and move card, they are allowed to click the button to choose the property they want to steal or location that they want to move.
+		The circle with different color represents different player, and the location of the circle is player's location.
+		Player can click the button which represents property, and the information of this property is shown aat the bottom.
+		
 	
-	We do not use javaFX, and we used the JButton which is not allowed, we will transfer to javaFX as soon as possible.
+	We transfer from JButton to Button.
 	
-	There is no test for the program right now, and we will add it
+	There is a Junit for the program, it tests the Services.java, service.java contain all the method to update the information of the player, property,it is the most important class
+	so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.
 
-6Expect in future:
-	Adding of JUNIT test, and allow the player to choose the difficulty of the game(computer player). More information is shown and show it more clearly.
-	 make the game looks better, insert the picture that on the internet. If we still have time, we will allow the player to enter how many human player.
 
 		website:		https://github.com/joseph5-ship/Corona
 
