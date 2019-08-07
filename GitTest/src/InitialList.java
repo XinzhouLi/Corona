@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/** Represents the initial list of properties
+ * and players.
+ */
 public class InitialList {
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing...please enter your name.");
