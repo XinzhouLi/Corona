@@ -31,9 +31,9 @@ import javafx.scene.control.Label;
 		private Button startButton = new Button("Start");
 		
 		//the buttons used
-			static Button infos = new Button("information");
+			static Button infos = new Button("Information");
 			static Button buy = new Button("Buy");
-			static Button endturn = new Button("endturn");
+			static Button endturn = new Button("End Turn");
 			static Button build = new Button("Build House");
 			static Button random = new Button("Random");
 			static Button roll = new Button("Roll Dice");
