@@ -63,7 +63,9 @@ public class UsingRandomCard {
 		}
 		return number;
 	}
-	
+	public static void moveCardGUI(int i,Player player) {
+		player.setLocation(i);
+	}
 	
 	
 	public static void moveCard(Player player,int num) {
@@ -149,10 +151,10 @@ public class UsingRandomCard {
 		if (luckNumber==1) {
 			jailCard(player);
 		}
-		else if(luckNumber==2) {
-			int propertyNumber=posStealCard();
-			useStealCard(propertyList,player,propertyNumber);
-		}
+//		else if(luckNumber==2) {
+//			int propertyNumber=posStealCard();
+//			useStealCard(propertyList,player,propertyNumber);
+//		}
 		else if(luckNumber==3) {
 			infotext+="do not get any card, but recive the money(200)";
 			addMoney(player);
@@ -161,15 +163,32 @@ public class UsingRandomCard {
 			infotext+="do not get any card and lose the money(200)";
 			lostMoney(player);
 		}
-		else if(luckNumber==5){
-			moveCard(player);
-		}
+//		else if(luckNumber==5){
+//			moveCard(player);
+//		}
 		else {
-			infotext+="Recive 200 money a rob card";
+			//value
+			while (Constant.ChosenNum>19) {
+				Constant.ChosenNum>19=Constant.chosenNum;
+			}
 			
-			int propertyNumber=posStealCard();
-			useStealCard(propertyList,player,propertyNumber);
-			addMoney(player);
+			if (luckNumber==2) {
+				int propertyNumber=Constant.ChosenNum;
+				useStealCard(propertyList,player,propertyNumber);
+				
+			}
+			else if(luckNumber==5) {
+				moveCardGUI(Constant.ChosenNum ,player);
+				
+			}
+			else {
+				int propertyNumber=Constant.ChosenNum;
+				useStealCard(propertyList,player,propertyNumber);
+				int money=player.getMoney();
+				player.setMoney(money+200);
+				
+			}
 		}
+		Constant.ChosenNum=20;
 	}
 }
