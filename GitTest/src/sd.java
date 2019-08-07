@@ -55,7 +55,7 @@ import javafx.stage.Stage;
 
 
 
-	public class sdf extends Application {
+	public class sd extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
 		static private int infoWidth = 500; //width of info text box
@@ -65,6 +65,9 @@ import javafx.stage.Stage;
 		static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
 		static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
 		static private int turn = 0; // whose turn it is 0 means it is first players turn
+		private int startWidth = 150;
+		private int startLength = 80;
+		private Button startButton = new Button("Start");
 		
 		//the buttons used
 			static Button infos = new Button("information");
@@ -107,6 +110,8 @@ import javafx.stage.Stage;
 			
 @Override
 	public void start(Stage grid) throws Exception {
+	
+	
 	grid.setTitle("Monopoly Board"); //grid title
 	
 	//adding circles
@@ -130,7 +135,6 @@ import javafx.stage.Stage;
 	// the gridpane I used
 	BorderPane borderPane = new BorderPane();
 	GridPane gridPane = new GridPane();
-	AnchorPane anchorPane = new AnchorPane();
 	borderPane.setCenter(gridPane);
 	
 	
@@ -151,6 +155,25 @@ import javafx.stage.Stage;
 	borderPane.setBottom(infoTextField);
 	borderPane.setAlignment(infoTextField, Pos.CENTER);
 
+	
+	//START SCENE
+			grid.setTitle("Start Screen");
+			
+			//setting up screen
+			GridPane screen = new GridPane();
+			screen.setAlignment(Pos.CENTER);
+			screen.setVgap(20);
+			
+			//labels
+			Label title = new Label("Monopoly");
+			title.setStyle("-fx-font-size:50px;");
+			screen.add(title, 0, 0);
+			
+			//buttons
+			startButton.setPrefSize(startWidth, startLength);
+			startButton.setStyle("-fx-font: 30 arial; -fx-base: #b6e7c9;");
+			screen.add(startButton, 0, 1);
+	
 	//setting the buttons to the width and height we want
 	a.setPrefSize(btnWidth, btnHeight);
 	b.setPrefSize(btnWidth, btnHeight);
@@ -179,7 +202,9 @@ import javafx.stage.Stage;
 	random.setPrefSize(btnWidth, btnHeight);
 	roll.setPrefSize(btnWidth, btnHeight);
 
-
+	Scene a1 = new Scene(borderPane,150,150);
+	Scene startScene = new Scene(screen, 150, 150);
+	
 	//event handler for all the map square buttons, when pressed they write their functions in the information text box.
 	a.setOnAction(new EventHandler<ActionEvent>() {
 			 
@@ -195,7 +220,7 @@ import javafx.stage.Stage;
 		    @Override
 		    public void handle(ActionEvent e) {
 
-		        infoTextField.setText("Canada: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 1: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -203,7 +228,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Barzil: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 2: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -211,7 +236,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Russia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 3: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -219,7 +244,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Mexico: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 4: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -235,7 +260,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Egypt: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 6: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -243,7 +268,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Turkey: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 7: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -251,7 +276,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Germany: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 8: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -259,7 +284,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("United Kingdoms: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 9: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -275,7 +300,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Italy: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 11: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -283,7 +308,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("South Africa: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 12: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -291,7 +316,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("South Korea: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 13: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -299,7 +324,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Columbia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 14: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -315,7 +340,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("China: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 16: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -323,7 +348,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("India: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 17: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -331,7 +356,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("United States: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 18: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -339,7 +364,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Japan: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Property 19: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -369,7 +394,7 @@ import javafx.stage.Stage;
 					infoTextField.setText(infoText);
 				}
 		    	gridPane.getChildren().remove(circs.get(turn));
-		    	gridPane.add(circs.get(turn), change.changex(playersList.get(turn).getLocation()), change.changey(playersList.get(turn).getLocation()));
+		    	gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 
 		    }
 		});
@@ -450,10 +475,18 @@ import javafx.stage.Stage;
 		    }
 		});
 		
-		gridPane.add(circle, change.changex(playersList.get(0).getLocation()), change.changey(playersList.get(0).getLocation()));
-		gridPane.add(circle2, change.changex(playersList.get(1).getLocation()), change.changey(playersList.get(1).getLocation()));
-		gridPane.add(circle3, change.changex(playersList.get(2).getLocation()), change.changey(playersList.get(2).getLocation()));
-		gridPane.add(circle4, change.changex(playersList.get(3).getLocation()), change.changey(playersList.get(3).getLocation()));
+		startButton.setOnAction(new EventHandler<ActionEvent>() {
+			 
+		    @Override
+		    public void handle(ActionEvent e) {
+		    	grid.setScene(a1);
+		    }
+		});
+		
+		gridPane.add(circle, change.changeX(playersList.get(0).getLocation()), change.changeY(playersList.get(0).getLocation()));
+		gridPane.add(circle2, change.changeX(playersList.get(1).getLocation()), change.changeY(playersList.get(1).getLocation()));
+		gridPane.add(circle3, change.changeX(playersList.get(2).getLocation()), change.changeY(playersList.get(2).getLocation()));
+		gridPane.add(circle4, change.changeX(playersList.get(3).getLocation()), change.changeY(playersList.get(3).getLocation()));
 		
 	
 	//setting padding and adding buttons to the coordinates we want
@@ -484,13 +517,14 @@ import javafx.stage.Stage;
 		gridPane.add(r, 1, 4,1,1);
 		gridPane.add(s, 1, 3,1,1);
 		gridPane.add(t, 1, 2,1,1);
-
 		
-		Scene a1 = new Scene(borderPane,150,150);
+		
+		//Rest of the scenes
+		
 		grid.setHeight(1000);
 		grid.setWidth(1200);
-		grid.setScene(a1);
-		grid.setTitle("okay");
+		grid.setScene(startScene);
+		grid.setTitle("Monopoly");
 		grid.show();
 
 
@@ -562,4 +596,3 @@ public static void setColor() {
 launch(args);
 }
 }
-	//
