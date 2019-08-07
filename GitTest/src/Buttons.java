@@ -275,7 +275,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 11: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Italy: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -283,7 +283,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 12: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("South Africa: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -291,7 +291,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 13: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("South Korea: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -299,7 +299,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 14: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Columbia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -315,7 +315,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 16: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("China: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -323,7 +323,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 17: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("India: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -331,7 +331,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 18: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("United States: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});
@@ -339,7 +339,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Property 19: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
+		        infoTextField.setText("Japan: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
 		        
 		    }
 		});

@@ -84,21 +84,23 @@ public class Gameplay {
 		
 	}
 	
-	public static void findWinner(Player p0,Player p1,Player p2,Player p3) {
-		ArrayList<Integer> finalScore = new ArrayList<>();
-		finalScore.add(p0.getMoney());
-		finalScore.add(p1.getMoney());
-		finalScore.add(p2.getMoney());
-		finalScore.add(p3.getMoney());
-		finalScore.sort(null);
-		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p0.getPlayerName());
-		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p1.getPlayerName());
-		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p2.getPlayerName());
-		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
-			System.out.println("Winner is "+p3.getPlayerName());
-		}
-	}
+//	public static String findWinner(Player p0,Player p1,Player p2,Player p3) {
+//		ArrayList<Integer> finalScore = new ArrayList<>();
+//		finalScore.add(p0.getMoney());
+//		finalScore.add(p1.getMoney());
+//		finalScore.add(p2.getMoney());
+//		finalScore.add(p3.getMoney());
+//		finalScore.sort(null);
+//		String winner = ""
+//		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
+//			System.out.println("Winner is "+p0.getPlayerName());
+//		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
+//			System.out.println("Winner is "+p1.getPlayerName());
+//		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
+//			System.out.println("Winner is "+p2.getPlayerName());
+//		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
+//			System.out.println("Winner is "+p3.getPlayerName());
+//		}
+//		return winner;
+//	}
 }
