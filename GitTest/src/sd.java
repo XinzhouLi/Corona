@@ -1,57 +1,18 @@
-import javafx.animation.RotateTransition; 
 import javafx.application.Application; 
-import static javafx.application.Application.launch; 
-import javafx.scene.Group; 
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Polygon; 
 import javafx.stage.Stage; 
-import javafx.util.Duration; 
-	import javafx.application.Application;
 import javafx.geometry.Insets;
-import javafx.stage.Stage;
-	import javafx.scene.Scene;
-	import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.TriangleMesh;
-import javafx.scene.*;
-	import javafx.stage.*;
-
-import java.awt.BorderLayout;
 import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
-import javafx.application.*;
-import javafx.application.Application;  
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
+
 
 
 
@@ -127,10 +88,10 @@ import javafx.stage.Stage;
 	circle4.setFill(Color.GOLD);
 
 	//setting circles radiuses
-	circle.setRadius(5);
-	circle2.setRadius(5);
-	circle3.setRadius(5);
-	circle4.setRadius(5);
+	circle.setRadius(8);
+	circle2.setRadius(8);
+	circle3.setRadius(8);
+	circle4.setRadius(8);
 	
 	// the gridpane I used
 	BorderPane borderPane = new BorderPane();
@@ -175,26 +136,12 @@ import javafx.stage.Stage;
 			screen.add(startButton, 0, 1);
 	
 	//setting the buttons to the width and height we want
-	a.setPrefSize(btnWidth, btnHeight);
-	b.setPrefSize(btnWidth, btnHeight);
-	c.setPrefSize(btnWidth, btnHeight);
-	d.setPrefSize(btnWidth, btnHeight);
-	e.setPrefSize(btnWidth, btnHeight);
-	f.setPrefSize(btnWidth, btnHeight);
-	g.setPrefSize(btnWidth, btnHeight);
-	h.setPrefSize(btnWidth, btnHeight);
-	i.setPrefSize(btnWidth, btnHeight);
-	j.setPrefSize(btnWidth, btnHeight);
-	k.setPrefSize(btnWidth, btnHeight);
-	l.setPrefSize(btnWidth, btnHeight);
-	m.setPrefSize(btnWidth, btnHeight);
-	n.setPrefSize(btnWidth, btnHeight);
-	o.setPrefSize(btnWidth, btnHeight);
-	p.setPrefSize(btnWidth, btnHeight);
-	q.setPrefSize(btnWidth, btnHeight);
-	r.setPrefSize(btnWidth, btnHeight);
-	s.setPrefSize(btnWidth, btnHeight);
-	t.setPrefSize(btnWidth, btnHeight);
+			int index = 0;
+			while(index < 20) {
+				buttons.get(index).setPrefSize(btnWidth, btnHeight);
+				index = index + 1;
+			}
+
 	infos.setPrefSize(btnWidth, btnHeight);
 	buy.setPrefSize(btnWidth, btnHeight);
 	endturn.setPrefSize(btnWidth, btnHeight);
@@ -206,168 +153,7 @@ import javafx.stage.Stage;
 	Scene startScene = new Scene(screen, 150, 150);
 	
 	//event handler for all the map square buttons, when pressed they write their functions in the information text box.
-	a.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-
-		        infoTextField.setText("Go square: The Go square cannot be bought or sold, every time you pass this square you get $200!");
-		        
-		    }
-		});
-		b.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-
-		        infoTextField.setText("Canada: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		c.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Barzil: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		d.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Russia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		e.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Mexico: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		f.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Random 1 square: If you land here pick up a random card");
-		        
-		    }
-		});
-		g.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Egypt: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		h.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Turkey: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		i.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Germany: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		j.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("United Kingdoms: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		k.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Jail button: If you land here you have $50");
-		        
-		    }
-		});
-		l.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Italy: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		m.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("South Africa: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		n.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("South Korea: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		o.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Columbia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		p.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Random 2 square: If you land here pick up a random card");
-		        
-		    }
-		});
-		q.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("China: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		r.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("India: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		s.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("United States: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
-		t.setOnAction(new EventHandler<ActionEvent>() {
-			 
-		    @Override
-		    public void handle(ActionEvent e) {
-		        infoTextField.setText("Japan: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-		        
-		    }
-		});
+	GUI_Board.buttonHandler(buttons, infoTextField);
 		
 		
 		// moves a players circle relative to the map depending on whose turn it is
@@ -396,7 +182,7 @@ import javafx.stage.Stage;
 				}
 		    	gridPane.getChildren().remove(circs.get(turn));
 		    	gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-
+		    	endturn.setDisable(false);
 		    }
 		});
 		buy.setOnAction(new EventHandler<ActionEvent>() {
@@ -412,7 +198,7 @@ import javafx.stage.Stage;
 		    			infoText = infoText + "You have bought "+propertiesList.get(playersList.get(turn).getLocation()).getPropertyName()+".\n";
 		    			infoTextField.setText(infoText);
 			        	Services.buyLand(playersList.get(turn), propertiesList);
-			        	setColor();
+			        	GUI_Board.setColor(propertiesList, buttons);
 		    	}else {
 		    		infoText = infoText + "You can not buy this property..\n";
 					infoTextField.setText(infoText);
@@ -422,6 +208,9 @@ import javafx.stage.Stage;
 		endturn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
+		    	if(turn + 1 %4 == 0) {
+		    		endturn.setDisable(true);
+		    	}
 		    	roll.setDisable(false);
 		    	buy.setDisable(false);
 		    	build.setDisable(false);
@@ -432,10 +221,11 @@ import javafx.stage.Stage;
 		    	turn = newturn;
 		    	infoText = infoText + "you have ended your turn its now player" + turn + "'s turn\n";
 		    	infoTextField.setText(infoText);
-		    	setColor();
+	        	GUI_Board.setColor(propertiesList, buttons);
 		    	if (Services.winingCondiction(playersList)) {
 					//jump to next scene and end game
 				}
+		    	AIturn();
 		    }
 		});
 		infos.setOnAction(new EventHandler<ActionEvent>() {
@@ -480,6 +270,7 @@ import javafx.stage.Stage;
 			 
 		    @Override
 		    public void handle(ActionEvent e) {
+		    	GUI_Board.setColor(propertiesList, buttons);
 		    	grid.setScene(a1);
 		    }
 		});
@@ -547,28 +338,24 @@ public static void correctLocation() {
 		buttons.get(a).setText(ognames.get(a));
 	}
 }
-
-//colors the properties based on who owns them
-public static void setColor() {
-	for(Property a : propertiesList) {
-		if(a.getOwner() == 0) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
-		}
-		if(a.getOwner() == 1) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Red");
-		}
-		if(a.getOwner() == 2) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Green");
-		}
-		if(a.getOwner() == 3) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
-		}
-		if(a.getOwner() == 5) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: White");
+public static void AIturn() {
+	if (playersList.get(turn).getPlayerNumber()==1||
+		playersList.get(turn).getPlayerNumber()==2||
+		playersList.get(turn).getPlayerNumber()==3) {
+		roll.fire();
+		if (playersList.get(turn).getLocation()==5||
+			playersList.get(turn).getLocation()==15) {
+			random.fire();
+		} 
+		if (playersList.get(turn).getMoney()>=300&&propertiesList.get(playersList.get(turn).getLocation()).getOwner()==playersList.get(turn).getPlayerNumber()) {
+			build.fire();
+		}else if (playersList.get(turn).getMoney()>=300&&propertiesList.get(playersList.get(turn).getLocation()).getOwner()==5) {
+			buy.fire();
 		}
 		
 	}
 }
+//colors the properties based on who owns them
 	public static void main(String[] args) {
 		
 		//adding the map buttons to the buttons arraylist

@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class GUI_Board {
+public class GUI_Functions {
 	public static void setColor(ArrayList<Property> propertiesList, ArrayList<Button> buttons) {
 		for(Property a : propertiesList) {
 			if(a.getOwner() == 0) {
@@ -21,7 +21,7 @@ public class GUI_Board {
 				buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
 			}
 			if(a.getOwner() == 5) {
-				buttons.get(a.getPosition()).setStyle("-fx-background-color: White");
+				buttons.get(a.getPosition()).setStyle("-fx-background-color: Tan");
 			}
 			
 		}
@@ -191,9 +191,3 @@ public class GUI_Board {
 	});
 	}
 }
-	
-	
-	
-
-
-
