@@ -17,10 +17,11 @@ public class Property {
      * @param position the position of the property 
      * @param propertyName the name of the property
      */
-    public Property(int position, String propertyName, int cost) { 
+    public Property(int position, String propertyName, int cost, int rent) { 
 		this.Position = position;
 		this.Property_Name = propertyName;
 		this.Cost = cost;
+		this.rent = rent;
 	}
 
     /**
