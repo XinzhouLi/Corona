@@ -185,7 +185,12 @@ public class UsingRandomCard {
 		}
 	}
 	
-	
+	/**
+	 * Method automatically chooses the card for the human player and displays it on the GUI
+	 * @param propertyList the list of properties
+	 * @param player the player
+	 * @param infotext the text displayed with the text box
+	 */
 	public static void GUIhumanUseRandomCard(ArrayList<Property> propertyList,Player player,String infotext) {
 		int luckNumber=reciveCard();
 		if (luckNumber==1) {
