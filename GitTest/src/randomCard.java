@@ -1,6 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/** Represents the information needed
+ * to use each random card in the game. 
+ */
 public class randomCard {
 	public int randomCard;
 	public static final int NO_CARD = 0;
