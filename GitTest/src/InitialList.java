@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-/** Represents the initial list of properties
- * and players.
- */
+
 public class InitialList {
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing...please enter your name.");
@@ -41,25 +39,25 @@ public class InitialList {
 	
 	public static ArrayList<Property> propertiesList() {
 		Property b0 = new Property(0,"Start", 0, 0);
-		Property b1 = new Property(1,"Canada", 150, 150);
-		Property b2 = new Property(2,"Brazil", 150, 150);
-		Property b3 = new Property(3,"Russia", 150, 150);
-		Property b4 = new Property(4, "Mexico", 150, 150);
+		Property b1 = new Property(1,"Canada", 200, 200);
+		Property b2 = new Property(2,"Brazil", 200, 200);
+		Property b3 = new Property(3,"Russia", 200, 200);
+		Property b4 = new Property(4, "Mexico", 200, 200);
 		Property b5 = new Property(5,"Random", 0, 0);
 		Property b6 = new Property(6,"Egypt", 200 , 200);
 		Property b7 = new Property(7,"Turkey", 200, 200);
 		Property b8 = new Property(8,"Germany", 200, 200);
 		Property b9 = new Property(9,"United Kingdom", 200, 200);
 		Property b10 = new Property(10,"Jail", 0, 0);
-		Property b11 = new Property(11,"Italy", 250, 250);
-		Property b12 = new Property(12,"South Africa", 250, 250);
-		Property b13 = new Property(13,"South Korea", 250, 250);
-		Property b14 = new Property(14,"Colombia", 250, 250);
+		Property b11 = new Property(11,"Italy", 200, 200);
+		Property b12 = new Property(12,"South Africa", 200, 200);
+		Property b13 = new Property(13,"South Korea", 200, 200);
+		Property b14 = new Property(14,"Colombia", 200, 200);
 		Property b15 = new Property(15,"Radom", 0, 0);
-		Property b16 = new Property(16,"China", 300, 300);
-		Property b17 = new Property(17,"India", 300, 300);
-		Property b18 = new Property(18,"United States", 300, 300);
-		Property b19 = new Property(19,"Japan", 300, 300);
+		Property b16 = new Property(16,"China", 200, 200);
+		Property b17 = new Property(17,"India", 200, 200);
+		Property b18 = new Property(18,"United States", 200, 200);
+		Property b19 = new Property(19,"Japan", 200, 200);
 		ArrayList<Property> propertiesList = new ArrayList<Property>();
 		propertiesList.add(b0);
 		propertiesList.add(b1);
