@@ -8,7 +8,7 @@ Project Title:Monopoly(Board game)
 		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
-		Also download GUI_Board.java,mainforsettingbuttons.java,gui123.java,Gameplay_GUI.java ,sd.java
+		Also download sd.java
 		
 	
 2. Intro of the project
@@ -63,10 +63,6 @@ Project Title:Monopoly(Board game)
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
 		
-		GUI_Board.java:Contain Event Handler which use the number to represents the button was clicked and change the constant value.
-
-
-		Buttons.java: contain all the buttons and event handler.
 		
 		sd.java:where the board is created, all the button are set.
 
@@ -95,6 +91,11 @@ Project Title:Monopoly(Board game)
 	so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.
 
 
+6Future expect:
+	Insert picture, more clear information, insert music, animation after rolling the dice.
+
 		website:		https://github.com/joseph5-ship/Corona
+
+
 
 
