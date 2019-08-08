@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class GUI_Functions {
+public class GUI_Board {
 	public static void setColor(ArrayList<Property> propertiesList, ArrayList<Button> buttons) {
 		for(Property a : propertiesList) {
 			if(a.getOwner() == 0) {
@@ -33,8 +33,8 @@ public class GUI_Functions {
 	    public void handle(ActionEvent e) {
 
 	        infoTextField.setText("Go square: The Go square cannot be bought or sold, every time you pass this square you get $200!");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 0;
 	    		}
 	    }
@@ -45,8 +45,8 @@ public class GUI_Functions {
 	    public void handle(ActionEvent e) {
 
 	        infoTextField.setText("Canada: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 1;
 	    		}
 	    }
@@ -56,8 +56,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Barzil: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 2;
 	    		}
 	    }
@@ -67,8 +67,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Russia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 3;
 	    		}
 	    }
@@ -78,8 +78,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Mexico: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 4;
 	    		}
 	    }
@@ -89,8 +89,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Random 1 square: If you land here pick up a random card");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 5;
 	    		}
 	    }
@@ -100,8 +100,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Egypt: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 6;
 	    		}
 	    }
@@ -111,8 +111,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Turkey: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 7;
 	    		}
 	    }
@@ -122,8 +122,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Germany: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 8;
 	    		}
 	    }
@@ -133,8 +133,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("United Kingdoms: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 9;
 	    		}
 	    }
@@ -144,8 +144,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Jail button: If you land here you have $50");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 10;
 	    		}
 	    }
@@ -155,8 +155,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Italy: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 11;
 	    		}
 	    }
@@ -166,8 +166,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("South Africa: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 12;
 	    		}
 	    }
@@ -177,8 +177,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("South Korea: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 13;
 	    		}
 	    }
@@ -188,8 +188,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Columbia: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 14;
 	    		}
 	    }
@@ -199,8 +199,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Random 2 square: If you land here pick up a random card");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 15;
 	    		}
 	    }
@@ -210,8 +210,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("China: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 16;
 	    		}
 	    }
@@ -221,8 +221,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("India: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 17;
 	    		}
 	    }
@@ -232,8 +232,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("United States: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 18;
 	    		}
 	    }
@@ -243,8 +243,8 @@ public class GUI_Functions {
 	    @Override
 	    public void handle(ActionEvent e) {
 	        infoTextField.setText("Japan: This property can be sold if you own it and bought if no one owns it, the cost is $200 and the rent is $150");
-	        if (playersList.get(turn).getLocation()==5&&
-	    			playersList.get(turn).getLocation()==15) {
+	        if (sd.playersList.get(sd.getTurn()).getLocation()==5&&
+	    			sd.playersList.get(sd.getTurn()).getLocation()==15) {
 	    			Constant.ChosenNum = 19;
 	    		}
 	    }

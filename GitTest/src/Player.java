@@ -21,11 +21,8 @@ public class Player {
 		setMoney(Money);
 		setLocation(Location);
 		setPlayerNumber(playerNumber);
-		if (playerNumber == 0) {
-			setHumanPlayerName();
-		} else {
-			setPlayerName("AI_" + playerNumber);
-		}
+		setHumanPlayerName();
+		 
 	}
 	
 	/**
