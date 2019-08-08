@@ -62,12 +62,20 @@ import javafx.scene.control.Label;
 			static Circle circle3 = new Circle();
 			static Circle circle4 = new Circle();
 			public boolean ii = false;
-			//setter for setting whose turn it is
+			
+			//setter for turn
 			public static void setTurn(int a) {
 				if(a >= 0 && a <= 3) {
 					turn = a;
 				}
 			}
+			
+			//get turn
+			public static int getTurn() {
+				return turn;
+			}
+			
+			
 			
 @Override
 	public void start(Stage grid) throws Exception {
@@ -135,6 +143,17 @@ import javafx.scene.control.Label;
 			startButton.setStyle("-fx-font: 30 arial; -fx-base: #b6e7c9;");
 			screen.add(startButton, 0, 1);
 	
+	//END SCENE 
+			GridPane screenPane = new GridPane();
+			screenPane.setAlignment(Pos.CENTER);
+			screenPane.setVgap(20);
+			
+			//labels
+			Label winningMessage = new Label(playersList.get(Services.findWinner(playersList, propertiesList)).getPlayerName() + " won, congratulations!");
+			winningMessage.setStyle("-fx-font: 50 cambria;");
+			screenPane.add(winningMessage, 0, 0);		
+	
+			
 	//setting the buttons to the width and height we want
 			int index = 0;
 			while(index < 20) {
@@ -148,10 +167,12 @@ import javafx.scene.control.Label;
 	build.setPrefSize(btnWidth, btnHeight);
 	random.setPrefSize(btnWidth, btnHeight);
 	roll.setPrefSize(btnWidth, btnHeight);
-
+	
+	//ALL SCENES
 	Scene a1 = new Scene(borderPane,150,150);
 	Scene startScene = new Scene(screen, 150, 150);
-	
+	Scene endScene = new Scene(screenPane, 150, 150);
+
 	//event handler for all the map square buttons, when pressed they write their functions in the information text box.
 	GUI_Board.buttonHandler(buttons, infoTextField);
 		
@@ -173,7 +194,7 @@ import javafx.scene.control.Label;
 		    	//bigproblem
 		    	if (playersList.get(turn).getLocation() == 10) {
 					Services.payJail(playersList.get(turn));
-					infoText=turn + "You are in jail, lose 50 dollar.\n";
+					infoText = playersList.get(turn).getPlayerName() + "You are in jail, lose 50 dollars, you filthy thief!\n";
 					infoTextField.setText(infoText);
 				}else if (propertiesList.get(playersList.get(turn).getLocation()).getOwner() != playersList.get(turn).getPlayerNumber() && propertiesList.get(playersList.get(turn).getLocation()).getOwner() != 5) {
 					Services.rent(playersList.get(turn), propertiesList, playersList);
@@ -200,7 +221,7 @@ import javafx.scene.control.Label;
 			        	Services.buyLand(playersList.get(turn), propertiesList);
 			        	GUI_Board.setColor(propertiesList, buttons);
 		    	}else {
-		    		infoText = infoText + "You can not buy this property..\n";
+		    		infoText = infoText + "You cannot buy this property.\n";
 					infoTextField.setText(infoText);
 				}
 		    }
@@ -219,11 +240,11 @@ import javafx.scene.control.Label;
 		    	int a = turn + 1;
 		    	int newturn = a%4;
 		    	turn = newturn;
-		    	infoText = infoText + "you have ended your turn its now player" + turn + "'s turn\n";
+		    	infoText = infoText + "You have ended your turn! It's now player " + turn + "'s turn\n";
 		    	infoTextField.setText(infoText);
 	        	GUI_Board.setColor(propertiesList, buttons);
-		    	if (Services.winingCondiction(playersList)) {
-					//jump to next scene and end game
+		    	if (Services.winingCondiction(playersList) == false) {
+		    		grid.setScene(endScene);
 				}
 		    	AIturn();
 		    }
@@ -231,7 +252,9 @@ import javafx.scene.control.Label;
 		infos.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	infoTextField.setText("Please, pressing roll first!!!");
+		    	infoText = "Player name: " + playersList.get(turn).getPlayerName() +"\n Player Money: " + playersList.get(turn).getMoney() + "\n Player Properties: " + playersList.get(turn).getProperties() + "\n Player Number: " + playersList.get(turn).getPlayerNumber() + ", ";
+	            infoTextField.setText(infoText);
+		    		
 		    }
 		});
 
@@ -311,7 +334,7 @@ import javafx.scene.control.Label;
 		gridPane.add(t, 1, 2,1,1);
 		
 		
-		//Rest of the scenes
+//		playersList.get(0).setMoney(200);
 		
 		grid.setHeight(1000);
 		grid.setWidth(1200);
