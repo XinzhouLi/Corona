@@ -194,6 +194,7 @@ public class UsingRandomCard {
 	public static void GUIhumanUseRandomCard(ArrayList<Property> propertyList,Player player,String infotext) {
 		int luckNumber=reciveCard();
 		if (luckNumber==1) {
+			infotext+="It is a jail card, go to the jail";
 			jailCard(player);
 		}
 //		else if(luckNumber==2) {
@@ -213,27 +214,30 @@ public class UsingRandomCard {
 //		}
 		else {
 			//value
-			while (Constant.ChosenNum>19) {
-				Constant.ChosenNum>19=Constant.chosenNum;
+			while (Constant.CHOSENNUM>19) {
+				Constant.CHOSENNUM=Constant.CHOSENNUM;
 			}
 			
 			if (luckNumber==2) {
-				int propertyNumber=Constant.ChosenNum;
-				useStealCard(propertyList,player,propertyNumber);
+				infotext+="Steal property card";
+				int propertyNumber=Constant.CHOSENNUM;
+				useStealCard(propertyList,player,Constant.CHOSENNUM);
 				
 			}
 			else if(luckNumber==5) {
-				moveCardGUI(Constant.ChosenNum ,player);
+				infotext+="It is a move card";
+				moveCardGUI(Constant.CHOSENNUM ,player);
 				
 			}
 			else {
-				int propertyNumber=Constant.ChosenNum;
-				useStealCard(propertyList,player,propertyNumber);
+				infotext+="Get 200 money any also get a steal proeprty card";
+				int propertyNumber=Constant.CHOSENNUM;
+				useStealCard(propertyList,player,Constant.CHOSENNUM);
 				int money=player.getMoney();
 				player.setMoney(money+200);
 				
 			}
 		}
-		Constant.ChosenNum=20;
+		Constant.CHOSENNUM=20;
 	}
 }
