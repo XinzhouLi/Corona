@@ -1,4 +1,4 @@
-import javafx.application.Application; 
+import javafx.application.Application;  
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -13,10 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
-
-
-	public class sd extends Application {
+	public class Gameplay_GUI extends Application {
 		static private int btnWidth = 100; // width of buttons
 		static private int btnHeight = 100; //height of buttons
 		static private int infoWidth = 500; //width of info text box
@@ -229,7 +226,7 @@ import javafx.scene.control.Label;
 		endturn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	if(turn + 1 %4 == 0) {
+		    	if(turn + 1 % 4 == 0) {
 		    		endturn.setDisable(true);
 		    	}
 		    	roll.setDisable(false);
@@ -262,16 +259,18 @@ import javafx.scene.control.Label;
 			@Override
 			public void handle(ActionEvent e) {
 				if (playersList.get(turn).getLocation()==15||
-					playersList.get(turn).getLocation()==5) {
-					//use random card
-				}else {
-					random.setDisable(true);
-					infoText = infoText + "You do not have chance to use random card.\n";
-					infoTextField.setText(infoText);
-					
-				}
+						playersList.get(turn).getLocation()==5) {
+						if (playersList.get(turn).getPlayerNumber()==1) {
+							UsingRandomCard.GUIhumanUseRandomCard(propertiesList, playersList.get(turn), infoText);
+							setColor();
+							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+						}else {
+							computerUseRandomCard.GUIcomputerUseRandom(propertiesList, playersList.get(turn), infoText);
+							setColor();
+							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+						}
 	    }
-	});
+			}});
 		
 		build.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -378,7 +377,29 @@ public static void AIturn() {
 		
 	}
 }
+
 //colors the properties based on who owns them
+public static void setColor() {
+	for(Property a : propertiesList) {
+		if(a.getOwner() == 0) {
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
+		}
+		if(a.getOwner() == 1) {
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Red");
+		}
+		if(a.getOwner() == 2) {
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Green");
+		}
+		if(a.getOwner() == 3) {
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
+		}
+		if(a.getOwner() == 5) {
+			buttons.get(a.getPosition()).setStyle("-fx-background-color: Tan");
+		}
+		
+	}
+}
+
 	public static void main(String[] args) {
 		
 		//adding the map buttons to the buttons arraylist
@@ -402,8 +423,6 @@ public static void AIturn() {
 		buttons.add(r);
 		buttons.add(s);
 		buttons.add(t);
-		
-
 launch(args);
 }
 }
