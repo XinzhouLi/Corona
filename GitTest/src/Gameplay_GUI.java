@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 	public class Gameplay_GUI extends Application {
 		static private int btnWidth = 100; // width of buttons
@@ -54,6 +55,8 @@ import javafx.scene.control.Label;
 			static Button r = new Button(propertiesList.get(17).getPropertyName());
 			static Button s = new Button(propertiesList.get(18).getPropertyName());
 			static Button t = new Button(propertiesList.get(19).getPropertyName());
+			static TextField LocationInput = new TextField();
+			static Button Ok = new Button("Ok");
 			static Circle circle = new Circle();
 			static Circle circle2 = new Circle();
 			static Circle circle3 = new Circle();
@@ -71,6 +74,8 @@ import javafx.scene.control.Label;
 			public static int getTurn() {
 				return turn;
 			}
+			
+
 			
 			
 			
@@ -120,7 +125,7 @@ import javafx.scene.control.Label;
 	infoTextField.setPrefSize(infoWidth, infoHeight);
 	borderPane.setBottom(infoTextField);
 	borderPane.setAlignment(infoTextField, Pos.CENTER);
-
+	LocationInput.setPrefWidth(btnWidth);
 	
 	//START SCENE
 			grid.setTitle("Start Screen");
@@ -182,10 +187,11 @@ import javafx.scene.control.Label;
 		    public void handle(ActionEvent e) {
 		    	roll.setDisable(true);
 		    	int presentLocation = playersList.get(turn).getLocation();
-		    	int newroll = Services.locationUpdate(playersList.get(turn));
+//		    	int newroll = Services.locationUpdate(playersList.get(turn));
+		    	playersList.get(turn).setLocation(5);
 		    	String newtext1 = Services.checkGo(presentLocation, playersList.get(turn));
-		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
-		    	infoTextField.setText(infoText);
+//		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
+//		    	infoTextField.setText(infoText);
 		    	playersList.get(turn).setLocation(playersList.get(turn).getLocation());
 		    	
 		    	//bigproblem
@@ -233,6 +239,8 @@ import javafx.scene.control.Label;
 		    	buy.setDisable(false);
 		    	build.setDisable(false);
 		    	random.setDisable(false);
+
+		    	
 		    	infoText="";
 		    	int a = turn + 1;
 		    	int newturn = a%4;
@@ -260,12 +268,32 @@ import javafx.scene.control.Label;
 			public void handle(ActionEvent e) {
 				if (playersList.get(turn).getLocation()==15||
 						playersList.get(turn).getLocation()==5) {
-						if (playersList.get(turn).getPlayerNumber()==1) {
-							UsingRandomCard.GUIhumanUseRandomCard(propertiesList, playersList.get(turn), infoText);
+					random.setDisable(true);
+						if (playersList.get(turn).getPlayerNumber()==0) {
+							printStuff(infoTextField);
+							if (Constant.CHOSENNUM==1) {
+							
+								
+								UsingRandomCard.jailCard(playersList.get(turn));
+							}
+							else if(Constant.CHOSENNUM==3) {
+							
+							
+								UsingRandomCard.addMoney(playersList.get(turn));
+							}
+							else if(Constant.CHOSENNUM==4) {
+							
+							
+								UsingRandomCard.lostMoney(playersList.get(turn));
+							}else {
+								LocationInput.setDisable(false);
+								Ok.setDisable(false);
+							}
+
 							setColor();
 							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 						}else {
-							computerUseRandomCard.GUIcomputerUseRandom(propertiesList, playersList.get(turn), infoText);
+							GUIcomputerUseRandom(propertiesList, playersList.get(turn), infoTextField);
 							setColor();
 							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 						}
@@ -297,6 +325,39 @@ import javafx.scene.control.Label;
 		    }
 		});
 		
+		
+		Ok.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				LocationInput.setDisable(true);
+				Ok.setDisable(true);
+				Integer value = Integer.valueOf(LocationInput.getText());
+				System.out.println(value);
+				if (Constant.CHOSENNUM==2) {
+		
+					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
+					setColor();
+					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+				}
+				else if(Constant.CHOSENNUM==5) {
+
+					UsingRandomCard.moveCardGUI(value ,playersList.get(turn));
+					setColor();
+					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+				}
+				else if(Constant.CHOSENNUM==6) {
+				
+					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
+					int money=playersList.get(turn).getMoney();
+					playersList.get(turn).setMoney(money+200);
+		
+					setColor();
+					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+				}
+			}
+			
+		});
 		gridPane.add(circle, change.changeX(playersList.get(0).getLocation()), change.changeY(playersList.get(0).getLocation()));
 		gridPane.add(circle2, change.changeX(playersList.get(1).getLocation()), change.changeY(playersList.get(1).getLocation()));
 		gridPane.add(circle3, change.changeX(playersList.get(2).getLocation()), change.changeY(playersList.get(2).getLocation()));
@@ -331,7 +392,8 @@ import javafx.scene.control.Label;
 		gridPane.add(r, 1, 4,1,1);
 		gridPane.add(s, 1, 3,1,1);
 		gridPane.add(t, 1, 2,1,1);
-		
+		gridPane.add(Ok, 0, 0);
+		gridPane.add(LocationInput, 1, 0);
 		
 //		playersList.get(0).setMoney(200);
 		
@@ -360,6 +422,94 @@ public static void correctLocation() {
 		buttons.get(a).setText(ognames.get(a));
 	}
 }
+//public static void GUIhumanUseRandomCard(ArrayList<Property> propertyList,Player player,String infotext,Label infoTextField) {
+//	Constant.CHOSENNUM=UsingRandomCard.reciveCard();
+//	if (Constant.CHOSENNUM==1) {
+//		infotext+="It is a jail card, go to the jail";
+//		infoTextField.setText(infotext);
+//		UsingRandomCard.jailCard(player);
+//	}
+////	else if(luckNumber==2) {
+////		int propertyNumber=posStealCard();
+////		useStealCard(propertyList,player,propertyNumber);
+////	}
+//	else if(Constant.CHOSENNUM==3) {
+//		infotext+="do not get any card, but recive the money(200)";
+//		infoTextField.setText(infotext);
+//		UsingRandomCard.addMoney(player);
+//	}
+//	else if(Constant.CHOSENNUM==4) {
+//		infotext+="do not get any card and lose the money(200)";
+//		infoTextField.setText(infotext);
+//		UsingRandomCard.lostMoney(player);
+//	}
+////	else if(luckNumber==5){
+////		moveCard(player);
+////	}
+//	else {
+//		//value
+////		while (Constant.CHOSENNUM>19) {
+////			Constant.CHOSENNUM=Constant.CHOSENNUM;
+////		
+//		
+//		if (Constant.CHOSENNUM==2) {
+//			infotext+="Steal property card";
+//			infoTextField.setText(infotext);
+//			int propertyNumber=Constant.CHOSENNUM;
+//			UsingRandomCard.useStealCard(propertyList,player,Constant.CHOSENNUM);
+//			
+//		}
+//		else if(Constant.CHOSENNUM==5) {
+//			infotext+="It is a move card";
+//			infoTextField.setText(infotext);
+//			UsingRandomCard.moveCardGUI(Constant.CHOSENNUM ,player);
+//			
+//		}
+//		else {
+//			infotext+="Get 200 money any also get a steal proeprty card";
+//			int propertyNumber=Constant.CHOSENNUM;
+//			UsingRandomCard.useStealCard(propertyList,player,Constant.CHOSENNUM);
+//			int money=player.getMoney();
+//			player.setMoney(money+200);
+//			infoTextField.setText(infotext);
+//		}
+//	}
+//	}
+
+public static void printStuff(Label infoTextField) {
+	Constant.CHOSENNUM=UsingRandomCard.reciveCard();
+	if (Constant.CHOSENNUM==1) {
+		infoText+="It is a jail card, go to the jail";
+		infoTextField.setText(infoText);
+		System.out.println("It is a jail card, go to the jail");
+	}
+	else if(Constant.CHOSENNUM==2) {
+		infoText+="Steal property card";
+		infoTextField.setText(infoText);
+		System.out.println("Steal property card");
+}
+	else if(Constant.CHOSENNUM==3) {
+		infoText+="do not get any card, but recive the money(200)";
+		infoTextField.setText(infoText);
+		System.out.println("do not get any card, but recive the money(200)");
+	}
+	else if(Constant.CHOSENNUM==4) {
+		infoText+="do not get any card and lose the money(200)";
+		infoTextField.setText(infoText);
+		System.out.println("do not get any card and lose the money(200)");
+	}
+	else if(Constant.CHOSENNUM==5){
+		infoText+="It is a move card";
+		infoTextField.setText(infoText);
+		System.out.println("It is a move card");
+	}
+	else {
+		infoText+="Get 200 money any also get a steal proeprty card";
+		System.out.println("Get 200 money any also get a steal proeprty card");
+		infoTextField.setText(infoText);
+		}
+	
+}
 public static void AIturn() {
 	if (playersList.get(turn).getPlayerNumber()==1||
 		playersList.get(turn).getPlayerNumber()==2||
@@ -377,6 +527,47 @@ public static void AIturn() {
 		
 	}
 }
+public static void GUIcomputerUseRandom(ArrayList<Property> propertiesList, Player player,Label infoTextField) {
+	int luckNumber=UsingRandomCard.reciveCard();
+	if (luckNumber==1) {
+		infoText+=player.getPlayerName()+"go tot the jail";
+		UsingRandomCard.jailCard(player);
+	}
+	
+	else if(luckNumber==2) {
+		infoText+="Get a steal property card";
+		int propertyNumber=computerUseRandomCard.computerUseStealCard(propertiesList,player);
+		Property chosenProperty=propertiesList.get(propertyNumber);
+		infoText+=""+player.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
+		UsingRandomCard.useStealCard(propertiesList,player,propertyNumber);
+	}
+	
+	else if(luckNumber==3) {
+		infoText+=player.getPlayerName()+"do not get any card, but recive the money(200)";
+		UsingRandomCard.addMoney(player);
+	}
+	
+	else if(luckNumber==4) {
+		infoText+=player.getPlayerName()+"do not get any card and lose the money(200)";
+		UsingRandomCard.lostMoney(player);
+	}
+	
+	else if(luckNumber==5){
+		infoText+=player.getPlayerNumber()+"Recive a move card";
+		computerUseRandomCard.computerUseMoveCard(propertiesList,player);
+	}
+	
+	else {
+		infoText+=""+player.getPlayerName()+"Recive 200 money a rob card";
+		int propertyNumber=computerUseRandomCard.computerUseStealCard(propertiesList,player);
+		Property chosenProperty=propertiesList.get(propertyNumber);
+		infoText+=""+player.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
+		UsingRandomCard.useStealCard(propertiesList,player,propertyNumber);
+		UsingRandomCard.addMoney(player);
+	}
+	infoTextField.setText(infoText);
+}
+
 
 //colors the properties based on who owns them
 public static void setColor() {
