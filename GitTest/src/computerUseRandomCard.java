@@ -8,12 +8,22 @@ public class computerUseRandomCard {
 		int highestRent=0;
 		Property highestRentProperty=null;
 		for(Property i :propertyList) {
-			if (i.getOwner()!=computerPlayer.getPlayerNumber()&&i.getRent()>highestRent) {
+			if (i.getOwner()!=computerPlayer.getPlayerNumber()
+					&&i.getRent()>highestRent
+					&&i.getPosition()!=Constant.FIRST_RANDOM
+					&&i.getPosition()!=Constant.SECOND_RANDOM
+					&&i.getPosition()!=Constant.JAIL
+					&&i.getPosition()!=Constant.START_POSITION) {
 				highestRent=i.getRent();
 				}
 			}
 		for(Property x:propertyList) {
-			if(x.getRent()==highestRent&&x.getOwner()!=computerPlayer.getPlayerNumber()) {
+			if(x.getRent()==highestRent
+					&&x.getOwner()!=computerPlayer.getPlayerNumber()
+					&&x.getPosition()!=Constant.FIRST_RANDOM
+					&&x.getPosition()!=Constant.SECOND_RANDOM
+					&&x.getPosition()!=Constant.JAIL
+					&&x.getPosition()!=Constant.START_POSITION) {
 				highestRentProperty=x;
 			}
 		}
@@ -71,6 +81,10 @@ public class computerUseRandomCard {
 		}
 		
 	}
+	
+
+	
+	
 	
 	
 	//exactly same as the human random card, but instead the computer player will use move card and steal card automatically.
