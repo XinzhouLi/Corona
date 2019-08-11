@@ -1,22 +1,39 @@
-import javafx.application.Application;  
+
+import javafx.application.Application; 
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage; 
 import javafx.geometry.Insets;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
+import java.util.Collection;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+
+
 
 	public class Gameplay_GUI extends Application {
-		static private int btnWidth = 100; // width of buttons
-		static private int btnHeight = 100; //height of buttons
+		static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
+		static ArrayList<String> ognames = new ArrayList<String>();
+		static private int btnWidth = 150; // width of buttons
+		static private int btnHeight = 150; //height of buttons
+		static private int imgWidth = 130; // width of buttons
+		static private int imgHeight = 130; //height of buttons
+		static private int picSizeHeight;
+		static private int picSizeWidth;
 		static private int infoWidth = 500; //width of info text box
 		static private int infoHeight = 200; //height of info text box 
 		static private String infoText = "";
@@ -27,6 +44,7 @@ import javafx.scene.control.TextField;
 		private int startWidth = 150;
 		private int startLength = 80;
 		private Button startButton = new Button("Start");
+
 		
 		//the buttons used
 			static Button infos = new Button("Information");
@@ -35,28 +53,26 @@ import javafx.scene.control.TextField;
 			static Button build = new Button("Build House");
 			static Button random = new Button("Random");
 			static Button roll = new Button("Roll Dice");
-			static Button a = new Button("Go          ");
-			static Button b = new Button(propertiesList.get(1).getPropertyName());
-			static Button c = new Button(propertiesList.get(2).getPropertyName());
-			static Button d = new Button(propertiesList.get(3).getPropertyName());
-			static Button e = new Button(propertiesList.get(4).getPropertyName());
-			static Button f = new Button("Random 1   ");
-			static Button g = new Button(propertiesList.get(6).getPropertyName());
-			static Button h = new Button(propertiesList.get(7).getPropertyName());
-			static Button i = new Button(propertiesList.get(8).getPropertyName());
-			static Button j = new Button(propertiesList.get(9).getPropertyName());
-			static Button k = new Button("Jail        ");
-			static Button l = new Button(propertiesList.get(11).getPropertyName());
-			static Button m = new Button(propertiesList.get(12).getPropertyName());
-			static Button n = new Button(propertiesList.get(13).getPropertyName());
-			static Button o = new Button(propertiesList.get(14).getPropertyName());
-			static Button p = new Button("Random 2    ");
-			static Button q = new Button(propertiesList.get(16).getPropertyName());
-			static Button r = new Button(propertiesList.get(17).getPropertyName());
-			static Button s = new Button(propertiesList.get(18).getPropertyName());
-			static Button t = new Button(propertiesList.get(19).getPropertyName());
-			static TextField LocationInput = new TextField();
-			static Button Ok = new Button("Ok");
+			static Button button1 = new Button("Go");
+			static Button button2 = new Button("Canada");
+			static Button button3 = new Button("Brazil");
+			static Button button4 = new Button("Russia");
+			static Button button5 = new Button("Mexico");
+			static Button button6 = new Button("Chance");
+			static Button button7 = new Button("Egypt");
+			static Button button8 = new Button("Turkey");
+			static Button button9 = new Button("Germany");
+			static Button button10 = new Button("UK");
+			static Button button11 = new Button("Jail");
+			static Button button12 = new Button("Italy");
+			static Button button13 = new Button("SouthAfrica");
+			static Button button14 = new Button("SouthKorea");
+			static Button button15 = new Button("Columbia");
+			static Button button16 = new Button("Treasure");
+			static Button button17 = new Button("China");
+			static Button button18 = new Button("India");
+			static Button button19 = new Button("US");
+			static Button button20 = new Button("Japan");
 			static Circle circle = new Circle();
 			static Circle circle2 = new Circle();
 			static Circle circle3 = new Circle();
@@ -74,15 +90,139 @@ import javafx.scene.control.TextField;
 			public static int getTurn() {
 				return turn;
 			}
-			
 
-			
+
+
 			
 			
 @Override
 	public void start(Stage grid) throws Exception {
-	
-	
+	buttons.add(button1);
+	buttons.add(button2);
+	buttons.add(button3);
+	buttons.add(button4);
+	buttons.add(button5);
+	buttons.add(button6);
+	buttons.add(button7);
+	buttons.add(button8);
+	buttons.add(button9);
+	buttons.add(button10);
+	buttons.add(button11);
+	buttons.add(button12);
+	buttons.add(button13);
+	buttons.add(button14);
+	buttons.add(button15);
+	buttons.add(button16);
+	buttons.add(button17);
+	buttons.add(button18);
+	buttons.add(button19);
+	buttons.add(button20);
+	 Image bg1 = new Image(getClass().getResourceAsStream("bg1.jpg"));
+	 Image Go = new Image(getClass().getResourceAsStream("Go.png"));
+	 Image Canada = new Image(getClass().getResourceAsStream("Canada.png"));
+	 Image Brazil = new Image(getClass().getResourceAsStream("Brazil.png"));
+	 Image Russia = new Image(getClass().getResourceAsStream("Russia.png"));
+	 Image Mexico = new Image(getClass().getResourceAsStream("Mexico.png"));
+	 Image Chance = new Image(getClass().getResourceAsStream("Chance.png"));
+	 Image Egypt = new Image(getClass().getResourceAsStream("Egypt .png"));
+	 Image Turkey = new Image(getClass().getResourceAsStream("Turkey.png"));
+	 Image Germany = new Image(getClass().getResourceAsStream("Germany.png"));
+	 Image UK = new Image(getClass().getResourceAsStream("Uk.png"));
+	 Image Jail = new Image(getClass().getResourceAsStream("Jail.png"));
+	 Image Italy = new Image(getClass().getResourceAsStream("Italy.png"));
+	 Image SouthAfrica = new Image(getClass().getResourceAsStream("South Africa.png"));
+	 Image SouthKorea = new Image(getClass().getResourceAsStream("SouthKorea.png"));
+	 Image Columbia = new Image(getClass().getResourceAsStream("Columbia.png"));
+	 Image Treasure = new Image(getClass().getResourceAsStream("Treasure.jpg"));
+	 Image China = new Image(getClass().getResourceAsStream("China.png"));
+	 Image India = new Image(getClass().getResourceAsStream("India.png"));
+	 Image US = new Image(getClass().getResourceAsStream("US.png"));
+	 Image Japan = new Image(getClass().getResourceAsStream("Japan.png"));
+
+	 ImageView Go1 = new ImageView(Go);
+	 ImageView Canada1 = new ImageView(Canada);
+	 ImageView Brazil1 = new ImageView(Brazil);
+	 ImageView Russia1 = new ImageView(Russia);
+	 ImageView Mexico1 = new ImageView(Mexico);
+	 ImageView Chance1 = new ImageView(Chance);
+	 ImageView Egypt1 = new ImageView(Egypt );
+	 ImageView Turkey1 = new ImageView(Turkey);
+	 ImageView Germany1 = new ImageView(Germany);
+	 ImageView UK1 = new ImageView(UK);
+	 ImageView Jail1 = new ImageView(Jail);
+	 ImageView Italy1 = new ImageView(Italy);
+	 ImageView SouthAfrica1 = new ImageView(SouthAfrica);
+	 ImageView SouthKorea1 = new ImageView(SouthKorea);
+	 ImageView Columbia1 = new ImageView(Columbia);
+	 ImageView Treasure1 = new ImageView(Treasure);
+	 ImageView China1 = new ImageView(China);
+	 ImageView India1 = new ImageView(India);
+	 ImageView US1 = new ImageView(US);
+	 ImageView Japan1 = new ImageView(Japan);
+	 Go1.setFitHeight(imgHeight);
+	 Canada1.setFitHeight(imgHeight);
+	 Brazil1.setFitHeight(imgHeight);
+	 Russia1.setFitHeight(imgHeight);
+	 Mexico1.setFitHeight(imgHeight);
+	 Chance1.setFitHeight(imgHeight);
+	 Egypt1.setFitHeight(imgHeight);
+	 Turkey1.setFitHeight(imgHeight);
+	 Germany1.setFitHeight(imgHeight);
+	 UK1.setFitHeight(imgHeight);
+	 Jail1.setFitHeight(imgHeight);
+	 Italy1.setFitHeight(imgHeight);
+	 SouthAfrica1.setFitHeight(imgHeight);
+	 SouthKorea1.setFitHeight(imgHeight);
+	 Columbia1.setFitHeight(imgHeight);
+	 Treasure1.setFitHeight(imgHeight);
+	 China1.setFitHeight(imgHeight);
+	 India1.setFitHeight(imgHeight);
+	 US1.setFitHeight(imgHeight);
+	 Japan1.setFitHeight(imgHeight);
+		Go1.setFitWidth(imgWidth);
+		 Canada1.setFitWidth(imgWidth);
+		 Brazil1.setFitWidth(imgWidth);
+		 Russia1.setFitWidth(imgWidth);
+		 Mexico1.setFitWidth(imgWidth);
+		 Chance1.setFitWidth(imgWidth);
+		 Egypt1.setFitWidth(imgWidth);
+		 Turkey1.setFitWidth(imgWidth);
+		 Germany1.setFitWidth(imgWidth);
+		 UK1.setFitWidth(imgWidth);
+		 Jail1.setFitWidth(imgWidth);
+		 Italy1.setFitWidth(imgWidth);
+		 SouthAfrica1.setFitWidth(imgWidth);
+		 SouthKorea1.setFitWidth(imgWidth);
+		 Columbia1.setFitWidth(imgWidth);
+		 Treasure1.setFitWidth(imgWidth);
+		 China1.setFitWidth(imgWidth);
+		 India1.setFitWidth(imgWidth);
+		 US1.setFitWidth(imgWidth);
+		 Japan1.setFitWidth(imgWidth);
+		button1.setGraphic(Go1);
+		button2.setGraphic(Canada1);
+		button3.setGraphic(Brazil1);
+		button4.setGraphic(Russia1);
+		button5.setGraphic(Mexico1);
+		button6.setGraphic(Chance1);
+		button7.setGraphic(Egypt1);
+		button8.setGraphic(Turkey1);
+		button9.setGraphic(Germany1);
+		button10.setGraphic(UK1);
+		button11.setGraphic(Jail1);
+		button12.setGraphic(Italy1);
+		button13.setGraphic(SouthAfrica1);
+		button14.setGraphic(SouthKorea1);
+		button15.setGraphic(Columbia1);
+		button16.setGraphic(Treasure1);
+		button17.setGraphic(China1);
+		button18.setGraphic(India1);
+		button19.setGraphic(US1);
+		button20.setGraphic(Japan1);
+		for(Button button: buttons) {
+			 button.setContentDisplay(ContentDisplay.BOTTOM);
+		}
+
 	grid.setTitle("Monopoly Board"); //grid title
 	
 	//adding circles
@@ -108,7 +248,7 @@ import javafx.scene.control.TextField;
 	GridPane gridPane = new GridPane();
 	borderPane.setCenter(gridPane);
 	
-	
+
 	//gonna be in the center
 	gridPane.setAlignment(Pos.CENTER);
 	
@@ -123,9 +263,8 @@ import javafx.scene.control.TextField;
 	infoTextField.setWrapText(true);
 	infoTextField.setStyle("-fx-background-color: white;");;
 	infoTextField.setPrefSize(infoWidth, infoHeight);
-	borderPane.setBottom(infoTextField);
-	borderPane.setAlignment(infoTextField, Pos.CENTER);
-	LocationInput.setPrefWidth(btnWidth);
+//	borderPane.setBottom(infoTextField);
+
 	
 	//START SCENE
 			grid.setTitle("Start Screen");
@@ -171,10 +310,13 @@ import javafx.scene.control.TextField;
 	roll.setPrefSize(btnWidth, btnHeight);
 	
 	//ALL SCENES
-	Scene a1 = new Scene(borderPane,150,150);
+	Scene mainScene = new Scene(borderPane,150,150);
 	Scene startScene = new Scene(screen, 150, 150);
 	Scene endScene = new Scene(screenPane, 150, 150);
-
+	BackgroundSize sizeforbg = new BackgroundSize(100,100,true,true,true,true
+			);
+	BackgroundImage bimg = new BackgroundImage(bg1, null, null, null, sizeforbg);
+	gridPane.setBackground(new Background(bimg));
 	//event handler for all the map square buttons, when pressed they write their functions in the information text box.
 	GUI_Board.buttonHandler(buttons, infoTextField);
 		
@@ -187,11 +329,10 @@ import javafx.scene.control.TextField;
 		    public void handle(ActionEvent e) {
 		    	roll.setDisable(true);
 		    	int presentLocation = playersList.get(turn).getLocation();
-//		    	int newroll = Services.locationUpdate(playersList.get(turn));
-		    	playersList.get(turn).setLocation(5);
+		    	int newroll = Services.locationUpdate(playersList.get(turn));
 		    	String newtext1 = Services.checkGo(presentLocation, playersList.get(turn));
-//		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
-//		    	infoTextField.setText(infoText);
+		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
+		    	infoTextField.setText(infoText);
 		    	playersList.get(turn).setLocation(playersList.get(turn).getLocation());
 		    	
 		    	//bigproblem
@@ -232,15 +373,14 @@ import javafx.scene.control.TextField;
 		endturn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
-		    	if(turn + 1 % 4 == 0) {
+		    	GUI_Board.setColor(propertiesList, buttons);
+		    	if(turn + 1 %4 == 0) {
 		    		endturn.setDisable(true);
 		    	}
 		    	roll.setDisable(false);
 		    	buy.setDisable(false);
 		    	build.setDisable(false);
 		    	random.setDisable(false);
-
-		    	
 		    	infoText="";
 		    	int a = turn + 1;
 		    	int newturn = a%4;
@@ -267,38 +407,16 @@ import javafx.scene.control.TextField;
 			@Override
 			public void handle(ActionEvent e) {
 				if (playersList.get(turn).getLocation()==15||
-						playersList.get(turn).getLocation()==5) {
+					playersList.get(turn).getLocation()==5) {
+					//use random card
+				}else {
 					random.setDisable(true);
-						if (playersList.get(turn).getPlayerNumber()==0) {
-							printStuff(infoTextField);
-							if (Constant.CHOSENNUM==1) {
-							
-								
-								UsingRandomCard.jailCard(playersList.get(turn));
-							}
-							else if(Constant.CHOSENNUM==3) {
-							
-							
-								UsingRandomCard.addMoney(playersList.get(turn));
-							}
-							else if(Constant.CHOSENNUM==4) {
-							
-							
-								UsingRandomCard.lostMoney(playersList.get(turn));
-							}else {
-								LocationInput.setDisable(false);
-								Ok.setDisable(false);
-							}
-
-							setColor();
-							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-						}else {
-							GUIcomputerUseRandom(propertiesList, playersList.get(turn), infoTextField);
-							setColor();
-							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-						}
+					infoText = infoText + "You do not have chance to use random card.\n";
+					infoTextField.setText(infoText);
+					
+				}
 	    }
-			}});
+	});
 		
 		build.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -321,43 +439,10 @@ import javafx.scene.control.TextField;
 		    @Override
 		    public void handle(ActionEvent e) {
 		    	GUI_Board.setColor(propertiesList, buttons);
-		    	grid.setScene(a1);
+		    	grid.setScene(mainScene);
 		    }
 		});
 		
-		
-		Ok.setOnAction(new EventHandler<ActionEvent>() {
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				LocationInput.setDisable(true);
-				Ok.setDisable(true);
-				Integer value = Integer.valueOf(LocationInput.getText());
-				System.out.println(value);
-				if (Constant.CHOSENNUM==2) {
-		
-					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
-					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-				}
-				else if(Constant.CHOSENNUM==5) {
-
-					UsingRandomCard.moveCardGUI(value ,playersList.get(turn));
-					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-				}
-				else if(Constant.CHOSENNUM==6) {
-				
-					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
-					int money=playersList.get(turn).getMoney();
-					playersList.get(turn).setMoney(money+200);
-		
-					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
-				}
-			}
-			
-		});
 		gridPane.add(circle, change.changeX(playersList.get(0).getLocation()), change.changeY(playersList.get(0).getLocation()));
 		gridPane.add(circle2, change.changeX(playersList.get(1).getLocation()), change.changeY(playersList.get(1).getLocation()));
 		gridPane.add(circle3, change.changeX(playersList.get(2).getLocation()), change.changeY(playersList.get(2).getLocation()));
@@ -366,37 +451,35 @@ import javafx.scene.control.TextField;
 	
 	//setting padding and adding buttons to the coordinates we want
 		gridPane.setPadding(new Insets (25, 25, 25, 25));
-		gridPane.add(infos, 12, 3);
-		gridPane.add(buy, 12, 1);
-		gridPane.add(endturn, 11, 1);
-		gridPane.add(build, 11, 3);
-		gridPane.add(random, 12, 2);
-		gridPane.add(roll, 11, 2);
-		gridPane.add(a, 1, 1,1,1);
-		gridPane.add(b, 2, 1,1,1);
-		gridPane.add(c, 3, 1,1,1);
-		gridPane.add(d, 4, 1,1,1);
-		gridPane.add(e, 5, 1,1,1);
-		gridPane.add(f, 6, 1,1,1);
-		gridPane.add(g, 6, 2,1,1);
-		gridPane.add(h, 6, 3,1,1);
-		gridPane.add(i, 6, 4,1,1);
-		gridPane.add(j, 6, 5,1,1);
-		gridPane.add(k, 6, 6,1,1);
-		gridPane.add(l, 5, 6,1,1);
-		gridPane.add(m, 4, 6,1,1);
-		gridPane.add(n, 3, 6,1,1);
-		gridPane.add(o, 2, 6,1,1);
-		gridPane.add(p, 1, 6,1,1);
-		gridPane.add(q, 1, 5,1,1);
-		gridPane.add(r, 1, 4,1,1);
-		gridPane.add(s, 1, 3,1,1);
-		gridPane.add(t, 1, 2,1,1);
-		gridPane.add(Ok, 0, 0);
-		gridPane.add(LocationInput, 1, 0);
+//		gridPane.add(infos, 4, 3);
+		gridPane.add(buy, 3, 4);
+		gridPane.add(endturn, 3, 3);
+		gridPane.add(build, 4, 4);
+		gridPane.add(random, 4, 3);
+		gridPane.add(roll, 20, 2);
+		gridPane.add(button1, 1, 1,1,1);
+		gridPane.add(button2, 2, 1,1,1);
+		gridPane.add(button3, 3, 1,1,1);
+		gridPane.add(button4, 4, 1,1,1);
+		gridPane.add(button5, 5, 1,1,1);
+		gridPane.add(button6, 6, 1,1,1);
+		gridPane.add(button7, 6, 2,1,1);
+		gridPane.add(button8, 6, 3,1,1);
+		gridPane.add(button9, 6, 4,1,1);
+		gridPane.add(button10, 6, 5,1,1);
+		gridPane.add(button11, 6, 6,1,1);
+		gridPane.add(button12, 5, 6,1,1);
+		gridPane.add(button13, 4, 6,1,1);
+		gridPane.add(button14, 3, 6,1,1);
+		gridPane.add(button15, 2, 6,1,1);
+		gridPane.add(button16, 1, 6,1,1);
+		gridPane.add(button17, 1, 5,1,1);
+		gridPane.add(button18, 1, 4,1,1);
+		gridPane.add(button19, 1, 3,1,1);
+		gridPane.add(button20, 1, 2,1,1);
 		
-//		playersList.get(0).setMoney(200);
 		
+//		playersList.get(0).setMoney(200);	
 		grid.setHeight(1000);
 		grid.setWidth(1200);
 		grid.setScene(startScene);
@@ -407,109 +490,8 @@ import javafx.scene.control.TextField;
 	}
 
 
-static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
-static ArrayList<String> ognames = new ArrayList<String>();
 
 
-public static void setLocation() {
-	for(Player a : playersList) {
-		String b = buttons.get(a.getLocation()).getText();
-		buttons.get(a.getLocation()).setText(b + " " + a.getPlayerNumber());
-	}
-}
-public static void correctLocation() {
-	for(int a = 0; a< 19; a++) {
-		buttons.get(a).setText(ognames.get(a));
-	}
-}
-//public static void GUIhumanUseRandomCard(ArrayList<Property> propertyList,Player player,String infotext,Label infoTextField) {
-//	Constant.CHOSENNUM=UsingRandomCard.reciveCard();
-//	if (Constant.CHOSENNUM==1) {
-//		infotext+="It is a jail card, go to the jail";
-//		infoTextField.setText(infotext);
-//		UsingRandomCard.jailCard(player);
-//	}
-////	else if(luckNumber==2) {
-////		int propertyNumber=posStealCard();
-////		useStealCard(propertyList,player,propertyNumber);
-////	}
-//	else if(Constant.CHOSENNUM==3) {
-//		infotext+="do not get any card, but recive the money(200)";
-//		infoTextField.setText(infotext);
-//		UsingRandomCard.addMoney(player);
-//	}
-//	else if(Constant.CHOSENNUM==4) {
-//		infotext+="do not get any card and lose the money(200)";
-//		infoTextField.setText(infotext);
-//		UsingRandomCard.lostMoney(player);
-//	}
-////	else if(luckNumber==5){
-////		moveCard(player);
-////	}
-//	else {
-//		//value
-////		while (Constant.CHOSENNUM>19) {
-////			Constant.CHOSENNUM=Constant.CHOSENNUM;
-////		
-//		
-//		if (Constant.CHOSENNUM==2) {
-//			infotext+="Steal property card";
-//			infoTextField.setText(infotext);
-//			int propertyNumber=Constant.CHOSENNUM;
-//			UsingRandomCard.useStealCard(propertyList,player,Constant.CHOSENNUM);
-//			
-//		}
-//		else if(Constant.CHOSENNUM==5) {
-//			infotext+="It is a move card";
-//			infoTextField.setText(infotext);
-//			UsingRandomCard.moveCardGUI(Constant.CHOSENNUM ,player);
-//			
-//		}
-//		else {
-//			infotext+="Get 200 money any also get a steal proeprty card";
-//			int propertyNumber=Constant.CHOSENNUM;
-//			UsingRandomCard.useStealCard(propertyList,player,Constant.CHOSENNUM);
-//			int money=player.getMoney();
-//			player.setMoney(money+200);
-//			infoTextField.setText(infotext);
-//		}
-//	}
-//	}
-
-public static void printStuff(Label infoTextField) {
-	Constant.CHOSENNUM=UsingRandomCard.reciveCard();
-	if (Constant.CHOSENNUM==1) {
-		infoText+="It is a jail card, go to the jail";
-		infoTextField.setText(infoText);
-		System.out.println("It is a jail card, go to the jail");
-	}
-	else if(Constant.CHOSENNUM==2) {
-		infoText+="Steal property card";
-		infoTextField.setText(infoText);
-		System.out.println("Steal property card");
-}
-	else if(Constant.CHOSENNUM==3) {
-		infoText+="do not get any card, but recive the money(200)";
-		infoTextField.setText(infoText);
-		System.out.println("do not get any card, but recive the money(200)");
-	}
-	else if(Constant.CHOSENNUM==4) {
-		infoText+="do not get any card and lose the money(200)";
-		infoTextField.setText(infoText);
-		System.out.println("do not get any card and lose the money(200)");
-	}
-	else if(Constant.CHOSENNUM==5){
-		infoText+="It is a move card";
-		infoTextField.setText(infoText);
-		System.out.println("It is a move card");
-	}
-	else {
-		infoText+="Get 200 money any also get a steal proeprty card";
-		System.out.println("Get 200 money any also get a steal proeprty card");
-		infoTextField.setText(infoText);
-		}
-	
-}
 public static void AIturn() {
 	if (playersList.get(turn).getPlayerNumber()==1||
 		playersList.get(turn).getPlayerNumber()==2||
@@ -527,93 +509,13 @@ public static void AIturn() {
 		
 	}
 }
-public static void GUIcomputerUseRandom(ArrayList<Property> propertiesList, Player player,Label infoTextField) {
-	int luckNumber=UsingRandomCard.reciveCard();
-	if (luckNumber==1) {
-		infoText+=player.getPlayerName()+"go tot the jail";
-		UsingRandomCard.jailCard(player);
-	}
-	
-	else if(luckNumber==2) {
-		infoText+="Get a steal property card";
-		int propertyNumber=computerUseRandomCard.computerUseStealCard(propertiesList,player);
-		Property chosenProperty=propertiesList.get(propertyNumber);
-		infoText+=""+player.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
-		UsingRandomCard.useStealCard(propertiesList,player,propertyNumber);
-	}
-	
-	else if(luckNumber==3) {
-		infoText+=player.getPlayerName()+"do not get any card, but recive the money(200)";
-		UsingRandomCard.addMoney(player);
-	}
-	
-	else if(luckNumber==4) {
-		infoText+=player.getPlayerName()+"do not get any card and lose the money(200)";
-		UsingRandomCard.lostMoney(player);
-	}
-	
-	else if(luckNumber==5){
-		infoText+=player.getPlayerNumber()+"Recive a move card";
-		computerUseRandomCard.computerUseMoveCard(propertiesList,player);
-	}
-	
-	else {
-		infoText+=""+player.getPlayerName()+"Recive 200 money a rob card";
-		int propertyNumber=computerUseRandomCard.computerUseStealCard(propertiesList,player);
-		Property chosenProperty=propertiesList.get(propertyNumber);
-		infoText+=""+player.getPlayerName()+"get the property"+chosenProperty.getPropertyName();
-		UsingRandomCard.useStealCard(propertiesList,player,propertyNumber);
-		UsingRandomCard.addMoney(player);
-	}
-	infoTextField.setText(infoText);
-}
-
-
 //colors the properties based on who owns them
-public static void setColor() {
-	for(Property a : propertiesList) {
-		if(a.getOwner() == 0) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Blue");
-		}
-		if(a.getOwner() == 1) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Red");
-		}
-		if(a.getOwner() == 2) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Green");
-		}
-		if(a.getOwner() == 3) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Yellow");
-		}
-		if(a.getOwner() == 5) {
-			buttons.get(a.getPosition()).setStyle("-fx-background-color: Tan");
-		}
-		
-	}
-}
-
 	public static void main(String[] args) {
-		
+
 		//adding the map buttons to the buttons arraylist
-		buttons.add(a);
-		buttons.add(b);
-		buttons.add(c);
-		buttons.add(d);
-		buttons.add(e);
-		buttons.add(f);
-		buttons.add(g);
-		buttons.add(h);
-		buttons.add(i);
-		buttons.add(j);
-		buttons.add(k);
-		buttons.add(l);
-		buttons.add(m);
-		buttons.add(n);
-		buttons.add(o);
-		buttons.add(p);
-		buttons.add(q);
-		buttons.add(r);
-		buttons.add(s);
-		buttons.add(t);
+//		buttons.add(firstbutton);
+		
 launch(args);
 }
 }
+
