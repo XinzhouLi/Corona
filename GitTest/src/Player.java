@@ -21,7 +21,7 @@ public class Player {
 		setMoney(Money);
 		setLocation(Location);
 		setPlayerNumber(playerNumber);
-		setHumanPlayerName();
+//		setHumanPlayerName();
 		 
 	}
 	
@@ -137,10 +137,10 @@ public class Player {
 	 * Method sets human player's name.
 	 * @return the player's name 
 	 */
-	public String setHumanPlayerName() {
-		Scanner input = new Scanner(System.in);
-        PlayerName = input.nextLine();
-        return PlayerName;
-	}
+//	public String setHumanPlayerName() {
+//		Scanner input = new Scanner(System.in);
+//        PlayerName = input.nextLine();
+//        return PlayerName;
+//	}
 	
 }
