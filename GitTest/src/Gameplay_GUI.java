@@ -530,14 +530,14 @@ public class Gameplay_GUI extends Application {
 		    	int presentLocation = playersList.get(turn).getLocation();
 		    	int newroll = Services.locationUpdate(playersList.get(turn));
 		    	String newtext1 = Services.checkGo(presentLocation, playersList.get(turn));
-		    	infoText=turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
+		    	infoText=infoText+ turn + " Congrats, you rolled a " + newroll+"\n"  + newtext1;
 		    	infoTextField.setText(infoText);
 		    	playersList.get(turn).setLocation(playersList.get(turn).getLocation());
 		    	
 		    	//bigproblem
 		    	if (playersList.get(turn).getLocation() == 10) {
 					Services.payJail(playersList.get(turn));
-					infoText = playersList.get(turn).getPlayerName() + "You are in jail, lose 50 dollars, you filthy thief!\n";
+					infoText = infoText+ playersList.get(turn).getPlayerName() + "You are in jail, lose 50 dollars, you filthy thief!\n";
 					infoTextField.setText(infoText);
 				}else if (propertiesList.get(playersList.get(turn).getLocation()).getOwner() != playersList.get(turn).getPlayerNumber() && propertiesList.get(playersList.get(turn).getLocation()).getOwner() != 5) {
 					Services.rent(playersList.get(turn), propertiesList, playersList);
@@ -559,8 +559,7 @@ public class Gameplay_GUI extends Application {
 		    		!(playersList.get(turn).getLocation()==15)&&
 		    		!(playersList.get(turn).getLocation()==0)&&
 		    		!(playersList.get(turn).getLocation()==10)){
-		    			infoText = infoText + "You have bought "+propertiesList.get(playersList.get(turn).getLocation()).getPropertyName()+".\n";
-		    			infoTextField.setText(infoText);
+
 			        	Services.buyLand(playersList.get(turn), propertiesList);
 			        	GUI_Board.setColor(propertiesList, buttons);
 		    	}else {
@@ -584,7 +583,7 @@ public class Gameplay_GUI extends Application {
 		    	int a = turn + 1;
 		    	int newturn = a%4;
 		    	turn = newturn;
-		    	infoText = infoText + playersList.get(turn).getPlayerName()+ "\n"+ "Money: "+playersList.get(turn).getMoney() +"\n";
+		    	
 		    	infoText = infoText + "You have ended your turn! It's now player " + turn + "'s turn\n";
 		    	infoTextField.setText(infoText);
 	        	GUI_Board.setColor(propertiesList, buttons);
@@ -593,7 +592,10 @@ public class Gameplay_GUI extends Application {
 		    		grid.setScene(endScene);
 				}
 		    	AIturn();
+		      	
 		    }
+
+		    
 		});
 		infos.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
@@ -654,6 +656,7 @@ public class Gameplay_GUI extends Application {
 			        	buy.setDisable(true);
 				}else {
 					infoText = infoText + "This property does not belong to you.\n";
+					
 					infoTextField.setText(infoText);
 				}
 		    }
@@ -866,6 +869,10 @@ public static void AIturn() {
 			buy.fire();
 		}
 	}
+    else {
+		infoText = infoText + playersList.get(turn).getPlayerName()+ "\n"+ "Money: "+playersList.get(turn).getMoney() +"\n";
+    	infoText = infoText + "You have ended your turn! It's now player " + turn + "'s turn\n";
+    }
 }
 //colors the properties based on who owns them
 	public static void main(String[] args) {
