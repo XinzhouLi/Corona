@@ -7,6 +7,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.geometry.Insets;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundSize;
@@ -43,8 +44,8 @@ public class Gameplay_GUI extends Application {
 	static private int imgHeight = 50; //height of buttons
 	static private int picSizeHeight;
 	static private int picSizeWidth;
-	static private int infoWidth = 500; //width of info text box
-	static private int infoHeight = 200; //height of info text box 
+	static private int infoWidth = 300; //width of info text box
+	static private int infoHeight = 500; //height of info text box 
 	static private String infoText = "";
 	static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
 	static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
@@ -287,15 +288,17 @@ public class Gameplay_GUI extends Application {
 	gridPane.setVgap(10);
 	
 	//information label and text settings
+	AnchorPane anchorPane = new AnchorPane();
 	Label info = new Label("Information");
-	
+	borderPane.setRight(info);
 	Label infoTextField = new Label();
+	infoTextField.setAlignment(Pos.BOTTOM_CENTER);
 	infoTextField.setWrapText(true);
 	infoTextField.setStyle("-fx-background-color: white;");;
 	infoTextField.setPrefSize(infoWidth, infoHeight);
 	LocationInput.setPrefWidth(btnWidth);
-
-//	borderPane.setBottom(infoTextField);
+	anchorPane.getChildren().addAll(info,infoTextField);
+	borderPane.setRight(anchorPane);
 
 	
 	//START SCENE
@@ -581,9 +584,11 @@ public class Gameplay_GUI extends Application {
 		    	int a = turn + 1;
 		    	int newturn = a%4;
 		    	turn = newturn;
+		    	infoText = infoText + playersList.get(turn).getPlayerName()+ "\n"+ "Money: "+playersList.get(turn).getMoney() +"\n";
 		    	infoText = infoText + "You have ended your turn! It's now player " + turn + "'s turn\n";
 		    	infoTextField.setText(infoText);
 	        	GUI_Board.setColor(propertiesList, buttons);
+	        	
 		    	if (Services.winingCondiction(playersList) == false) {
 		    		grid.setScene(endScene);
 				}
@@ -846,7 +851,11 @@ public static void AIturn() {
 	if (playersList.get(turn).getPlayerNumber()==1||
 		playersList.get(turn).getPlayerNumber()==2||
 		playersList.get(turn).getPlayerNumber()==3) {
+		infoText = infoText + playersList.get(turn).getPlayerName()+ "\n"+ "Money: "+playersList.get(turn).getMoney() +"\n";
+    	infoText = infoText + "You have ended your turn! It's now player " + turn + "'s turn\n";
 		roll.fire();
+
+
 		if (playersList.get(turn).getLocation()==5||
 			playersList.get(turn).getLocation()==15) {
 			random.fire();
@@ -856,7 +865,6 @@ public static void AIturn() {
 		}else if (playersList.get(turn).getMoney()>=300&&propertiesList.get(playersList.get(turn).getLocation()).getOwner()==5) {
 			buy.fire();
 		}
-		
 	}
 }
 //colors the properties based on who owns them
