@@ -1,15 +1,23 @@
 
+import javafx.animation.RotateTransition;
 import javafx.application.Application; 
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage; 
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.io.FileInputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -19,77 +27,97 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Reflection;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
 
+public class Gameplay_GUI extends Application {
+	static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
+	static ArrayList<String> ognames = new ArrayList<String>();
+	static private int btnWidth = 100; // width of buttons
+	static private int btnHeight = 70; //height of buttons
+	static private int imgWidth = 80; // width of buttons
+	static private int imgHeight = 50; //height of buttons
+	static private int picSizeHeight;
+	static private int picSizeWidth;
+	static private int infoWidth = 500; //width of info text box
+	static private int infoHeight = 200; //height of info text box 
+	static private String infoText = "";
+	static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
+	static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
+	static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
+	static private int turn = 0; // whose turn it is 0 means it is first players turn
+//	private int startWidth = 150;
+//	private int startLength = 80;
 
-	public class Gameplay_GUI extends Application {
-		static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
-		static ArrayList<String> ognames = new ArrayList<String>();
-		static private int btnWidth = 150; // width of buttons
-		static private int btnHeight = 150; //height of buttons
-		static private int imgWidth = 130; // width of buttons
-		static private int imgHeight = 130; //height of buttons
-		static private int picSizeHeight;
-		static private int picSizeWidth;
-		static private int infoWidth = 500; //width of info text box
-		static private int infoHeight = 200; //height of info text box 
-		static private String infoText = "";
-		static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
-		static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
-		static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
-		static private int turn = 0; // whose turn it is 0 means it is first players turn
-		private int startWidth = 150;
-		private int startLength = 80;
-		private Button startButton = new Button("Start");
-
-		
-		//the buttons used
-			static Button infos = new Button("Information");
-			static Button buy = new Button("Buy");
-			static Button endturn = new Button("End Turn");
-			static Button build = new Button("Build House");
-			static Button random = new Button("Random");
-			static Button roll = new Button("Roll Dice");
-			static Button button1 = new Button("Go");
-			static Button button2 = new Button("Canada");
-			static Button button3 = new Button("Brazil");
-			static Button button4 = new Button("Russia");
-			static Button button5 = new Button("Mexico");
-			static Button button6 = new Button("Chance");
-			static Button button7 = new Button("Egypt");
-			static Button button8 = new Button("Turkey");
-			static Button button9 = new Button("Germany");
-			static Button button10 = new Button("UK");
-			static Button button11 = new Button("Jail");
-			static Button button12 = new Button("Italy");
-			static Button button13 = new Button("SouthAfrica");
-			static Button button14 = new Button("SouthKorea");
-			static Button button15 = new Button("Columbia");
-			static Button button16 = new Button("Treasure");
-			static Button button17 = new Button("China");
-			static Button button18 = new Button("India");
-			static Button button19 = new Button("US");
-			static Button button20 = new Button("Japan");
-			static Circle circle = new Circle();
-			static Circle circle2 = new Circle();
-			static Circle circle3 = new Circle();
-			static Circle circle4 = new Circle();
-			public boolean ii = false;
+	//Start Screen
+	private int btnWidthSelect = 200;
+	private int btnLengthSelect = 80;
+	private int scrnWidth = 900;
+	private int scrnLength = 600;
+	private int buttonSpace = 30;
+	private int duration = 500;
+	private int btnAngle = 15;
+	private int cycleCount = 1000;
+	
+	private Button startButton = new Button("Start");
+	private Button creditButton = new Button("Credits");
+	private Button descriptButton = new Button("Description");
+	private Button backButtonCredit = new Button("Back");
+	private Button backButtonDescript = new Button("Back");
+	
+	//INITIALIZING MUSIC
+		URL url = this.getClass().getClassLoader().getResource("bensound-energy.mp3");
+		Media music = new Media(url.toExternalForm());
+		MediaPlayer mPlayer = new MediaPlayer(music);
+	
+	
+	//the buttons used
+	static Button infos = new Button("Information");
+	static Button buy = new Button("Buy");
+	static Button endturn = new Button("End Turn");
+	static Button build = new Button("Build House");
+	static Button random = new Button("Random");
+	static Button roll = new Button("Roll Dice");
+	static Button button1 = new Button("Go");
+	static Button button2 = new Button("Canada");
+	static Button button3 = new Button("Brazil");
+	static Button button4 = new Button("Russia");
+	static Button button5 = new Button("Mexico");
+	static Button button6 = new Button("Chance");
+	static Button button7 = new Button("Egypt");
+	static Button button8 = new Button("Turkey");
+	static Button button9 = new Button("Germany");
+	static Button button10 = new Button("UK");
+	static Button button11 = new Button("Jail");
+	static Button button12 = new Button("Italy");
+	static Button button13 = new Button("SouthAfrica");
+	static Button button14 = new Button("SouthKorea");
+	static Button button15 = new Button("Columbia");
+	static Button button16 = new Button("Treasure");
+	static Button button17 = new Button("China");
+	static Button button18 = new Button("India");
+	static Button button19 = new Button("US");
+	static Button button20 = new Button("Japan");
+	static Circle circle = new Circle();
+	static Circle circle2 = new Circle();
+	static Circle circle3 = new Circle();
+	static Circle circle4 = new Circle();
+	public boolean ii = false;
 			
-			//setter for turn
-			public static void setTurn(int a) {
-				if(a >= 0 && a <= 3) {
-					turn = a;
-				}
-			}
-			
-			//get turn
-			public static int getTurn() {
-				return turn;
-			}
+	//setter for turn
+	public static void setTurn(int a) {
+		if(a >= 0 && a <= 3) {
+			turn = a;
+		}
+	}
+	
+	//get turn
+	public static int getTurn() {
+		return turn;
+	}
 
 
 
@@ -268,21 +296,43 @@ import javafx.scene.image.ImageView;
 	
 	//START SCENE
 			grid.setTitle("Start Screen");
+			Reflection ref = new Reflection();
 			
-			//setting up screen
 			GridPane screen = new GridPane();
 			screen.setAlignment(Pos.CENTER);
 			screen.setVgap(20);
+			screen.setPadding(new Insets(25, 25, 25, 25));		
+
+			GridPane creditScreen = new GridPane();
+			creditScreen.setAlignment(Pos.CENTER);
+			creditScreen.setPadding(new Insets(25, 25, 25, 25));		
 			
-			//labels
-			Label title = new Label("Monopoly");
-			title.setStyle("-fx-font-size:50px;");
-			screen.add(title, 0, 0);
+			GridPane descriptScreen = new GridPane();
+			descriptScreen.setAlignment(Pos.CENTER);
+			descriptScreen.setPadding(new Insets(25, 25, 25, 25));
+	
+	//SCENES
+			Scene startScene = new Scene(screen, scrnWidth, scrnLength);
+			Scene creditScene = new Scene(creditScreen, scrnWidth, scrnLength);
+			Scene descriptScene = new Scene(descriptScreen, scrnWidth, scrnLength);
+		
 			
-			//buttons
-			startButton.setPrefSize(startWidth, startLength);
-			startButton.setStyle("-fx-font: 30 arial; -fx-base: #b6e7c9;");
-			screen.add(startButton, 0, 1);
+	//BUTTONS - Start Scene
+	startButton.setPrefSize(btnWidthSelect, btnLengthSelect);
+	startButton.setStyle("-fx-font: 25 tahoma; -fx-base: #b6e7c9;");
+	startButton.setEffect(ref);
+	
+	creditButton.setPrefSize(btnWidthSelect, btnLengthSelect);
+	creditButton.setStyle("-fx-font: 25 tahoma; -fx-base: #b6e7c9;");
+	creditButton.setEffect(ref);
+	
+	descriptButton.setPrefSize(btnWidthSelect, btnLengthSelect);
+	descriptButton.setStyle("-fx-font: 25 tahoma; -fx-base: #b6e7c9;");
+	descriptButton.setEffect(ref);
+	
+	HBox horizontalButton = new HBox(buttonSpace);
+	horizontalButton.getChildren().addAll(startButton, creditButton, descriptButton);
+	screen.add(horizontalButton, 0, 3);
 	
 	//END SCENE 
 			GridPane screenPane = new GridPane();
@@ -294,6 +344,21 @@ import javafx.scene.image.ImageView;
 			winningMessage.setStyle("-fx-font: 50 cambria;");
 			screenPane.add(winningMessage, 0, 0);		
 	
+			//TITLE - Start Scene
+			FileInputStream imageInput = new FileInputStream("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\MonopolyTitle.png");
+	        Image title = new Image(imageInput);
+	        ImageView viewTitle = new ImageView(title);        
+			screen.add(viewTitle, 0, 0);
+			
+			//BACKGROUNDS 	
+			String styleStart = "-fx-background-color: rgba(100, 255, 255, 0.5);";
+			screen.setStyle(styleStart);
+			
+			String styleCredit = "-fx-background-color: rgba(100, 55, 255, 0.5);";
+			creditScreen.setStyle(styleCredit);
+			
+			String styleDescript = "-fx-background-color: rgba(100, 125, 255, 0.5);";
+			descriptScreen.setStyle(styleDescript);
 			
 	//setting the buttons to the width and height we want
 			int index = 0;
@@ -301,6 +366,131 @@ import javafx.scene.image.ImageView;
 				buttons.get(index).setPrefSize(btnWidth, btnHeight);
 				index = index + 1;
 			}
+			
+			//ANIMATION
+			RotateTransition rotateStart = new RotateTransition();
+			rotateStart.setNode(startButton);
+		    rotateStart.setDuration(Duration.millis(duration)); 
+			rotateStart.setByAngle(btnAngle);
+			rotateStart.setCycleCount(cycleCount);
+			rotateStart.setAutoReverse(true);
+			rotateStart.play();
+			
+			RotateTransition rotateCredit = new RotateTransition();
+			rotateCredit.setNode(creditButton);
+			rotateCredit.setDuration(Duration.millis(duration)); 
+			rotateCredit.setByAngle(-btnAngle);
+			rotateCredit.setCycleCount(cycleCount);
+			rotateCredit.setAutoReverse(true);
+			rotateCredit.play();
+			
+			RotateTransition rotateDescription = new RotateTransition();
+			rotateDescription.setNode(descriptButton);
+			rotateDescription.setDuration(Duration.millis(duration)); 
+			rotateDescription.setByAngle(btnAngle);
+			rotateDescription.setCycleCount(cycleCount);
+			rotateDescription.setAutoReverse(true);
+			rotateDescription.play();
+			
+			RotateTransition rotateTitle = new RotateTransition();
+			rotateTitle.setNode(viewTitle);
+			rotateTitle.setDuration(Duration.millis(duration));
+			rotateTitle.setByAngle(-btnAngle);
+			rotateTitle.setCycleCount(cycleCount);
+			rotateTitle.setAutoReverse(true);
+			rotateTitle.play();
+			
+			RotateTransition rotateBack = new RotateTransition();
+			rotateBack.setNode(backButtonCredit);
+			rotateBack.setDuration(Duration.millis(duration));
+			rotateBack.setByAngle(-btnAngle);
+			rotateBack.setCycleCount(cycleCount);
+			rotateBack.setAutoReverse(true);
+			rotateBack.play();
+			
+			RotateTransition rotateBackDescript = new RotateTransition();
+			rotateBackDescript.setNode(backButtonDescript);
+			rotateBackDescript.setDuration(Duration.millis(duration));
+			rotateBackDescript.setByAngle(-btnAngle);
+			rotateBackDescript.setCycleCount(cycleCount);
+			rotateBackDescript.setAutoReverse(true);
+			rotateBackDescript.play();
+			
+			//SCENE - Credits
+			String creditTitleString = "CREDITS: ";
+			String creditInformationString = "Xudong Miao\nAli Parsaee\nXinshou Li\nSarmad Manzar\nJoseph Lam";
+			
+			Label creditTitle = new Label(creditTitleString);
+			creditTitle.setStyle("-fx-font: 50 cambria");
+			Label creditInfo = new Label(creditInformationString);
+			creditInfo.setStyle("-fx-font: 30 cambria");
+			
+			creditScreen.add(creditTitle, 0, 0);
+			creditScreen.add(creditInfo, 0, 1);
+			
+			backButtonCredit.setPrefSize(btnWidthSelect, btnLengthSelect);
+			backButtonCredit.setStyle("-fx-font: 25 tahoma; -fx-base: #b6e7c9;");
+			backButtonCredit.setEffect(ref);
+			creditScreen.add(backButtonCredit, 3, 6);
+			
+			//SCENE - Project description
+			String descriptTitleString = "Project Description: ";
+			String descriptString = "Play a game of Monopoly!\nCaught in the throes of boredom, you find yourself\n"
+					+ "seeking some semblance of entertainment.\nHuzzah! And what do you find within your reach?\n"
+					+ "A perfectly accessible, online version of Monopoly!\nHave at it, folks!";
+			
+			Label descriptTitle = new Label(descriptTitleString);
+			descriptTitle.setStyle("-fx-font: 50 cambria");
+			Label descriptInfo = new Label(descriptString);
+			descriptInfo.setStyle("-fx-font: 30 cambria");
+			
+			descriptScreen.add(descriptTitle, 0, 0);
+			descriptScreen.add(descriptInfo, 0, 1);
+			
+			backButtonDescript.setPrefSize(btnWidthSelect, btnLengthSelect);
+			backButtonDescript.setStyle("-fx-font: 25 tahoma; -fx-base: #b6e7c9;");
+			backButtonDescript.setEffect(ref);
+			descriptScreen.add(backButtonDescript, 3, 6);
+	    	
+			//PLAYING MUSIC
+			mPlayer.setAutoPlay(true);
+	    	mPlayer.setCycleCount(cycleCount);
+	    	
+			//ACTION BUTTONS
+			creditButton.setOnAction(new EventHandler<ActionEvent>() {
+				 
+			    @Override
+			    public void handle(ActionEvent e) {
+			    	grid.setScene(creditScene);
+			    }
+			});
+			
+			descriptButton.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent e) {
+					grid.setScene(descriptScene);
+				}
+					
+		    });
+			
+			backButtonCredit.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent e) {
+					grid.setScene(startScene);
+				}
+					
+		    });
+			
+			backButtonDescript.setOnAction(new EventHandler<ActionEvent>() {
+				
+				@Override
+				public void handle(ActionEvent e) {
+					grid.setScene(startScene);
+				}
+					
+		    });
 
 	infos.setPrefSize(btnWidth, btnHeight);
 	buy.setPrefSize(btnWidth, btnHeight);
@@ -311,7 +501,6 @@ import javafx.scene.image.ImageView;
 	
 	//ALL SCENES
 	Scene mainScene = new Scene(borderPane,150,150);
-	Scene startScene = new Scene(screen, 150, 150);
 	Scene endScene = new Scene(screenPane, 150, 150);
 	BackgroundSize sizeforbg = new BackgroundSize(100,100,true,true,true,true
 			);
@@ -514,7 +703,6 @@ public static void AIturn() {
 
 		//adding the map buttons to the buttons arraylist
 //		buttons.add(firstbutton);
-		
 launch(args);
 }
 }
