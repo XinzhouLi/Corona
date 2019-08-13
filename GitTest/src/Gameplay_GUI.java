@@ -628,9 +628,15 @@ public class Gameplay_GUI extends Application {
 	        	GUI_Board.setColor(propertiesList, buttons);
 	        	
 		    	if (Services.winingCondiction(playersList) == false) {
+<<<<<<< HEAD
 //		    		mPlayer.setAutoPlay(false);
 //		    		mPlayerEnd.setAutoPlay(true);
 //					mPlayerEnd.setCycleCount(cycleCountEnd);
+=======
+			    	mPlayer.pause();
+		    		mPlayerEnd.setAutoPlay(true);
+					mPlayerEnd.setCycleCount(cycleCountEnd);
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 		    		grid.setScene(endScene);
 				}
 		    	AIturn();
