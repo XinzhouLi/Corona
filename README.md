@@ -7,7 +7,7 @@ Project Title:Monopoly(Board game)
 		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java, Updated_Main.java,randomCard.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
-		Also download GamePlay_GUI.java,GUI_Board.java.
+		Also download GamePlay_GUI.java,GUI_Board.java，tokens.zip.
 		
 	
 2. Intro of the project
@@ -61,16 +61,16 @@ Project Title:Monopoly(Board game)
 
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
+		
 
-
-		GamePlay_GUI.java:Where to game started,all the images are imported, include the image of player and image of the 	properties.
+		GamePlay_GUI.java:Where the game started,all the images are imported, include the image of player and image of the properties.
 
 		GUI_Board.java: where the board is created and some event handler.
 4.Run the game
 	(1)Run the java file that called Updated_Main.java for the text version game.
 	    make sure that the Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList()); is the only code in the file.
 
-	(2)For the GUI part, go to GamePlay_GUI.java  (download all the java file needed for text version game) run the file.
+	(2)For the GUI part,unzip the tokens.zip and put it together with other java files, go to GamePlay_GUI.java  (download all the java file needed for text version game) run the file.
 
 
 5.Project states
@@ -83,7 +83,7 @@ Project Title:Monopoly(Board game)
 	GUI part:
 		GUI is added to the game, and the player can play either text version game or GUI version game.
 		The player can check there money amount in the bank by just click the information button, the adding of random card allow the user make 
-		more choices, If player get steal property card and move card, they are allowed to click the button to choose the property they want to steal or location that they want to move.
+		more choices, If player get steal property card and move card, they are allowed to enter value to choose the property they want to steal or location that they want to move.
 		The circle with different color represents different player, and the location of the circle is player's location.
 		Player can click the button which represents property, and the information of this property is shown aat the bottom.
 		
@@ -92,8 +92,7 @@ Project Title:Monopoly(Board game)
 	
 	Junit Test:
 	           (1)There is a Junit for the program, it tests the Services.java, service.java contain all the method to update the information of the player, property,it is the most important class
-		so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.There is also a Junit test for ComputerUseRandomCard.java, to test if the computer 
-		player play the game as we expected.
+		so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.
 
 	           (2)Run Junit Test:
 		(1)Import Junit 
