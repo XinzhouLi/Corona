@@ -1,21 +1,20 @@
-# CoronaProject 
 Project Title:Monopoly(Board game)
 
 1.prerequisites
 	(1)for the player who only want to play text version game.
 		If just want to play the text version game, installation of java is enough to play the game
-		Download Updated_Main.java,Services.java,Player.java,Property.java,UseRandomCard.java,computerUseRandomCard.java,Constant.java,Gameplay.java
-		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java.
+		Download Gameplay.java,Services.java,Player.java,Property.java,UsingRandomCard.java,computerUseRandomCard.java,Constant.java,Gameplay.java
+		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java, Updated_Main.java,randomCard.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
-		Also download sd.java
+		Also download GamePlay_GUI.java,GUI_Board.java.
 		
 	
 2. Intro of the project
 	A board game called Monopoly, all the players stand on the start location, they are allowed to move(the number of steps they moved depend on the
  	the dice number)buy property and sell property.  Created by Joseph Yiu Chu Lam,Sarmad Manzar,Ali Parsaee,Xudong Miao,Xinzhou Li.
 	
-	Technology used:   Java and javaFX
+	Technology used:   Java and javaFX, Junit Test 5
 
 	Rule of the game:
 		(1)if the player stand on other people's property, the player will pay the money to the owner of the property.
@@ -63,20 +62,25 @@ Project Title:Monopoly(Board game)
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
 		
-		
-		sd.java:where the board is created, all the button are set.
+		sd.java:where the board is created.
 
+		GamePlay_GUI.java:all the images are imported, include the image of player and image of the properties.
+
+		GUI_Board.java: where the board is created and some event handler.
 4.Run the game
 	(1)Run the java file that called Updated_Main.java for the text version game.
 	    make sure that the Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList()); is the only code in the file.
 
-	(2)For the GUI part, go to sd.java  (download all the java file needed for text version game) run the file.
+	(2)For the GUI part, go to GamePlay_GUI.java  (download all the java file needed for text version game) run the file.
 
 
 5.Project states
 	Changes of Computer Player:
 		The computer player becomes more wisely than the first version due to they are allowed to use random card. Different difficulty level of computer players.
-	
+	Background music:
+		There is a background music for the game.
+	More pictures:
+		Use picture to represents different property and players.
 	GUI part:
 		GUI is added to the game, and the player can play either text version game or GUI version game.
 		The player can check there money amount in the bank by just click the information button, the adding of random card allow the user make 
@@ -87,15 +91,17 @@ Project Title:Monopoly(Board game)
 	
 	We transfer from JButton to Button.
 	
-	There is a Junit for the program, it tests the Services.java, service.java contain all the method to update the information of the player, property,it is the most important class
-	so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.
+	Junit Test:
+	           (1)There is a Junit for the program, it tests the Services.java, service.java contain all the method to update the information of the player, property,it is the most important class
+		so we choose to test this class. Import Junit test and put ServicesTest.java and Sevices.java to start testing.There is also a Junit test for ComputerUseRandomCard.java, to test if the computer 
+		player play the game as we expected.
 
-
-6Future expect:
-	Insert picture, more clear information, insert music, animation after rolling the dice.
+	           (2)Run Junit Test:
+		(1)Import Junit 
+			Right click the project folder---->properties---->Java Build Path---->add Library---->Junit---->Next---->Junit library version must be JUnit 5.
+		
+		(2)Make sure the tested java file and test file are in same package, run the test file.
+	
 
 		website:		https://github.com/joseph5-ship/Corona
-
-
-
 
