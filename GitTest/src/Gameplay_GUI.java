@@ -3,7 +3,6 @@ import javafx.animation.RotateTransition;
 import javafx.application.Application; 
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -41,18 +40,18 @@ import javafx.scene.image.ImageView;
 public class Gameplay_GUI extends Application {
 	static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
 	static ArrayList<String> ognames = new ArrayList<String>();
-	static private int btnWidth = 100; // width of buttons
-	static private int btnHeight = 70; //height of buttons
-	static private int imgWidth = 80; // width of buttons
-	static private int imgHeight = 50; //height of buttons
-	static private int picSizeHeight;
-	static private int picSizeWidth;
+	static private int btnWidth = 120; // width of buttons
+	static private int btnHeight = 120; //height of buttons
+	static private int imgWidth = 100; // width of buttons
+	static private int imgHeight = 100; //height of buttons
+	static private int picSizeHeight = 50;
+	static private int picSizeWidth = 50;
 	static private int infoWidth = 300; //width of info text box
 	static private int infoHeight = 500; //height of info text box 
 	static private String infoText = "";
 	static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
 	static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
-	static ArrayList<Circle> circs = new ArrayList<Circle>(); //arraylist made for the cirlces 0th indecy is first circle correlating to first player
+	static ArrayList<Label> labelsForPlayers = new ArrayList<Label>(); //arraylist made for the cirlces 0th indecy is first player correlating to first player
 	static private int turn = 0; // whose turn it is 0 means it is first players turn
 
 	//START SCREEN
@@ -73,18 +72,18 @@ public class Gameplay_GUI extends Application {
 	static TextField LocationInput = new TextField();
 
 	
-	//INITIALIZING MUSIC
-		URL url = this.getClass().getClassLoader().getResource("bensound-energy.mp3");
-		Media music = new Media(url.toExternalForm());
-		MediaPlayer mPlayer = new MediaPlayer(music);
-	
-	//END SCREEN
-		private int cycleCountEnd = 1000;
-		
-		//INITIALIZING MUSIC
-		URL urlEnd = this.getClass().getClassLoader().getResource("bensound-hey.mp3");
-		Media musicEnd = new Media(urlEnd.toExternalForm());
-		MediaPlayer mPlayerEnd = new MediaPlayer(musicEnd);
+//	//INITIALIZING MUSIC
+//		URL url = this.getClass().getClassLoader().getResource("bensound-energy.mp3");
+//		Media music = new Media(url.toExternalForm());
+//		MediaPlayer mPlayer = new MediaPlayer(music);
+//	
+//	//END SCREEN
+//		private int cycleCountEnd = 1000;
+//		
+//		//INITIALIZING MUSIC
+//		URL urlEnd = this.getClass().getClassLoader().getResource("bensound-hey.mp3");
+//		Media musicEnd = new Media(urlEnd.toExternalForm());
+//		MediaPlayer mPlayerEnd = new MediaPlayer(musicEnd);
 	
 		
 	//the buttons used
@@ -115,10 +114,10 @@ public class Gameplay_GUI extends Application {
 	static Button button19 = new Button("US");
 	static Button button20 = new Button("Japan");
 	static Button Ok = new Button("Ok");
-	static Circle circle = new Circle();
-	static Circle circle2 = new Circle();
-	static Circle circle3 = new Circle();
-	static Circle circle4 = new Circle();
+	static Label player1 = new Label();
+	static Label player2 = new Label();
+	static Label player3 = new Label();
+	static Label player4 = new Label();
 	public boolean ii = false;
 			
 	//setter for turn
@@ -139,6 +138,26 @@ public class Gameplay_GUI extends Application {
 			
 @Override
 	public void start(Stage grid) throws Exception {
+	Image plyr1 = new Image("bus.jpg");
+	Image plyr2 = new Image("plyr2.jpg");
+	Image plyr3 = new Image("plyr3.jpg");
+	Image plyr4 = new Image("plyr4.jpg");
+	ImageView play1 = new ImageView(plyr1);
+	ImageView play2 = new ImageView(plyr2);
+	ImageView play3 = new ImageView(plyr3);
+	ImageView play4 = new ImageView(plyr4);
+	play1.setFitHeight(picSizeHeight);
+	play1.setFitWidth(picSizeWidth);
+	play2.setFitHeight(picSizeHeight);
+	play2.setFitWidth(picSizeWidth);
+	play3.setFitHeight(picSizeHeight);
+	play3.setFitWidth(picSizeWidth);
+	play4.setFitHeight(picSizeHeight);
+	play4.setFitWidth(picSizeWidth);
+	player1.setGraphic(play1);
+	player2.setGraphic(play2);
+	player3.setGraphic(play3);
+	player4.setGraphic(play4);
 	buttons.add(button1);
 	buttons.add(button2);
 	buttons.add(button3);
@@ -267,23 +286,13 @@ public class Gameplay_GUI extends Application {
 
 	grid.setTitle("Monopoly Board"); //grid title
 	
-	//adding circles
-	circs.add(circle);
-	circs.add(circle2);
-	circs.add(circle3);
-	circs.add(circle4);
+	//adding Labels
+	labelsForPlayers.add(player1);
+	labelsForPlayers.add(player2);
+	labelsForPlayers.add(player3);
+	labelsForPlayers.add(player4);
 	
-	//coloring circles
-	circle.setFill(Color.BLUE);
-	circle2.setFill(Color.RED);
-	circle3.setFill(Color.GREEN);
-	circle4.setFill(Color.GOLD);
 
-	//setting circles radiuses
-	circle.setRadius(8);
-	circle2.setRadius(8);
-	circle3.setRadius(8);
-	circle4.setRadius(8);
 	
 	// the gridpane I used
 	BorderPane borderPane = new BorderPane();
@@ -381,10 +390,15 @@ public class Gameplay_GUI extends Application {
 				
 	
 			//TITLE - Start Scene
-			FileInputStream imageInput = new FileInputStream("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\MonopolyTitle.png");
-	        Image title = new Image(imageInput);
-	        ImageView viewTitle = new ImageView(title);        
-			screen.add(viewTitle, 0, 0);
+			Label monopolyTitle = new Label("");
+			Image monoTit= new Image("MonopolyTitle.png");
+			ImageView monoTitl=new ImageView (monoTit);
+			monopolyTitle.setGraphic(monoTitl);
+			screen.add(monopolyTitle, 0, 0);
+//			FileInputStream imageInput = new FileInputStream("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\MonopolyTitle.png");
+//	        Image title = new Image(imageInput);
+//	        ImageView viewTitle = new ImageView(title);        
+//			screen.add(viewTitle, 0, 0);
 			
 			//BACKGROUNDS 	
 			String styleStart = "-fx-background-color: rgba(100, 255, 255, 0.5);";
@@ -429,7 +443,7 @@ public class Gameplay_GUI extends Application {
 			rotateDescription.play();
 			
 			RotateTransition rotateTitle = new RotateTransition();
-			rotateTitle.setNode(viewTitle);
+			rotateTitle.setNode(monopolyTitle);
 			rotateTitle.setDuration(Duration.millis(duration));
 			rotateTitle.setByAngle(-btnAngle);
 			rotateTitle.setCycleCount(cycleCount);
@@ -489,8 +503,8 @@ public class Gameplay_GUI extends Application {
 			descriptScreen.add(backButtonDescript, 3, 6);
 	    	
 			//PLAYING MUSIC
-			mPlayer.setAutoPlay(true);
-	    	mPlayer.setCycleCount(cycleCount);
+//			mPlayer.setAutoPlay(true);
+//	    	mPlayer.setCycleCount(cycleCount);
 	    	
 			//ACTION BUTTONS
 			creditButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -546,7 +560,7 @@ public class Gameplay_GUI extends Application {
 	GUI_Board.buttonHandler(buttons, infoTextField);
 		
 		
-		// moves a players circle relative to the map depending on whose turn it is
+		// moves a players player relative to the map depending on whose turn it is
 		
 
 		roll.setOnAction(new EventHandler<ActionEvent>() {
@@ -569,8 +583,8 @@ public class Gameplay_GUI extends Application {
 					infoText = infoText +playersList.get(turn).getPlayerName()+" pays "+propertiesList.get(playersList.get(turn).getLocation()).getRent()+" to "+Services.searchPlayer(playersList.get(turn).getLocation(), propertiesList, playersList).getPlayerName()+"\n";
 					infoTextField.setText(infoText);
 				}
-		    	gridPane.getChildren().remove(circs.get(turn));
-		    	gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+		    	gridPane.getChildren().remove(labelsForPlayers.get(turn));
+		    	gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 		    	endturn.setDisable(false);
 		    }
 		});
@@ -614,9 +628,15 @@ public class Gameplay_GUI extends Application {
 	        	GUI_Board.setColor(propertiesList, buttons);
 	        	
 		    	if (Services.winingCondiction(playersList) == false) {
+<<<<<<< HEAD
+//		    		mPlayer.setAutoPlay(false);
+//		    		mPlayerEnd.setAutoPlay(true);
+//					mPlayerEnd.setCycleCount(cycleCountEnd);
+=======
 			    	mPlayer.pause();
 		    		mPlayerEnd.setAutoPlay(true);
 					mPlayerEnd.setCycleCount(cycleCountEnd);
+>>>>>>> branch 'master' of https://github.com/joseph5-ship/Corona.git
 		    		grid.setScene(endScene);
 				}
 		    	AIturn();
@@ -642,17 +662,17 @@ public class Gameplay_GUI extends Application {
 					random.setDisable(true);
 						if (playersList.get(turn).getPlayerNumber()==0) {
 							printStuff(infoTextField);
-							if (Constant.CHOSENNUM==1) {
+							if (Constant.ChosenNum==1) {
 							
 								
 								UsingRandomCard.jailCard(playersList.get(turn));
 							}
-							else if(Constant.CHOSENNUM==3) {
+							else if(Constant.ChosenNum==3) {
 							
 							
 								UsingRandomCard.addMoney(playersList.get(turn));
 							}
-							else if(Constant.CHOSENNUM==4) {
+							else if(Constant.ChosenNum==4) {
 							
 							
 								UsingRandomCard.lostMoney(playersList.get(turn));
@@ -662,13 +682,13 @@ public class Gameplay_GUI extends Application {
 							}
 
 							setColor();
-					    	gridPane.getChildren().remove(circs.get(turn));
-					    	gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+					    	gridPane.getChildren().remove(labelsForPlayers.get(turn));
+					    	gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 						}else {
 							GUIcomputerUseRandom(propertiesList, playersList.get(turn), infoTextField);
 							setColor();
-					    	gridPane.getChildren().remove(circs.get(turn));
-							gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+					    	gridPane.getChildren().remove(labelsForPlayers.get(turn));
+							gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 						}
 	    }
 			}});
@@ -707,36 +727,36 @@ public class Gameplay_GUI extends Application {
 				Ok.setDisable(true);
 				Integer value = Integer.valueOf(LocationInput.getText());
 				System.out.println(value);
-				if (Constant.CHOSENNUM==2) {
+				if (Constant.ChosenNum==2) {
 
 					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
 					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+					gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 				}
-				else if(Constant.CHOSENNUM==5) {
+				else if(Constant.ChosenNum==5) {
 
 					UsingRandomCard.moveCardGUI(value ,playersList.get(turn));
 					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+					gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 				}
-				else if(Constant.CHOSENNUM==6) {
+				else if(Constant.ChosenNum==6) {
 
 					UsingRandomCard.useStealCard(propertiesList,playersList.get(turn),value);
 					int money=playersList.get(turn).getMoney();
 					playersList.get(turn).setMoney(money+200);
 
 					setColor();
-					gridPane.add(circs.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
+					gridPane.add(labelsForPlayers.get(turn), change.changeX(playersList.get(turn).getLocation()), change.changeY(playersList.get(turn).getLocation()));
 				}
 			}
 
 		});
 		
 		
-		gridPane.add(circle, change.changeX(playersList.get(0).getLocation()), change.changeY(playersList.get(0).getLocation()));
-		gridPane.add(circle2, change.changeX(playersList.get(1).getLocation()), change.changeY(playersList.get(1).getLocation()));
-		gridPane.add(circle3, change.changeX(playersList.get(2).getLocation()), change.changeY(playersList.get(2).getLocation()));
-		gridPane.add(circle4, change.changeX(playersList.get(3).getLocation()), change.changeY(playersList.get(3).getLocation()));
+		gridPane.add(player1, change.changeX(playersList.get(0).getLocation()), change.changeY(playersList.get(0).getLocation()));
+		gridPane.add(player2, change.changeX(playersList.get(1).getLocation()), change.changeY(playersList.get(1).getLocation()));
+		gridPane.add(player3, change.changeX(playersList.get(2).getLocation()), change.changeY(playersList.get(2).getLocation()));
+		gridPane.add(player4, change.changeX(playersList.get(3).getLocation()), change.changeY(playersList.get(3).getLocation()));
 		
 	
 	//setting padding and adding buttons to the coordinates we want
@@ -782,28 +802,28 @@ public class Gameplay_GUI extends Application {
 
 
 public static void printStuff(Label infoTextField) {
-	Constant.CHOSENNUM=UsingRandomCard.reciveCard();
-	if (Constant.CHOSENNUM==1) {
+	Constant.ChosenNum=UsingRandomCard.reciveCard();
+	if (Constant.ChosenNum==1) {
 		infoText+="It is a jail card, go to the jail";
 		infoTextField.setText(infoText);
 		System.out.println("It is a jail card, go to the jail");
 	}
-	else if(Constant.CHOSENNUM==2) {
+	else if(Constant.ChosenNum==2) {
 		infoText+="Steal property card";
 		infoTextField.setText(infoText);
 		System.out.println("Steal property card");
 }
-	else if(Constant.CHOSENNUM==3) {
+	else if(Constant.ChosenNum==3) {
 		infoText+="do not get any card, but recive the money(200)";
 		infoTextField.setText(infoText);
 		System.out.println("do not get any card, but recive the money(200)");
 	}
-	else if(Constant.CHOSENNUM==4) {
+	else if(Constant.ChosenNum==4) {
 		infoText+="do not get any card and lose the money(200)";
 		infoTextField.setText(infoText);
 		System.out.println("do not get any card and lose the money(200)");
 	}
-	else if(Constant.CHOSENNUM==5){
+	else if(Constant.ChosenNum==5){
 		infoText+="It is a move card";
 		infoTextField.setText(infoText);
 		System.out.println("It is a move card");
