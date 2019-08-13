@@ -4,6 +4,9 @@ import javafx.application.Application;
 import javafx.scene.Scene; 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.geometry.Insets;
@@ -75,7 +78,15 @@ public class Gameplay_GUI extends Application {
 		Media music = new Media(url.toExternalForm());
 		MediaPlayer mPlayer = new MediaPlayer(music);
 	
+	//END SCREEN
+		private int cycleCountEnd = 1000;
+		
+		//INITIALIZING MUSIC
+		URL urlEnd = this.getClass().getClassLoader().getResource("bensound-hey.mp3");
+		Media musicEnd = new Media(urlEnd.toExternalForm());
+		MediaPlayer mPlayerEnd = new MediaPlayer(musicEnd);
 	
+		
 	//the buttons used
 	static Button infos = new Button("Information");
 	static Button buy = new Button("Buy");
@@ -345,14 +356,29 @@ public class Gameplay_GUI extends Application {
 	screen.add(horizontalButton, 0, 3);
 	
 	//END SCENE 
-			GridPane screenPane = new GridPane();
-			screenPane.setAlignment(Pos.CENTER);
-			screenPane.setVgap(20);
+	//END SCREEN
+			GridPane endScreen = new GridPane();
+			endScreen.setAlignment(Pos.CENTER);
+			endScreen.setVgap(20);
+			
+			//BACKGROUND
+			String styleEnd = "-fx-background-color: rgba(100, 125, 255, 0.5);";
+			endScreen.setStyle(styleEnd);
 			
 			//labels
-			Label winningMessage = new Label(playersList.get(Services.findWinner(playersList, propertiesList)).getPlayerName() + " won, congratulations!");
-			winningMessage.setStyle("-fx-font: 50 cambria;");
-			screenPane.add(winningMessage, 0, 0);		
+			Text winText = new Text("You won, congratulations!");
+			winText.setCache(true);
+			winText.setFill(Color.LIGHTCORAL);
+			winText.setFont(Font.font(null, FontWeight.BOLD, 50));
+			
+			Reflection reflect = new Reflection();
+			reflect.setFraction(0.7f);
+			winText.setEffect(reflect);
+			endScreen.add(winText, 0, 0);
+			
+			
+			
+				
 	
 			//TITLE - Start Scene
 			FileInputStream imageInput = new FileInputStream("C:\\Users\\User\\Desktop\\CPSC233\\ProjectImages\\MonopolyTitle.png");
@@ -511,7 +537,7 @@ public class Gameplay_GUI extends Application {
 	
 	//ALL SCENES
 	Scene mainScene = new Scene(borderPane,150,150);
-	Scene endScene = new Scene(screenPane, 150, 150);
+	Scene endScene = new Scene(endScreen, 150, 150);
 	BackgroundSize sizeforbg = new BackgroundSize(100,100,true,true,true,true
 			);
 	BackgroundImage bimg = new BackgroundImage(bg1, null, null, null, sizeforbg);
@@ -534,7 +560,6 @@ public class Gameplay_GUI extends Application {
 		    	infoTextField.setText(infoText);
 		    	playersList.get(turn).setLocation(playersList.get(turn).getLocation());
 		    	
-		    	//bigproblem
 		    	if (playersList.get(turn).getLocation() == 10) {
 					Services.payJail(playersList.get(turn));
 					infoText = infoText+ playersList.get(turn).getPlayerName() + "You are in jail, lose 50 dollars, you filthy thief!\n";
@@ -589,6 +614,9 @@ public class Gameplay_GUI extends Application {
 	        	GUI_Board.setColor(propertiesList, buttons);
 	        	
 		    	if (Services.winingCondiction(playersList) == false) {
+		    		mPlayer.setAutoPlay(false);
+		    		mPlayerEnd.setAutoPlay(true);
+					mPlayerEnd.setCycleCount(cycleCountEnd);
 		    		grid.setScene(endScene);
 				}
 		    	AIturn();
