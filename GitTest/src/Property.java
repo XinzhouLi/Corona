@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * on the board 
  */
 public class Property {
-    private int Cost = 0; //cost of a property 
+    private int Cost = Constant.PROPERTY_PRICE; //cost of a property 
     private int Building = 0; // number of buildings a property has
     private int Owner = 5; // tests the number of the owner of the property, starts at 5 as it is none of the four players 
     private int rent = Constant.BUILDING_PRICE; // rent they have to pay when landing on property
@@ -17,11 +17,9 @@ public class Property {
      * @param position the position of the property 
      * @param propertyName the name of the property
      */
-    public Property(int position, String propertyName, int cost, int rent) { 
+    public Property(int position, String propertyName) { 
 		this.Position = position;
 		this.Property_Name = propertyName;
-		this.Cost = cost;
-		this.rent = rent;
 	}
 
     /**

@@ -15,5 +15,6 @@ public class Constant {
 	public static final int MINIMUM_LOCATION = 0;
 	public static final int MAXIMUM_LOCATION = 19;
 	public static final int RONDOM_CARD_MONEY_AMOUNT = 200;
+	public static int CHOSENNUM = 30;
 	
 }
