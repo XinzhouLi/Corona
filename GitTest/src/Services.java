@@ -142,9 +142,8 @@ public class Services {
 			moneyUpdate+=properties.get(propertyLocation).getRent();
 			player.setMoney(moneyUpdate);
 			properties.get(propertyLocation).setOwner(5);
-		}else {
-//			System.out.println("That property does not belong to you");
-			text = "That property does not belong to you";
+		} else {
+			text = "That property does not belong to you!";
 		}
 		return text;
 	}
@@ -185,13 +184,27 @@ public class Services {
 		}
 		return text;
 	}
-	
-}
-	
 
+	public static int findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
+		int integerWinner = 5;
+		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
+			for(Player iPlayer : playerslist) {
+				sellLand(iPlayer, propertieslist, propertyLocation );
+			}
+		}
 	
-	
-	
-	
-	
-	
+		ArrayList<Integer> finalScore = new ArrayList<>();
+		finalScore.add(playerslist.get(0).getMoney());
+		finalScore.add(playerslist.get(1).getMoney());
+		finalScore.add(playerslist.get(2).getMoney());
+		finalScore.add(playerslist.get(3).getMoney());
+		finalScore.sort(null);
+		System.out.println(finalScore.toString());
+		for (Player player :playerslist) {
+			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
+				integerWinner = player.getPlayerNumber();
+			}
+		}
+		return integerWinner;
+		}
+	}
