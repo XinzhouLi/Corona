@@ -61,10 +61,9 @@ Project Title:Monopoly(Board game)
 
 	(2)part of the GUI game:
 		All the java file in the text version is introduced above.
-		
-		sd.java:where the board is created.
 
-		GamePlay_GUI.java:all the images are imported, include the image of player and image of the properties.
+
+		GamePlay_GUI.java:Where to game started,all the images are imported, include the image of player and image of the 	properties.
 
 		GUI_Board.java: where the board is created and some event handler.
 4.Run the game
