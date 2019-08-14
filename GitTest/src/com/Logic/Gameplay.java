@@ -12,7 +12,8 @@ import com.Data.*;
 public class Gameplay {
 
 	/**
-	 * Method startGame 
+	 * Method startGame handles the logic necessary to run the text-based version of Monopoly.
+	 * It uses the Services class to constantly check if the winning conditions 
 	 * @param playersList the list of players
 	 * @param propertiesList the list of properties
 	 */
