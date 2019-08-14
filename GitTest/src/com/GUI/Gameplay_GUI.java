@@ -487,10 +487,13 @@ public class Gameplay_GUI extends Application {
 		creditScreen.add(backButtonCredit, 3, 6);
 		
 		//SCENE - Project description
-		String descriptTitleString = "Project Description: ";
-		String descriptString = "Play a game of Monopoly!\nCaught in the throes of boredom, you find yourself\n"
-				+ "seeking some semblance of entertainment.\nHuzzah! And what do you find within your reach?\n"
-				+ "A perfectly accessible, online version of Monopoly!\nHave at it, folks!";
+		String descriptTitleString = "Instructions: ";
+		String descriptString = "Play against 3 CPUs! You go first! Passing GO gets you $200. Here’s a few functions players can use...\n"
+				+ "1. Roll: roll a 6-sided die and move according to the number rolled. Roll used once per turn. \n2. Buy: Buys unowned property the player is on (except GO, Jail, Chance, and Treasure) for the assigned cost.\n Buy used once per turn.\n"
+				+ "3. Build: Pay $200 to build a house on property you own. Rent of the property increases by $150.\nBuild used once per turn\nRandom: Uses a random card that the player collects from landing on either Chance or Treasure space.\nRandom used once per turn.\n" +
+				"5. End Turn: Player ends their turn." + "\nPlayer pays rent when landing on a property owned by another player.\n" + 
+				"Player 1 is BLUE\nPlayer 2 is RED\nPlayer 3 is GREEN\nPlayer 4 is YELLOW\n Win by being the player with\n" +
+				"the most money. The game ends as soon as some player\nloses all their money, at which point the other 3 players sell all their properties\nand the player with the highest net worth ends up being the winner.";
 		
 		Label descriptTitle = new Label(descriptTitleString);
 		descriptTitle.setStyle("-fx-font: 50 cambria");
