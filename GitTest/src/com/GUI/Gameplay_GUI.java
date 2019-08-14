@@ -84,7 +84,6 @@ public class Gameplay_GUI extends Application {
 	Media musicEnd = new Media(urlEnd.toExternalForm());
 	MediaPlayer mPlayerEnd = new MediaPlayer(musicEnd);
 	
-	static Button infos = new Button("Information");
 	static Button buy = new Button("Buy");
 	static Button endturn = new Button("End Turn");
 	static Button build = new Button("Build House");
@@ -571,7 +570,6 @@ public class Gameplay_GUI extends Application {
 				
 	    });
 
-		infos.setPrefSize(btnWidth, btnHeight);
 		buy.setPrefSize(btnWidth, btnHeight);
 		endturn.setPrefSize(btnWidth, btnHeight);
 		build.setPrefSize(btnWidth, btnHeight);
@@ -670,14 +668,7 @@ public class Gameplay_GUI extends Application {
 
 		    
 		});
-		infos.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent e) {
-		    	infoText = "Player name: " + playersList.get(turn).getPlayerName() +"\n Player Money: " + playersList.get(turn).getMoney() + "\n Player Properties: " + playersList.get(turn).getProperties() + "\n Player Number: " + playersList.get(turn).getPlayerNumber() + ", ";
-	            infoTextField.setText(infoText);
-		    		
-		    }
-		});
+		
 
 		random.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
