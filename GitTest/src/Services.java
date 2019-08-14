@@ -1,6 +1,8 @@
-import java.util.ArrayList;
+package com.Function;
+import java.util.ArrayList; 
 import java.util.Random;
 import java.util.Scanner;
+import com.Data.*;
 
 /** Represents the actions that can be enacted upon a player 
  * during a game, such as a dice rolling, selling land,
@@ -16,7 +18,6 @@ public class Services {
 	 * @return the number rolled by dice
 	 */
 	
-	//Use for Junit Test. due to can not get the random number.Location must between 0 and 19()
 	public static int locationUpdate(Player p, int diceNumber) { 
 		int location=p.getLocation();
 		location+=diceNumber;
@@ -156,14 +157,14 @@ public class Services {
 	 */
 
 	public static Player searchPlayer(int position, ArrayList<Property> propertieslist, ArrayList<Player> playerslist) {
-		for (Property i :propertieslist) {
+	
 			for (Player j :playerslist) {
-				if (j.getPlayerNumber() == i.getOwner()) {
+				if (j.getPlayerNumber() == propertieslist.get(position).getOwner()) {
 					return j;
 				}
 			}
 		
-		}
+		
 		return null;
 	}
 	
@@ -185,8 +186,8 @@ public class Services {
 		return text;
 	}
 
-	public static int findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
-		int integerWinner = 5;
+	public static String findWinner( ArrayList<Player> playerslist, ArrayList<Property> propertieslist) {
+		String winner = "";
 		for (int propertyLocation = 0; propertyLocation < 20; propertyLocation++) {
 			for(Player iPlayer : playerslist) {
 				sellLand(iPlayer, propertieslist, propertyLocation );
@@ -202,10 +203,10 @@ public class Services {
 		System.out.println(finalScore.toString());
 		for (Player player :playerslist) {
 			if (player.getMoney()==finalScore.get(finalScore.size()-1)) {
-				integerWinner = player.getPlayerNumber();
+				winner = player.getPlayerName();
 			}
 		}
-		return integerWinner;
+		return winner;
 		}
 	}
 

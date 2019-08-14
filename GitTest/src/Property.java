@@ -1,7 +1,9 @@
+package com.Data;
 import java.util.ArrayList;
+import com.Function.*;
 
 /** Represents all information on the properties
- * on the board 
+ * on the board. 
  */
 public class Property {
     private int Cost = Constant.PROPERTY_PRICE; //cost of a property 

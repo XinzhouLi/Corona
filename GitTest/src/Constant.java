@@ -1,3 +1,4 @@
+package com.Function;
 /** Holds all constant values in regards to 
  *  properties of the Monopoly game.
  */

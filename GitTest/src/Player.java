@@ -1,5 +1,7 @@
-import java.util.ArrayList;
+package com.Data;
+import java.util.ArrayList; 
 import java.util.Scanner;
+import com.Function.*;
 
 /** Represents all information of the player,
  * including their money, location, properties, 
@@ -21,7 +23,7 @@ public class Player {
 		setMoney(Money);
 		setLocation(Location);
 		setPlayerNumber(playerNumber);
-		setHumanPlayerName();
+		setHumanPlayerName(PlayerName);
 		 
 	}
 	
@@ -137,9 +139,8 @@ public class Player {
 	 * Method sets human player's name.
 	 * @return the player's name 
 	 */
-	public String setHumanPlayerName() {
-		Scanner input = new Scanner(System.in);
-        PlayerName = input.nextLine();
+	public String setHumanPlayerName(String name) {
+        PlayerName = name;
         return PlayerName;
 	}
 	

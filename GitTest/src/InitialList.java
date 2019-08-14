@@ -1,26 +1,47 @@
-import java.util.ArrayList;
+package com.Function;
+import java.util.ArrayList; 
+import com.Data.*;
 
+/**
+ * Represents the initial information lists containing
+ * info on players and the properties within the game. 
+ */
 public class InitialList {
+	
+	/**
+	 * Method adds players into a list and names them.
+	 * It assigns intelligences to CPU players.
+	 * @return the list of players
+	 */
 	public static ArrayList<Player> playersList() {
 		System.out.println("Initializing...please enter your name.");
 		Player p0 = new Player(0);
+		p0.setPlayerName("Bob");
 	    Player c1 = new Player(1);
 	    Player p1=createCP.createComputerPlayer(c1,2);
+	    p1.setPlayerName("Aeson");
 	    Player c2 = new Player(2);
 	    Player p2=createCP.createComputerPlayer(c2,1);
+	    p2.setPlayerName("Aster");
 	    Player c3 = new Player(3);
 	    Player p3=createCP.createComputerPlayer(c3,2);
+	    p3.setPlayerName("Lumen");
 
 	    ArrayList<Player> playerList =new ArrayList<Player>();
 	    playerList.add(p0);
 	    playerList.add(p1);
 	    playerList.add(p2);
 	    playerList.add(p3);
+	    
 		return playerList;	
 	}
 	
-	
-	//Use for test
+	/**
+	 * Method adds players to a list without intialization of names
+	 * or CPU intelligences
+	 * @param test the
+	 * @return the list of players
+	 */
 	public static ArrayList<Player> playersList(String test) {
 
 		Player p0 = new Player(1);
@@ -36,7 +57,11 @@ public class InitialList {
 		return playerList;	
 	}
 	
-	
+	/**
+	 * Method initializes a list of properties to be added
+	 * into a list.
+	 * @return the list of properties.
+	 */
 	public static ArrayList<Property> propertiesList() {
 		Property b0 = new Property(0,"Start");
 		Property b1 = new Property(1,"Canada");

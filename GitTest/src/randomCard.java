@@ -1,6 +1,12 @@
-import java.util.Random;
+package com.Function;
+import java.util.Random; 
 import java.util.Scanner;
 
+/**
+ * Represents all the information pertaining to the Random
+ * cards in game play. 1 is a Stop card, 2 is a Rob card, and 3
+ * is a Move card.
+ */
 public class randomCard {
 	public int randomCard;
 	public static final int NO_CARD = 0;

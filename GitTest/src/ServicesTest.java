@@ -1,12 +1,19 @@
-import static org.junit.Assert.assertEquals;
+package com.Function;
+import static org.junit.Assert.assertEquals; 
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
+import com.Data.*;
 
+/**
+ * Represents the JUnit test necessary to test
+ * the functionality of the Services class.
+ */
 class ServicesTest {
-
+	
+	/**
+	 * Tests if the player has updated their location.
+	 */
 	@Test
 	public void testLocationUpdate() {
 		Services a=new Services();
@@ -16,7 +23,9 @@ class ServicesTest {
 		assertEquals("Test if player update the location",5,player.getLocation());
 	}
 	
-	
+	/**
+	 * Tests if the player can update their location twice.
+	 */
 	@Test
 	public void testLocationUpdateForTwoTimes() {
 		Services a=new Services();
@@ -28,7 +37,10 @@ class ServicesTest {
 	}
 	
 	
-	
+	/**
+	 * Tests if the player can update their location 
+	 * many times. 
+	 */
 	@Test
 	public void testLargeLocationUpdate() {
 		Services a=new Services();
@@ -38,7 +50,10 @@ class ServicesTest {
 		assertEquals("Test if player update the location",17,player.getLocation());
 	}
 	
-	
+	/**
+	 * Tests if the player updates location over the 
+	 * maximum amount of board spaces (19).
+	 */
 	@Test
 	public void testOverMapSizeLocationUpdate() {
 		Services a=new Services();
@@ -48,7 +63,10 @@ class ServicesTest {
 		assertEquals("check if the player update the location after over map size location",0,player.getLocation());
 	}
 	
-	
+	/**
+	 * Tests if the player's money can be transferred to 
+	 * another player's account.
+	 */
 	@Test
 	public void testTransfer() {
 		Services test=new Services();
@@ -61,7 +79,10 @@ class ServicesTest {
 		assertEquals("check if player get money",1200,owner.getMoney());
 	}
 	
-	
+	/**
+	 * Tests if the player's transfer of money is decreased
+	 * after losing monet to another player.
+	 */
 	@Test
 	public void testNegativeTransfer() {
 		Services test=new Services();
@@ -74,7 +95,10 @@ class ServicesTest {
 		assertEquals("check if owner get the money",200,owner.getMoney());
 	}
 	
-	
+	/**
+	 * Tests if the player pays $50 to the jail 
+	 * when they land on the Jail space.
+	 */
 	@Test
 	public void testPayJail() {
 		Services test=new Services();
@@ -84,7 +108,10 @@ class ServicesTest {
 		assertEquals("test if player pay the jail",1450 , testPlayer.getMoney());
 	}
 	
-	
+	/**
+	 * Tests if the player can pay the Jail even though
+	 * the amount will become negative.
+	 */
 	@Test
 	public void testNegativePayJail() {
 		Services test=new Services();
@@ -95,7 +122,9 @@ class ServicesTest {
 		assertEquals("test if player pay the jail even though the money amount becomes nagetive",-50 , testPlayer.getMoney());
 	}
 	
-	
+	/**
+	 * Tests if the player can buy land (lose money) and if they own it. 
+	 */
 	@Test
 	public void testBuyLand() {
 		Services test=new Services();
@@ -109,7 +138,9 @@ class ServicesTest {
 		
 	}
 	
-	
+	/**
+	 * Tests if the player has enough money to buy the land.
+	 */
 	@Test
 	public void testNotEnoughMouneyBuyLand() {
 		Services test=new Services();
@@ -124,7 +155,10 @@ class ServicesTest {
 		
 	}
 	
-	
+	/**
+	 * Tests if, once the player has built a hotel, that their
+	 * rent increases.
+	 */
 	@Test
 	public void testBuildHouse() {
 		Services test=new Services();
@@ -141,7 +175,10 @@ class ServicesTest {
 		assertEquals("Money amount after the buying of the building",1350,testPlayer.getMoney());
 	}
 	
-	
+	/**
+	 * Tests if the player has enough money to purchase 
+	 * a house to build on the property. 
+	 */
 	@Test
 	public void testNotEnoughMoneyForBuildHouse() {
 		Services test=new Services();
@@ -159,6 +196,10 @@ class ServicesTest {
 		assertEquals("Money amount will not decrease due to player do not increase the level of the building",100,testPlayer.getMoney());
 	}
 	
+	/**
+	 * Tests if the player can build on another player's
+	 * owned property. 
+	 */
 	@Test
 	public void testBuildHouseForOtherPlayer() {
 		Services test=new Services();
@@ -177,6 +218,10 @@ class ServicesTest {
 		assertEquals("Owner of the land will not be changed",2,pro.getOwner());
 	}
 	
+	/**
+	 * Tests if the player can sell land once they have
+	 * owned the property.
+	 */
 	@Test
 	public void testSellLand() {
 		Services test=new Services();
@@ -194,12 +239,16 @@ class ServicesTest {
 		assertEquals("no one own this land",5,pro.getOwner());
 	}
 	
+	/**
+	 * Tests if the player can send land that 
+	 * isn't their own.
+	 */
 	@Test
 	public void testSellLandNotBelongsToPlayer() {
 		Services test=new Services();
 		Player testPlayer=new Player(3);
 		testPlayer.setLocation(2);
-		String correct= "That property does not belong to you";
+		String correct= "That property does not belong to you!";
 		ArrayList<Property> propertyList=InitialList.propertiesList();
 		Property pro=propertyList.get(2);
 		pro.setOwner(2);
@@ -211,7 +260,10 @@ class ServicesTest {
 		assertEquals("owner of the land will not changed",2,pro.getOwner());
 	}
 	
-	
+	/**
+	 * Tests if the function can find the owner of the 
+	 * property.
+	 */
 	@Test
 	public void testSearchPlayer() {
 		Services test=new Services();
@@ -227,6 +279,10 @@ class ServicesTest {
 		assertEquals(3,num);
 		}
 	
+	/**
+	 * Tests if the function searchPlayer() can locate
+	 * a property no one owns 
+	 */
 	@Test
 	public void testSearchPlayerNoOneOwns() {
 		Services test=new Services();
@@ -237,11 +293,13 @@ class ServicesTest {
 		ArrayList<Player> playerList=InitialList.playersList(testS);
 		Property pro=propertyList.get(2);
 		assertEquals(null,Services.searchPlayer(2,propertyList,playerList));
-//		int num=player.getPlayerNumber();
-//		assertEquals(5,num);
 		}
 	
-	
+	/**
+	 * Tests if, once a player has reached a negative amount
+	 * of money, that the win condition is checked and the 
+	 * game ends.
+	 */
 	@Test
 	public void testFalseWinCondition() {
 		String s="";
@@ -249,17 +307,13 @@ class ServicesTest {
 		ArrayList<Player> playerList=InitialList.playersList(s);
 		Player player=playerList.get(0);
 		player.setMoney(-100);
-//		if(Services.winingCondiction(playerList)) {
-//			num=1;
-//		}
-//		else {
-//			num=0;
-//		}
 		assertEquals(false,Services.winingCondiction(playerList));
-		
-	
 	}
 	
+	/**
+	 * Tests the amount of money every player has; if positive,
+	 * the game will keep running. 
+	 */
 	@Test
 	public void testTrueWinCondition() {
 		String s="";
@@ -267,10 +321,7 @@ class ServicesTest {
 		ArrayList<Player> playerList=InitialList.playersList(s);
 		Player player=playerList.get(0);
 		player.setMoney(1100);
-
 		assertEquals(true,Services.winingCondiction(playerList));
-		
-	
 	}
 		
 	

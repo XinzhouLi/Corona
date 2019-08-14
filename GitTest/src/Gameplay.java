@@ -1,13 +1,13 @@
+package com.Logic;
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.Function.*;
+import com.Data.*;
 
 public class Gameplay {
 
-	
 	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
 		while(Services.winingCondiction(playersList)) {
-				//Start round
-			
 			for (Player currentPlayer:playersList) {
 				if (!Services.winingCondiction(playersList)) {
 					break;
@@ -72,35 +72,12 @@ public class Gameplay {
 						}
 				}
 				System.out.println("");
-
-				
 			}
 		}
-		
-		//Game ends
 		
 		Services.findWinner(playersList, propertiesList);
 		System.out.println("End Game");
 		
 	}
 	
-//	public static String findWinner(Player p0,Player p1,Player p2,Player p3) {
-//		ArrayList<Integer> finalScore = new ArrayList<>();
-//		finalScore.add(p0.getMoney());
-//		finalScore.add(p1.getMoney());
-//		finalScore.add(p2.getMoney());
-//		finalScore.add(p3.getMoney());
-//		finalScore.sort(null);
-//		String winner = ""
-//		if (p0.getMoney() == finalScore.get(finalScore.size()-1)) {
-//			System.out.println("Winner is "+p0.getPlayerName());
-//		}else if (p1.getMoney() == finalScore.get(finalScore.size()-1)) {
-//			System.out.println("Winner is "+p1.getPlayerName());
-//		}else if (p2.getMoney() == finalScore.get(finalScore.size()-1)) {
-//			System.out.println("Winner is "+p2.getPlayerName());
-//		}else if (p3.getMoney() == finalScore.get(finalScore.size()-1)) {
-//			System.out.println("Winner is "+p3.getPlayerName());
-//		}
-//		return winner;
-//	}
 }
