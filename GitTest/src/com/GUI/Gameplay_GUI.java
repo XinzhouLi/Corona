@@ -512,6 +512,8 @@ public class Gameplay_GUI extends Application {
 		/**
 		 * Method changes the scene to the Credit scene when
 		 * the Credit Button is pressed.
+		 * @param EventHandler<ActionEvent>() the class that handles the event and 
+		 * produces an action that changes the scene
 		 */
 		creditButton.setOnAction(new EventHandler<ActionEvent>() {
 			 
@@ -522,7 +524,10 @@ public class Gameplay_GUI extends Application {
 		});
 		
 		/**
-		 * Method changes the scene to description scene.
+		 * Method changes the scene to description scene when the 
+		 * Description button is pressed. 
+		 * @param EventHandler<ActionEvent>() the class that handles the event and 
+		 * produces an action that changes the scene
 		 */
 		descriptButton.setOnAction(new EventHandler<ActionEvent>() {
 			
@@ -533,6 +538,12 @@ public class Gameplay_GUI extends Application {
 				
 	    });
 		
+		/**
+		 * Method sets scene back to the Start screen from
+		 * the Credit Scene.
+		 * @param EventHandler<ActionEvent>() the class that handles the event and 
+		 * produces an action that changes the scene
+		 */
 		backButtonCredit.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -542,6 +553,12 @@ public class Gameplay_GUI extends Application {
 				
 	    });
 		
+		/**
+		 * Method sets scene back to the Start screen from
+		 * the Description Scene.
+		 * @param EventHandler<ActionEvent>() the class that handles the event and 
+		 * produces an action that changes the scene
+		 */
 		backButtonDescript.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
