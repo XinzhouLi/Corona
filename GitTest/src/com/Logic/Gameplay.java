@@ -12,7 +12,7 @@ import com.Data.*;
 public class Gameplay {
 
 	/**
-	 * 
+	 * Method startGame 
 	 * @param playersList the list of players
 	 * @param propertiesList the list of properties
 	 */

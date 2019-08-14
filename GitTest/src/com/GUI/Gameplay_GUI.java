@@ -137,7 +137,8 @@ public class Gameplay_GUI extends Application {
 	
 	/**
 	 * Method displays the current player's turn in the GUI,
-	 * utilizing visual effects like Blend and DropShadow.
+	 * utilizing visual effects to set the colors of the player turn
+	 * message in the top-right corner.
 	 * @param turn the integer value belonging to the player
 	 */
 	public static void turnPic(int turn) {
