@@ -4,8 +4,18 @@ import java.util.Scanner;
 import com.Function.*;
 import com.Data.*;
 
+/**
+ * Represents the information needed to run the text-based version of 
+ * the Monopoly Game. Uses the method startGame() to handle the logic of running the
+ * game and printing the results into the console. 
+ */
 public class Gameplay {
 
+	/**
+	 * 
+	 * @param playersList the list of players
+	 * @param propertiesList the list of properties
+	 */
 	public static void startGame(ArrayList<Player> playersList, ArrayList<Property> propertiesList) {
 		while(Services.winingCondiction(playersList)) {
 			for (Player currentPlayer:playersList) {
@@ -18,9 +28,7 @@ public class Gameplay {
 				Services.locationUpdate(currentPlayer);
 				System.out.println("Location: " + currentPlayer.getLocation());
 				System.out.println("Property name: " + propertiesList.get(currentPlayer.getLocation()).getPropertyName());
-				
-				//special location checking
-				
+								
 				if(currentPlayer.getLocation() == 10) {
 					Services.payJail(currentPlayer);
 					continue;
@@ -36,9 +44,7 @@ public class Gameplay {
 					continue;
 				}
 
-				//if it is normal property, buying,renting ,building
 				if (currentPlayer.getPlayerNumber()==0) {
-					//Human player turn
 		        	if (propertiesList.get(currentPlayer.getLocation()).getOwner() == currentPlayer.getPlayerNumber()) {
 		        		System.out.println("Do you want to bulid house on this property? (Y/N)");
 						Scanner input = new Scanner(System.in);
