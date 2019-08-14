@@ -50,12 +50,12 @@ public class Gameplay_GUI extends Application {
 	static private int picSizeHeight =30;
 	static private int picSizeWidth=30;
 	static private int infoWidth = 300; 
-	static private int infoHeight = 500; //height of info text box 
+	static private int infoHeight = 500; 
 	static private String infoText = "";
-	static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
-	static ArrayList<Property> propertiesList = InitialList.propertiesList(); // arraylist made for the property 0th indecy is first property
-	static ArrayList<Label> playerLabel = new ArrayList<Label>(); //arraylist made for the cirlces 0th indecy is first Label correlating to first player
-	static private int turn = 0; // whose turn it is 0 means it is first players turn
+	static ArrayList<Player> playersList = InitialList.playersList(); 
+	static ArrayList<Property> propertiesList = InitialList.propertiesList(); 
+	static ArrayList<Label> playerLabel = new ArrayList<Label>(); 
+	static private int turn = 0; 
 
 	//START SCREEN
 	private int btnWidthSelect = 200;
@@ -651,10 +651,7 @@ public class Gameplay_GUI extends Application {
 		    	int newturn = a%4;
 		    	turn = newturn;
 				infoText = infoText + playersList.get(turn).getPlayerName()+ "\n"+ 
-		    	"Money: "+playersList.get(turn).getMoney() +"\n"
-//				"Property: "+ playersList.get(turn).getProperties().toString()+"\n"
-				;
-
+		    	"Money: "+playersList.get(turn).getMoney() +"\n";
 		    	infoTextField.setText(infoText);
 	        	GUI_Board.setColor(propertiesList, buttons);
 	        	
