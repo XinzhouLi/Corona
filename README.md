@@ -7,7 +7,7 @@ Project Title:Monopoly(Board game)
 		InitialList.java, computerPlayer.java, cpdifficulty1.java ,cpdifficulty2.java, createCP.java, Updated_Main.java,randomCard.java.
 	(2)if want to player the GUI version of the game
 		Install both java and javaFX, and download all the java file that is used in text version game.
-		Also download GamePlay_GUI.java,GUI_Board.java，tokens.zip.
+		Also download GamePlay_GUI.java,GUI_Board.java，tokens.zip, Flags.zip, Music.zip.
 		
 	
 2. Intro of the project
@@ -70,7 +70,7 @@ Project Title:Monopoly(Board game)
 	(1)Run the java file that called Updated_Main.java for the text version game.
 	    make sure that the Gameplay.startGame(InitialList.playersList(), InitialList.propertiesList()); is the only code in the file.
 
-	(2)For the GUI part,unzip the tokens.zip and put it together with other java files, go to GamePlay_GUI.java  (download all the java file needed for text version game) run the file.
+	(2)For the GUI part,unzip thetokens.zip, Flags.zip, Music.zip and put them together with other java files, go to GamePlay_GUI.java  (download all the java file needed for text version game) run the file.
 
 
 5.Project states
