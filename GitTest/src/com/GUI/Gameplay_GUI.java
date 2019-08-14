@@ -41,15 +41,15 @@ import com.Music.*;
  * via extension of the parent class Application.
  */
 public class Gameplay_GUI extends Application {
-	static ArrayList<Button> buttons = new ArrayList<Button>(); // arraylist for buttons
+	static ArrayList<Button> buttons = new ArrayList<Button>(); 
 	static ArrayList<String> ognames = new ArrayList<String>();
-	static private int btnWidth = 100; // width of buttons
-	static private int btnHeight = 70; //height of buttons
-	static private int imgWidth = 80; // width of buttons
-	static private int imgHeight = 50; //height of buttons
+	static private int btnWidth = 100; 
+	static private int btnHeight = 70; 
+	static private int imgWidth = 80; 
+	static private int imgHeight = 50; 
 	static private int picSizeHeight =30;
 	static private int picSizeWidth=30;
-	static private int infoWidth = 300; //width of info text box
+	static private int infoWidth = 300; 
 	static private int infoHeight = 500; //height of info text box 
 	static private String infoText = "";
 	static ArrayList<Player> playersList = InitialList.playersList(); // arraylist made for the player 0th indecy is first player
@@ -920,6 +920,13 @@ public class Gameplay_GUI extends Application {
 		infoTextField.setText(infoText);
 	}
 
+	/**
+	 * Method allows the computer player to simulate the 
+	 * human player in their actions; handles their behaviour.
+	 * It enables them to Roll, use Random when appropriate, and to Buy
+	 * and Build. It searches the player list and gets the computer's location
+	 * to decide these things.
+	 */
 	public static void AIturn() {
 		if (playersList.get(turn).getPlayerNumber()==1||
 			playersList.get(turn).getPlayerNumber()==2||
@@ -948,6 +955,9 @@ public class Gameplay_GUI extends Application {
 	
 	}
 
+	/**
+	 * Main method that runs the GUI application
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

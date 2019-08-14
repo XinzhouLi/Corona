@@ -10,21 +10,6 @@ import com.Function.*;
  */
 public class cpdifficulty2 extends computerPlayer{
 	private int difficulty = 2;
-//	public cpdifficulty2(int PlayerNumber,int difficulty) {
-//		super(PlayerNumber);
-//		this.difficulty =difficulty;
-//		// TODO Auto-generated constructor stub
-//	}
-	
-//	public cpdifficulty2(Player player,int difficulty) {
-//		super(player);
-//		this.difficulty=difficulty;
-//	}
-	
-//	public int getDifficulty() {
-//		return this.difficulty;
-//	}
-	
 	/**
 	 * Constructs an instance of cpdifficulty2
 	 * level of intelligence.

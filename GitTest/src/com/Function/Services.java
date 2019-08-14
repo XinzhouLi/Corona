@@ -112,7 +112,6 @@ public class Services {
 		Property currentProperty = properties.get(player.getLocation());
 		String text = "";
 		if (player.getMoney()>=150) {
-//			properties.get(player.getLocation()).setOwner(player.getPlayerNumber());
 			money-=150;
 			player.setMoney(money);
 			currentProperty.setBuilding(currentProperty.getBuilding() + 1);
