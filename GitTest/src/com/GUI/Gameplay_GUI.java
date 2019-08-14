@@ -510,7 +510,8 @@ public class Gameplay_GUI extends Application {
 	    mPlayer.setCycleCount(cycleCount);
 		
 		/**
-		 * 
+		 * Method changes the scene to the Credit scene when
+		 * the Credit Button is pressed.
 		 */
 		creditButton.setOnAction(new EventHandler<ActionEvent>() {
 			 
@@ -520,6 +521,9 @@ public class Gameplay_GUI extends Application {
 		    }
 		});
 		
+		/**
+		 * Method changes the scene to description scene.
+		 */
 		descriptButton.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
