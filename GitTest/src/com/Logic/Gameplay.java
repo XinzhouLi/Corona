@@ -16,7 +16,7 @@ public class Gameplay {
 	 * It uses the Services class to constantly check if the winning conditions have been 
 	 * met every turn. It will iterate through the players list and check every player. The method 
 	 * will use getLocation() to locate the player's location relative to the board. If the integer value
-	 * is special (Jail, GO, Chance, or Treasure), then set their location
+	 * is special (Jail, GO, Chance, or Treasure), enact special logic code.
 	 * @param playersList the list of players
 	 * @param propertiesList the list of properties
 	 */
