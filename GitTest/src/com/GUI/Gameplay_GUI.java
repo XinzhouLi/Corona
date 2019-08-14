@@ -659,7 +659,7 @@ public class Gameplay_GUI extends Application {
 		    public void handle(ActionEvent e) {
 		    	turnPic(turn + 1);
 		    	GUI_Board.setColor(propertiesList, buttons);
-		    	if(turn + 1 %4 == 0) {
+		    	if((turn + 1) %4 == 0) {
 		    		endturn.setDisable(true);
 		    	}
 		    	LocationInput.setDisable(true);
