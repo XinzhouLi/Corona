@@ -584,6 +584,12 @@ public class Gameplay_GUI extends Application {
 		BackgroundImage bimg = new BackgroundImage(bg1, null, null, null, sizeforbg);
 		gridPane.setBackground(new Background(bimg)); 
 
+	
+	/**
+	 * Method lets a player click roll to change his location and provide text in infoTextField about what square the player has landed on.
+	 * The player can click roll once, after which it is disabled.
+	 * @param EventHandler<ActionEvent>() triggered with a mouseclick.
+	 */
 	roll.setOnAction(new EventHandler<ActionEvent>() {
 	    @Override
 	    public void handle(ActionEvent e) {
@@ -614,6 +620,13 @@ public class Gameplay_GUI extends Application {
 		    	endturn.setDisable(false);
 		    }
 		});
+
+		/**
+		 * Method allows a player to click buy to change the Property's owner to the player number.
+		 * If a property is not eligible to buy (because it is GO, Jail or Random) or it is owned by another player,
+		 * the button informs the player that buying the property is not possible.
+		 * @param EventHandler<ActionEvent> disables the button after being clicked.
+		 */
 		buy.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
@@ -634,6 +647,13 @@ public class Gameplay_GUI extends Application {
 				}
 		    }
 		});
+
+		/**
+		 * Method allows a player to proceed to another player's turn 
+		 * After the player clicks end turn for the last Computer Player, the button is disabled until the player rolls
+		 * The button enables buy, build, and random in order to allow the human player to proceed with his turn, and for the AI to have a turn
+		 * @param EventHandler<ActionEvent>()  triggered with a mouseclick.
+		 */
 		endturn.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
@@ -663,14 +683,15 @@ public class Gameplay_GUI extends Application {
 					mPlayerEnd.setCycleCount(cycleCountEnd);
 		    		grid.setScene(endScene);
 				}
-		    	AIturn();
-		      	
+		    	AIturn();	
 		    }
-
-		    
 		});
 		
-
+		/**
+		 * Method allows a human player to click on random if his location is on 5 or 15 (the two random card locations), which allows him to 
+		 * proceed with possible actions from the random card (gaining/losing money, going to jail, taking properties).
+		 * @param EventHandler<ActionEvent>()  triggered with a mouseclick.
+		 */
 		random.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
@@ -714,6 +735,12 @@ public class Gameplay_GUI extends Application {
 	    }
 			}});
 		
+	   /**
+		 * Method allows a player to buy a property.
+		 * If the player's location is not on an eligible property to buy (GO, Random, Jail, other's owned property), the button will 
+		 * not allow the player to buy the property.
+		 * @param EventHandler<ActionEvent>() triggered with a mouseclick.
+		 */
 		build.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override
 		    public void handle(ActionEvent e) {
@@ -731,8 +758,11 @@ public class Gameplay_GUI extends Application {
 		    }
 		});
 		
+		/**
+		 * Method starts the game, switches from beginning screen to main game scene
+		 * @param EventHandler<ActionEvent>()  triggered with a mouseclick.
+		 */
 		startButton.setOnAction(new EventHandler<ActionEvent>() {
-			 
 		    @Override
 		    public void handle(ActionEvent e) {
 		    	GUI_Board.setColor(propertiesList, buttons);
@@ -744,6 +774,10 @@ public class Gameplay_GUI extends Application {
 		    }
 		});
 		
+		/**
+		 * Method allows the player to enter input for which property to take if he lands on Random and gets a steal property card
+		 * @param EventHandler<ActionEvent>()  triggered with a mouseclick.
+		 */
 		Ok.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
@@ -876,7 +910,10 @@ public class Gameplay_GUI extends Application {
 	}
 	
 	/**
-	 * 
+	 * Method will display the information related to when the computer player uses
+	 * a random card. It will assess the luckNumber using the UsingRandomCard.receive()
+	 * function and check if it is a certain number. If it is a certain number, it will
+	 * call the methods in the UsingRandomCard class to affect the player.
 	 * @param propertiesList the list of properties
 	 * @param player the player
 	 * @param infoTextField the text field
